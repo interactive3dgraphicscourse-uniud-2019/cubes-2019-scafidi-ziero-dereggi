@@ -33,24 +33,57 @@
 
 			renderer = new THREE.WebGLRenderer( {antialias: true} );
 			renderer.setSize( window.innerWidth, window.innerHeight );
-			renderer.setClearColor( 0xf0f0f0 );
+			renderer.setClearColor( 0xa4effc );
 			renderer.setPixelRatio( window.devicePixelRatio );
 			renderer.gammaInput = true;
 			renderer.gammaOutput = true;
 			renderer.shadowMap.enabled = true;
 			document.body.appendChild( renderer.domElement );
 			
-			camera.position.set(2,2,2);
+			camera.position.set(20,20,60);
 			camera.lookAt( new THREE.Vector3(0,0,0));
 			
+			/*
 			var geometry = new THREE.BoxGeometry(1,1,1);
-			var texture = THREE.ImageUtils.loadTexture('textures/11635.jpg');
+			var texture = THREE.ImageUtils.loadTexture('textures/legno_pali.jpg');
 			var material = new THREE.MeshPhongMaterial( { map: texture } );
 			var cube = new THREE.Mesh( geometry, material );
 			cube.castShadow = true;
 			cube.receiveShadow = true;
 			
 			scene.add( cube );
+
+			var cube2 = new THREE.Mesh(geometry, material);
+			cube2.position.set(3,4,5);
+			scene.add(cube2);
+*/
+
+			//placeholder mulino
+			var placeholder1_geometry = new THREE.BoxGeometry(10,25,10);
+			var placeholder_material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
+			var placeholder1 = new THREE.Mesh(placeholder1_geometry, placeholder_material);
+			placeholder1.position.set(0,12.5,0);
+			scene.add(placeholder1);
+
+			//placeholder casa
+			var placeholder2_geometry = new THREE.BoxGeometry(25,15,10);
+			var placeholder2 = new THREE.Mesh(placeholder2_geometry, placeholder_material);
+			placeholder2.position.set(40,7.5,-35);
+			placeholder2.rotation.y = -30*Math.PI/180;
+			scene.add(placeholder2);
+
+			//placeholder treno
+			var placeholder3_geometry = new THREE.BoxGeometry(13,8,8);
+			var placeholder3 = new THREE.Mesh(placeholder3_geometry, placeholder_material);
+			placeholder3.position.set(0,6,20);
+			scene.add(placeholder3);
+
+			var placeholder4_geometry = new THREE.BoxGeometry(6,8,8);
+			var placeholder4 = new THREE.Mesh(placeholder4_geometry, placeholder_material);
+			placeholder4.position.set(-12,6,20);
+			scene.add(placeholder4);
+
+
 
 			hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
 			hemiLight.color.setHSL( 0.6, 1, 0.6 );
@@ -69,7 +102,7 @@
 
 
 			// GROUND
-			var groundGeo = new THREE.PlaneBufferGeometry( 10000, 10000 );
+			var groundGeo = new THREE.PlaneBufferGeometry( 130, 100 );
 			var groundMat = new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x050505 } );
 			groundMat.color.setHSL( 0.095, 1, 0.75 );
 			var ground = new THREE.Mesh( groundGeo, groundMat );
@@ -84,7 +117,7 @@
 			document.body.appendChild( stats.domElement );
 			
 			// uncomment if you need to draw coordinate axes when building the scene
-			//Coordinates.drawAllAxes();
+			Coordinates.drawAllAxes();
 			
 			controls = new THREE.OrbitControls( camera );
 			controls.addEventListener( 'change', Render );
