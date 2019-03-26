@@ -40,9 +40,7 @@
 		var vincolo_pale_mulino;
 		var codamulino_geometry, pernomulino_geometry, codamulino, pernomulino;
 		var palamulino_geometry, palamulino_texture, palamulino_material, palemulino;
-		var angolo=45; //angolo di rotazione del blocco+pale
-		var periodo_rotazione_blocco=15; // in secondi, periodo di rotazione blocco+pale
-		var periodo_rotazione_pale=5; // in secondi, periodo rotazione pale
+		var periodo_rotazione_blocco=10; // in secondi, periodo di rotazione blocco+pale
 
 		
 		function Start() {
@@ -86,7 +84,6 @@
 			scene.add(placeholder1);
 			*/
 			mulino = new THREE.Object3D();
-			scene.add(mulino);
 
 			palomulino_geometry = new THREE.BoxGeometry(3,20,3);
 			palomulino_texture = THREE.ImageUtils.loadTexture('textures/legno_pali.jpg');
@@ -167,9 +164,11 @@
 			}
 
 			vincolo_pale_mulino.position.set(0, 25.5, 12);
-			vincolo_base_mulino.add(vincolo_pale_mulino);
 
-			//vincolo_base_mulino.rotation.y = 90*Math.PI/180;
+			vincolo_base_mulino.add(vincolo_pale_mulino);
+			vincolo_base_mulino.rotation.y = -45*Math.PI/180;
+
+			scene.add(mulino);
 			//mulino.position.set(20, 0, 20);
 
 
@@ -251,8 +250,16 @@
 		}
 
 		function cinematicaMulino() {
-			vincolo_base_mulino.rotation.y += 0.1*Math.PI/180;
-			vincolo_pale_mulino.rotation.z += 1*Math.PI/180;
+			var elapsed=(Date.now()-startedTime);
+			//console.log(elapsed);
+			if(elapsed>periodo_rotazione_blocco*1000) {
+				startedTime=Date.now();
+			}
+			var accelerazione=Math.sin((360/(periodo_rotazione_blocco*1000))*elapsed*Math.PI/180);
+			vincolo_base_mulino.rotation.y += accelerazione*1*Math.PI/180;
+			vincolo_pale_mulino.rotation.z += accelerazione*5*Math.PI/180;
+
+			console.log(Math.sin((360/(periodo_rotazione_blocco*1000))*elapsed*Math.PI/180));
 		}
 		
 		Start();
