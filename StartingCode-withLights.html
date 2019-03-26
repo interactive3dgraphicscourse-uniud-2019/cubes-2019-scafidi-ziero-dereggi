@@ -174,14 +174,138 @@
 
 
 
+//-----------------------------------------------------------------------------------CASA
+			var casa_geometry = new THREE.BoxGeometry(25,15,10);
+			var casa_texture = THREE.ImageUtils.loadTexture('textures/legno_pali.jpg');
+			var casa_material = new THREE.MeshPhongMaterial( { map: casa_texture } );
+			casa = new THREE.Mesh(casa_geometry, casa_material);
+			casa.position.set(40,7.5,-35);
+			casa.rotation.y = -30*Math.PI/180;
+			scene.add(casa);
 
-			//placeholder casa
-			var placeholder2_geometry = new THREE.BoxGeometry(25,15,10);
-			var placeholder2 = new THREE.Mesh(placeholder2_geometry, placeholder_material);
-			placeholder2.position.set(40,7.5,-35);
-			placeholder2.rotation.y = -30*Math.PI/180;
-			scene.add(placeholder2);
 
+			var tetto1_geometry = new THREE.BoxGeometry(25,2,15);
+			var tetto1_texture = THREE.ImageUtils.loadTexture('textures/legno_pali.jpg');
+			var tetto1_material = new THREE.MeshPhongMaterial( { map: tetto1_texture } );
+			tetto1 = new THREE.Mesh(tetto1_geometry, tetto1_material);
+			tetto1.position.set(50,15,-30);
+			tetto1.rotation.y = -30*Math.PI/180;
+			tetto1.rotation.z = -30*Math.PI/180;
+			scene.add(tetto1);
+
+
+			var tetto2_geometry = new THREE.BoxGeometry(25,2,15);
+			var tetto2_texture = THREE.ImageUtils.loadTexture('textures/legno_pali.jpg');
+			var tetto2_material = new THREE.MeshPhongMaterial( { map: tetto2_texture } );
+			tetto2 = new THREE.Mesh(tetto2_geometry, tetto2_material);
+			tetto2.position.set(30,15,-40);
+			tetto2.rotation.y = -30*Math.PI/180;
+			tetto2.rotation.z = 30*Math.PI/180;
+			scene.add(tetto2);
+	
+			var porta_geometry = new THREE.BoxGeometry(5,10,1);
+			var porta_texture = THREE.ImageUtils.loadTexture('textures/porta.jpg');
+			var porta_material = new THREE.MeshPhongMaterial( { map: porta_texture } );
+			porta = new THREE.Mesh(porta_geometry, porta_material);
+			porta.position.set(35,5,-30);
+			porta.rotation.y = -30*Math.PI/180;
+			scene.add(porta);
+
+
+			var finestra_geometry = new THREE.BoxGeometry(5,5,0.5);
+			var finestra_texture = THREE.ImageUtils.loadTexture('textures/finestra.jpg');
+			var finestra_material = new THREE.MeshPhongMaterial( { map: finestra_texture } );
+			finestra = new THREE.Mesh(finestra_geometry, finestra_material);
+			finestra.position.set(43,10,-27);
+			finestra.rotation.y = -30*Math.PI/180;
+			scene.add(finestra);
+
+
+			var asta_geometry = new THREE.BoxGeometry(1,15,1);
+			var asta_texture = THREE.ImageUtils.loadTexture('textures/legno_pale.jpg');
+			var asta_material = new THREE.MeshPhongMaterial( { map: asta_texture } );
+			asta = new THREE.Mesh(asta_geometry, asta_material);
+			asta.position.set(40,7.5,-15);
+			asta.rotation.y = -30*Math.PI/180;
+			scene.add(asta);
+
+
+			var puntaAsta_geometry = new THREE.BoxGeometry(1.5,1.5,1.5);
+			var puntaAsta_material = new THREE.MeshBasicMaterial( { color: 0xffd700 } );
+			puntaAsta = new THREE.Mesh(puntaAsta_geometry, puntaAsta_material);
+			puntaAsta.position.set(40,15,-15);
+			puntaAsta.rotation.y = -30*Math.PI/180;
+			scene.add(puntaAsta);
+
+
+            var bandiera_geometry = new THREE.BoxGeometry(10,5,0.5);
+			var bandiera_texture = THREE.ImageUtils.loadTexture('textures/bandiera.jpg');
+			var bandiera_material = new THREE.MeshPhongMaterial( { map: bandiera_texture } );
+			bandiera = new THREE.Mesh(bandiera_geometry, bandiera_material);
+			bandiera.position.set(44,12,-12.5);
+			bandiera.rotation.y = -30*Math.PI/180;
+			scene.add(bandiera);
+
+//-----------------------------------------------------------------------------------FINE CASA
+
+
+//-----------------------------------------------------------------------------------OMINO
+
+			var gambaL_geometry = new THREE.BoxGeometry(0.5,4,0.5);
+			var gambaL_material = new THREE.MeshBasicMaterial( { color: 0xFFE4E1 } );
+			gambaL = new THREE.Mesh(gambaL_geometry, gambaL_material);
+			gambaL.position.set(41,2,-5);
+			scene.add(gambaL);
+
+			var gambaR_geometry = new THREE.BoxGeometry(0.5,4,0.5);
+			var gambaR_material = new THREE.MeshBasicMaterial( { color: 0xFFE4E1 } );
+			gambaR = new THREE.Mesh(gambaR_geometry, gambaR_material);
+			gambaR.position.set(42,2,-5);
+			scene.add(gambaR);
+
+			var torso_geometry = new THREE.BoxGeometry(2,3,2);
+			var torso_texture = THREE.ImageUtils.loadTexture('textures/orange.jpg');
+			var torso_material = new THREE.MeshPhongMaterial( { map: torso_texture } );
+			torso = new THREE.Mesh(torso_geometry, torso_material);
+			torso.position.set(41.5,4,-5);
+			scene.add(torso);
+
+			var testa_geometry = new THREE.BoxGeometry(1,1,1);
+			var testa_material = new THREE.MeshBasicMaterial( { color: 0xFFE4E1 } );
+			testa = new THREE.Mesh(testa_geometry, testa_material);
+			testa.position.set(41.5,6,-5);
+			scene.add(testa);
+
+			var braccioL_geometry = new THREE.BoxGeometry(0.5,4,0.5);
+			var braccioL_material = new THREE.MeshBasicMaterial( { color: 0xFFE4E1 } );
+			braccioL = new THREE.Mesh(braccioL_geometry, braccioL_material);
+			braccioL.position.set(40,3.5,-5);
+			braccioL.rotation.z = -30*Math.PI/180;
+			scene.add(braccioL);
+
+			var braccioR_geometry = new THREE.BoxGeometry(0.5,4,0.5);
+			var braccioR_material = new THREE.MeshBasicMaterial( { color: 0xFFE4E1 } );
+			braccioR = new THREE.Mesh(braccioR_geometry, braccioR_material);
+			braccioR.position.set(43,3.5,-5);
+			braccioR.rotation.z = 30*Math.PI/180;
+			scene.add(braccioR);
+
+			var cappello_geometry = new THREE.BoxGeometry(2.5,0.5,2.5);
+			var cappello_texture = THREE.ImageUtils.loadTexture('textures/orange.jpg');
+			var cappello_material = new THREE.MeshPhongMaterial( { map: cappello_texture } );
+			cappello = new THREE.Mesh(cappello_geometry, cappello_material);
+			cappello.position.set(41.5,6.5,-5);
+			scene.add(cappello);
+
+			var punta_geometry = new THREE.BoxGeometry(1,1,1);
+			var punta_texture = THREE.ImageUtils.loadTexture('textures/orange.jpg');
+			var punta_material = new THREE.MeshPhongMaterial( { map: punta_texture } );
+			punta = new THREE.Mesh(punta_geometry, punta_material);
+			punta.position.set(41.5,7,-5);
+			scene.add(punta);
+
+
+//-----------------------------------------------------------------------------------FINE OMINO
 			//placeholder treno
 			var placeholder3_geometry = new THREE.BoxGeometry(13,8,8);
 			var placeholder3 = new THREE.Mesh(placeholder3_geometry, placeholder_material);
@@ -214,8 +338,8 @@
 			// GROUND
 			var groundGeo = new THREE.PlaneBufferGeometry( 130, 100 );
 			var text = THREE.ImageUtils.loadTexture('textures/deadGrass.jpg');
-			//var groundMat = new THREE.MeshPhongMaterial( { map: text } );
-			var groundMat = new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x050505 } );
+			var groundMat = new THREE.MeshPhongMaterial( { map: text } );
+			//var groundMat = new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x050505 } );
 			groundMat.color.setHSL( 0.095, 1, 0.75 );
 			var ground = new THREE.Mesh( groundGeo, groundMat );
 			ground.position.y = -0.5;
