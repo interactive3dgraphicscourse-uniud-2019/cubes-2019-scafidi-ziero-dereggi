@@ -250,11 +250,11 @@
 		}
 
 		function cinematicaMulino() {
-			var elapsed=(Date.now()-startedTime);
-			if(elapsed>periodo_rotazione_blocco*1000) {
+			var elapsed=(Date.now()-startedTime)/1000;
+			if(elapsed>periodo_rotazione_blocco) {
 				startedTime=Date.now();
 			}
-			var accelerazione=Math.sin((360/(periodo_rotazione_blocco*1000))*elapsed*Math.PI/180);
+			var accelerazione=Math.sin((360/periodo_rotazione_blocco)*elapsed*Math.PI/180);
 			vincolo_base_mulino.rotation.y += accelerazione*1*Math.PI/180;
 			vincolo_pale_mulino.rotation.z += accelerazione*5*Math.PI/180;
 		}
