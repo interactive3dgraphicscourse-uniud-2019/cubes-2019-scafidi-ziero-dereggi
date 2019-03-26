@@ -1,4 +1,37 @@
-# Modeling and rendering with boxes
+# Per un pugno di boxes (titolo provvisorio)
+
+
+
+
+
+
+
+
+
+## Credits
+Per il progetto sono utilizzate texture distribuite sotto licenza Creative Commons, in particolare
+- [Faded Old Wooden Boards Texture di Ehud Neuhaus](https://freestocktextures.com/texture/faded-old-wooden-boards,991.html)
+- [Dirty Wood Board Texture di Free Stock Textures](https://freestocktextures.com/texture/dirty-wood-board,824.html)
+- [Wood Weathered Plank Texture di Free Stock Textures](https://freestocktextures.com/texture/wood-weathered-plank,421.html)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ![Image from Minecraft](https://jordanweagly.files.wordpress.com/2012/02/figure_4.png)
 
