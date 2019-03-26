@@ -26,6 +26,24 @@
 		<script>
 		
 		var scene, camera, renderer, controls, stats;
+
+		var startedTime = 0;
+
+		// variabili per mulino
+		var mulino;
+		var palomulino_geometry, palomulino_texture, palomulino_material, palimulino;
+		var traversinamulino_geometry, traversinemulino;
+		var basemulino_geometry, basemulino;
+		var bloccomulino_geometry, bloccomulino_texture, bloccomulino_material, bloccomulino;
+		var bloccomulino2_geometry, bloccomulino2_texture, bloccomulino2_material, bloccomulino2;
+		var vincolo_base_mulino;
+		var vincolo_pale_mulino;
+		var codamulino_geometry, pernomulino_geometry, codamulino, pernomulino;
+		var palamulino_geometry, palamulino_texture, palamulino_material, palemulino;
+		var angolo=45; //angolo di rotazione del blocco+pale
+		var periodo_rotazione_blocco=15; // in secondi, periodo di rotazione blocco+pale
+		var periodo_rotazione_pale=5; // in secondi, periodo rotazione pale
+
 		
 		function Start() {
 			scene = new THREE.Scene();
@@ -57,13 +75,106 @@
 			cube2.position.set(3,4,5);
 			scene.add(cube2);
 */
+			var placeholder_material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
 
 			//placeholder mulino
+			/*
 			var placeholder1_geometry = new THREE.BoxGeometry(10,25,10);
-			var placeholder_material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
+			
 			var placeholder1 = new THREE.Mesh(placeholder1_geometry, placeholder_material);
 			placeholder1.position.set(0,12.5,0);
 			scene.add(placeholder1);
+			*/
+			mulino = new THREE.Object3D();
+			scene.add(mulino);
+
+			palomulino_geometry = new THREE.BoxGeometry(3,20,3);
+			palomulino_texture = THREE.ImageUtils.loadTexture('textures/legno_pali.jpg');
+			palomulino_material = new THREE.MeshPhongMaterial( { map: palomulino_texture } );
+			palimulino=[];
+			for(i=0; i<4; i++) {
+				palimulino[i] =  new THREE.Mesh(palomulino_geometry, palomulino_material);
+				mulino.add(palimulino[i]);
+			}
+			palimulino[0].position.set(4,10,4);
+			palimulino[1].position.set(4,10,-4);
+			palimulino[2].position.set(-4,10,4);
+			palimulino[3].position.set(-4,10,-4);
+
+			traversinamulino_geometry = new THREE.BoxGeometry(1,18,1);
+			traversinemulino=[];
+			for(i=0; i<4; i++) {
+				traversinemulino[i] =  new THREE.Mesh(traversinamulino_geometry, palomulino_material);
+				mulino.add(traversinemulino[i]);
+			}
+			traversinemulino[0].position.set(4,10,0);
+			traversinemulino[0].rotation.x = 20*Math.PI/180;
+			traversinemulino[1].position.set(-4,10,0);
+			traversinemulino[1].rotation.x = -20*Math.PI/180;
+			traversinemulino[2].position.set(0,10,4);
+			traversinemulino[2].rotation.z = 20*Math.PI/180;
+			traversinemulino[3].position.set(0,10,-4);
+			traversinemulino[3].rotation.z = -20*Math.PI/180;
+
+			basemulino_geometry = new THREE.BoxGeometry(13,3,13);
+			basemulino = new THREE.Mesh(basemulino_geometry, palomulino_material);
+			basemulino.position.set(0, 21.5, 0);
+			mulino.add(basemulino);
+
+			bloccomulino_geometry = new THREE.BoxGeometry(3,3,3);
+			bloccomulino_texture = THREE.ImageUtils.loadTexture('textures/legno_bloccomulino.jpg');
+			bloccomulino_material = new THREE.MeshPhongMaterial( { map: bloccomulino_texture } );
+			bloccomulino = new THREE.Mesh(bloccomulino_geometry, bloccomulino_material);
+			bloccomulino.position.set(0, 23, 0);
+			mulino.add(bloccomulino);
+
+			bloccomulino2_geometry = new THREE.BoxGeometry(24,2,2);
+			bloccomulino2_texture = THREE.ImageUtils.loadTexture('textures/legno_bloccomulino2.jpg');
+			bloccomulino2_material = new THREE.MeshPhongMaterial( { map: bloccomulino2_texture } );
+			bloccomulino2 = new THREE.Mesh(bloccomulino2_geometry, bloccomulino2_material);
+			bloccomulino2.position.set(0, 25.5, 0);
+			bloccomulino2.rotation.y = 90*Math.PI/180;
+
+			vincolo_base_mulino = new THREE.Object3D();
+			scene.add(vincolo_base_mulino);
+			vincolo_base_mulino.add(bloccomulino2);
+			mulino.add(vincolo_base_mulino);
+
+
+			codamulino_geometry = new THREE.BoxGeometry(4,6,4);
+			codamulino = new THREE.Mesh(codamulino_geometry, bloccomulino_material);
+			codamulino.position.set(0, 27, -10.5);
+			vincolo_base_mulino.add(codamulino);
+
+			pernomulino_geometry = new THREE.BoxGeometry(3,3,3);
+			pernomulino = new THREE.Mesh(pernomulino_geometry, bloccomulino_material);
+			pernomulino.position.set(0, 25.5, 12);
+			vincolo_base_mulino.add(pernomulino);
+
+			vincolo_pale_mulino = new THREE.Object3D();
+			scene.add(vincolo_pale_mulino);
+
+			palamulino_geometry = new THREE.BoxGeometry(1.3,15,1.3);
+			palamulino_texture = THREE.ImageUtils.loadTexture('textures/legno_pale.jpg');
+			palamulino_material = new THREE.MeshPhongMaterial( { map: palamulino_texture } );
+			palemulino=[];
+
+			var num_pale = 12;
+			for(i=0; i<num_pale; i++) {
+				palemulino[i] = new THREE.Mesh(palamulino_geometry, palamulino_material);
+				palemulino[i].rotation.z = i*(360/num_pale)*Math.PI/180;
+				vincolo_pale_mulino.add(palemulino[i]);
+			}
+
+			vincolo_pale_mulino.position.set(0, 25.5, 12);
+			vincolo_base_mulino.add(vincolo_pale_mulino);
+
+			//vincolo_base_mulino.rotation.y = 90*Math.PI/180;
+			//mulino.position.set(20, 0, 20);
+
+
+
+
 
 			//placeholder casa
 			var placeholder2_geometry = new THREE.BoxGeometry(25,15,10);
@@ -122,10 +233,12 @@
 			controls = new THREE.OrbitControls( camera );
 			controls.addEventListener( 'change', Render );
 			
+			startedTime=Date.now();
 			
 		}
 		
 		function Update() {
+			cinematicaMulino();
 			requestAnimationFrame( Update );
 			controls.update();  
 			stats.update();
@@ -135,6 +248,11 @@
 		function Render() {
 			
 			renderer.render(scene, camera);
+		}
+
+		function cinematicaMulino() {
+			vincolo_base_mulino.rotation.y += 0.1*Math.PI/180;
+			vincolo_pale_mulino.rotation.z += 1*Math.PI/180;
 		}
 		
 		Start();
