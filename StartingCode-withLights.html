@@ -28,6 +28,12 @@
 		var scene, camera, renderer, controls, stats;
 
 		var startedTime = 0;
+		var accelerazioneTreno = 1;
+
+		//variabili per traversine treno
+		var modello_traversinetreno, ferrovia;
+		var traversinetreno_geometry, traversinetreno_material, traversinatreno_texture, traversinatreno, traversinetreno;
+		var rotaie_geometry, rotaie_material, rotaia1, rotaia2;;
 
 		// variabili per mulino
 		var mulino;
@@ -40,7 +46,7 @@
 		var vincolo_pale_mulino;
 		var codamulino_geometry, pernomulino_geometry, codamulino, pernomulino;
 		var palamulino_geometry, palamulino_texture, palamulino_material, palemulino;
-		var periodo_rotazione_blocco=10; // in secondi, periodo di rotazione blocco+pale
+		var periodo_rotazione_blocco=8; // in secondi, periodo di rotazione blocco+pale
 
 		
 		function Start() {
@@ -83,6 +89,8 @@
 			placeholder1.position.set(0,12.5,0);
 			scene.add(placeholder1);
 			*/
+
+			//////////////////////////////////////////////////////////// MULINO
 			mulino = new THREE.Object3D();
 
 			palomulino_geometry = new THREE.BoxGeometry(3,20,3);
@@ -171,6 +179,38 @@
 			scene.add(mulino);
 			//mulino.position.set(20, 0, 20);
 
+
+			//////////////////////////////////////////////////////////// TRAVERSINE TRENO
+			ferrovia = new THREE.Object3D();
+			modello_traversinetreno = new THREE.Object3D();
+
+			traversinetreno_geometry = new THREE.BoxGeometry(6,1,1);
+			traversinetreno_texture = THREE.ImageUtils.loadTexture('textures/legno_traversinetreno.jpg');
+			traversinetreno_material = new THREE.MeshPhongMaterial( { map: traversinetreno_texture } );
+			traversinatreno = new THREE.Mesh( traversinetreno_geometry, traversinetreno_material );
+
+			rotaie_geometry = new THREE.BoxGeometry(1,0.5,2.5);
+			rotaie_material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
+			rotaia1 = new THREE.Mesh( rotaie_geometry, rotaie_material );
+			rotaia1.position.set(2,0,1);
+			rotaia2 = new THREE.Mesh( rotaie_geometry, rotaie_material );
+			rotaia2.position.set(-2,0,1);
+
+			modello_traversinetreno.add(rotaia1);
+			modello_traversinetreno.add(rotaia2);
+			modello_traversinetreno.add(traversinatreno);
+			traversinetreno=[];
+
+			var num_traversine = 100;
+			for(var i=0; i<num_traversine; i++) {
+				traversinetreno[i] = modello_traversinetreno.clone();
+				traversinetreno[i].rotation.y = i*(360/num_traversine)*Math.PI/180;
+				traversinetreno[i].position.set(42*Math.cos(i*(360/num_traversine)*Math.PI/180), -0.5, -33*Math.sin(i*(360/num_traversine)*Math.PI/180));
+				ferrovia.add(traversinetreno[i]);
+			}
+			scene.add(ferrovia);
+
+			//ferrovia.position.set(20,0,20);
 
 
 
@@ -387,7 +427,19 @@
 		
 		Start();
 		Update();
-			
+
+		//window.addEventListener("accelerazioniTreno", accelerazioniTreno, false);
+		document.onkeydown = accelerazioniTreno;
+		function accelerazioniTreno(e){
+			var keyCode = e.keyCode;
+			if(keyCode == 87){
+				accelerazioneTreno++;
+			}
+			if(keyCode == 83){
+				accelerazioneTreno--;
+			}
+		};
 		</script>
+
 	</body>
 </html>
