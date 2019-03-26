@@ -205,7 +205,7 @@
 			for(var i=0; i<num_traversine; i++) {
 				traversinetreno[i] = modello_traversinetreno.clone();
 				traversinetreno[i].rotation.y = i*(360/num_traversine)*Math.PI/180;
-				traversinetreno[i].position.set(38*Math.cos(i*(360/num_traversine)*Math.PI/180), -0.5, -33*Math.sin(i*(360/num_traversine)*Math.PI/180));
+				traversinetreno[i].position.set(42*Math.cos(i*(360/num_traversine)*Math.PI/180), -0.5, -33*Math.sin(i*(360/num_traversine)*Math.PI/180));
 				ferrovia.add(traversinetreno[i]);
 			}
 			scene.add(ferrovia);
