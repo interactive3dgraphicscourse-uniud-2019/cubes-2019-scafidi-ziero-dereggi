@@ -497,7 +497,7 @@
 				accelerazioneTreno=accelerazioneTreno+0.1;
 			}
 			if(keyCode == 83){
-				if(accelerazioneTreno<0.3) {
+				if(accelerazioneTreno==0.1 || accelerazioneTreno==0.2) {
 					accelerazioneTreno=0;
 				} else {
 					accelerazioneTreno=accelerazioneTreno-0.3;
