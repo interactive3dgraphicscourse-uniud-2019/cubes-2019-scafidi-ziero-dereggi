@@ -481,8 +481,8 @@
 			vincolo_pale_mulino.rotation.z += accelerazione*5*Math.PI/180;
 		}
 		function cinematicaTreno() {
-			treno.position.set(42*Math.cos(angolotreno*Math.PI/180), -0.5, -33*Math.sin(angolotreno*Math.PI/180));
 			treno.rotation.y=(angolotreno+90)*Math.PI/180;
+			treno.position.set(41.5*Math.cos(angolotreno*Math.PI/180), 0, -32.5*Math.sin(angolotreno*Math.PI/180));
 			angolotreno=angolotreno+accelerazioneTreno;
 		}
 		
@@ -497,7 +497,11 @@
 				accelerazioneTreno=accelerazioneTreno+0.1;
 			}
 			if(keyCode == 83){
-				accelerazioneTreno=accelerazioneTreno-0.1;
+				if(accelerazioneTreno<0.3) {
+					accelerazioneTreno=0;
+				} else {
+					accelerazioneTreno=accelerazioneTreno-0.3;
+				}
 			}
 		};
 		</script>
