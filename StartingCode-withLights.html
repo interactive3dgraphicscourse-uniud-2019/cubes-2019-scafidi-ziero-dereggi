@@ -28,7 +28,8 @@
 		var scene, camera, renderer, controls, stats;
 
 		var startedTime = 0;
-		var accelerazioneTreno = 1;
+		var accelerazioneTreno = 0.1;
+		var angolotreno=0;
 
 		//variabili per traversine treno
 		var modello_traversinetreno, ferrovia;
@@ -365,7 +366,7 @@
 			locomotiva_geometry = new THREE.BoxGeometry(12,4,8);
 			locomotiva_material = new THREE.MeshBasicMaterial({color:0x00ff00});
 			locomotiva = new THREE.Mesh(locomotiva_geometry, locomotiva_material);
-			locomotiva.position.set(0,4,20);
+			locomotiva.position.set(0,4,0);
 			treno.add(locomotiva);
 
 			ruota_geometry = new THREE.BoxGeometry(2,2,2);
@@ -375,39 +376,42 @@
 				ruota[i] = new THREE.Mesh(ruota_geometry, ruota_material);
 				treno.add(ruota[i]);
 			}
-			ruota[0].position.set(-5,1,22);
-			ruota[1].position.set(-5,1,18);
-			ruota[2].position.set(3,1,22);
-			ruota[3].position.set(3,1,18);
+			ruota[0].position.set(-5,1,2);
+			ruota[1].position.set(-5,1,-2);
+			ruota[2].position.set(3,1,2);
+			ruota[3].position.set(3,1,-2);
 
 			cabina_geometry = new THREE.BoxGeometry(6,4,8);
 			cabina_material = new THREE.MeshBasicMaterial({color:0x0000ff});
 			cabina = new THREE.Mesh(cabina_geometry,cabina_material);
-			cabina.position.set(-3,8,20);
+			cabina.position.set(-3,8,0);
 			treno.add(cabina);
 
 			tettocabina_geometry = new THREE.BoxGeometry(8,1,10);
 			tettocabina_material = new THREE.MeshBasicMaterial({color:0xff0000});
 			tettocabina = new THREE.Mesh(tettocabina_geometry,tettocabina_material);
-			tettocabina.position.set(-3,10.5,20);
+			tettocabina.position.set(-3,10.5,0);
 			treno.add(tettocabina);
 
 			camino_geometry = new THREE.BoxGeometry(2,4,2);
 			camino_material = new THREE.MeshBasicMaterial({color:0x00ffff});
 			camino = new THREE.Mesh(camino_geometry,camino_material);
-			camino.position.set(3.5,8,20);
+			camino.position.set(3.5,8,0);
 			treno.add(camino);
 
 			zavorra_geometry = new THREE.BoxGeometry(2,2,8);
 			zavorra_material = new THREE.MeshBasicMaterial({color:0xa4effc});
 			zavorra = new THREE.Mesh(zavorra_geometry,zavorra_material);
-			zavorra.position.set(7,3,20);
+			zavorra.position.set(7,3,0);
 			treno.add(zavorra);
 
-			treno.position.set(0,0,13);
+			treno.position.set(0,0,33);
+			//treno.rotation.y=180*Math.PI/180;
 
-			scene.add(treno);
+			//scene.add(treno);
+			ferrovia.add(treno);
 
+//-----------------------------------------------------------------------------------FINE TRENO
 
 
 			hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
@@ -444,7 +448,7 @@
 			document.body.appendChild( stats.domElement );
 			
 			// uncomment if you need to draw coordinate axes when building the scene
-			Coordinates.drawAllAxes();
+			//Coordinates.drawAllAxes();
 			
 			controls = new THREE.OrbitControls( camera );
 			controls.addEventListener( 'change', Render );
@@ -455,6 +459,7 @@
 		
 		function Update() {
 			cinematicaMulino();
+			cinematicaTreno();
 			requestAnimationFrame( Update );
 			controls.update();  
 			stats.update();
@@ -475,6 +480,11 @@
 			vincolo_base_mulino.rotation.y += accelerazione*1*Math.PI/180;
 			vincolo_pale_mulino.rotation.z += accelerazione*5*Math.PI/180;
 		}
+		function cinematicaTreno() {
+			treno.position.set(42*Math.cos(angolotreno*Math.PI/180), -0.5, -33*Math.sin(angolotreno*Math.PI/180));
+			treno.rotation.y=(angolotreno+90)*Math.PI/180;
+			angolotreno=angolotreno+accelerazioneTreno;
+		}
 		
 		Start();
 		Update();
@@ -484,10 +494,10 @@
 		function accelerazioniTreno(e){
 			var keyCode = e.keyCode;
 			if(keyCode == 87){
-				accelerazioneTreno++;
+				accelerazioneTreno=accelerazioneTreno+0.1;
 			}
 			if(keyCode == 83){
-				accelerazioneTreno--;
+				accelerazioneTreno=accelerazioneTreno-0.1;
 			}
 		};
 		</script>
