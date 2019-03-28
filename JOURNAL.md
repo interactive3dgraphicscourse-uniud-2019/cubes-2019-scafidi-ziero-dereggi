@@ -22,6 +22,7 @@ PASSI DI SVILUPPO
 -Abbiamo costruito dei placeholder nella scena, inserendo dei cubi neri all'interno del ground per definire gli spazi e renderci conto di come sarebbero stati posizionati i vari elementi nella scena.
 -Il passo successivo è stato quello di ricolorare gli elementi cosi da renderci conto in modo preciso cosa andava fatto. In questo modo abbiamo costituito gli elementi base: Mulino, casa, treno.
 - Sostituzione dei primi placeholder con oggetti 3D. Il primo passo è stato inserire l'oggetto mulino con il suo blocco di rotazione. Dopo aver studiato i moti di rotazione che avremmo voluto ottenere, sono state implementate le prime cinematiche anche se i movimenti al momento non risultano fluidi abbastanza.
+![Primi step](https://i.ibb.co/6X5YGyF/a.png)
 -Creazione di una legge oraria per il mulino che viene predisposto di un tempo per cui si muove inizialmente accelerando verso destra per poi decellerare e continuare per il verso opposto. Viene dunque creata una rototraslazione in quanto anche le pale procedono la loro rotazione per seguire il vento.
 -Ottimizzazione della funzione cinematica cosi da consentire un movimento fluido e naturale.
 -Inizio di attribuzione delle texure agli elementi mulino e applicazione della texture per il ground. In questo modo è stato più semplice immaginare il proseguimento della creazione degli altri oggetti.
