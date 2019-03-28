@@ -503,6 +503,38 @@
 //-----------------------------------------------------------------------------------FINE VAGONE
 
 
+//--------------------------------------------------------------------------------MATERIALE VAGONE
+			
+			var carico, caricoVagone, carico_geometry, carico_texture, carico_material;
+
+			caricoVagone = new THREE.Object3D();
+			carico_geometry = new THREE.BoxGeometry(2,2,2);
+			//carico_texture = THREE.ImageUtils.loadTexture('bandiera.jpg');
+			carico_material = new THREE.MeshPhongMaterial({color: 0xffff00});
+			carico = [];
+			var sposx = -4;
+			var sposz = -2;
+			var sposy = 5;
+			for (i=0; i<8; i++){
+				carico[i] = new THREE.Mesh(carico_geometry, carico_material);
+				carico[i].position.set(sposx,sposy,sposz);
+				caricoVagone.add(carico[i]);
+				sposx += 4;
+				if (((i+1) / 3) == 1){
+					sposz += 2;
+					sposx = -2;
+					sposy += 2;
+				} else if (((i+1) / 5) == 1){
+					sposz += 2;
+					sposx = -4;
+					sposy -= 2; 
+				}
+			}
+			vagone.add(caricoVagone);
+
+
+
+
 //-----------------------------------------------------------------------------------ALBERO
 
 albero=new THREE.Object3D();
@@ -778,6 +810,8 @@ scene.add(cactus);
 			vagone.rotation.y=(angolotreno-25+90)*Math.PI/180;
 			vagone.position.set(41.5*Math.cos((angolotreno-25)*Math.PI/180), 0, -32.5*Math.sin((angolotreno-25)*Math.PI/180));
 
+			
+
 			angolotreno=angolotreno+accelerazioneTreno;
 			if(accelerazioneTreno>0) {
 				accelerazioneTreno=accelerazioneTreno-0.01;
@@ -786,6 +820,7 @@ scene.add(cactus);
 				accelerazioneTreno=accelerazioneTreno+0.01;
 			}
 			angolotreno=angolotreno+accelerazioneTreno;
+
 		}
 		
 		Start();
