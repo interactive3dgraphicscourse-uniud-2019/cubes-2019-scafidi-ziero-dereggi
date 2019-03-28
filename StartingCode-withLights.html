@@ -188,7 +188,7 @@
 			vincolo_base_mulino.rotation.y = -45*Math.PI/180;
 
 			scene.add(mulino);
-			//mulino.position.set(20, 0, 20);
+			mulino.position.set(-10, 0, 0);
 
 
 			//////////////////////////////////////////////////////////// TRAVERSINE TRENO
@@ -294,7 +294,7 @@
 			var puntaAsta_geometry = new THREE.BoxGeometry(1.5,1.5,1.5);
 			var puntaAsta_material = new THREE.MeshBasicMaterial( { color: 0xffd700 } );
 			puntaAsta = new THREE.Mesh(puntaAsta_geometry, puntaAsta_material);
-		   puntaAsta.position.set(0,15,0);
+			puntaAsta.position.set(0,15,0);
 			puntaAsta.rotation.y = -30*Math.PI/180;
 			bandiera.add(puntaAsta);
 
@@ -309,7 +309,7 @@
 
 			vincoloAsta.add(drappo);
 			vincoloAsta.position.set(0,0,0);
-			bandiera.position.set(45,0,-15);
+			bandiera.position.set(55,0,-8);
 			bandiera.rotation.y = -30*Math.PI/180;
 
 			bandiera.add(vincoloAsta);
@@ -351,9 +351,8 @@
 			var braccioL_geometry = new THREE.BoxGeometry(0.5,4,0.5);
 			var braccioL_material = new THREE.MeshBasicMaterial( { color: 0xFFE4E1 } );
 			braccioL = new THREE.Mesh(braccioL_geometry, braccioL_material);
-			braccioL.position.set(-1,4.5,0);
-			braccioL.rotation.z = -30*Math.PI/180;
-		    omino.add(braccioL);
+			//braccioL.position.set(-1,4.5,0);
+		    //omino.add(braccioL);
 
 			var braccioR_geometry = new THREE.BoxGeometry(0.5,4,0.5);
 			var braccioR_material = new THREE.MeshBasicMaterial( { color: 0xFFE4E1 } );
@@ -376,10 +375,12 @@
 			punta.position.set(0.5,8,0);
 			omino.add(punta);
 
+			braccioL.position.set(0,2,0);
 			vincoloBraccio.add(braccioL);
-			vincoloBraccio.position.set(0,4,0);
-			omino.position.set(49,0,-7);
-		    omino.rotation.y = -30*Math.PI/180;
+			vincoloBraccio.position.set(0,6,0);
+			
+			omino.position.set(48,0,-18);
+			omino.rotation.y = -30*Math.PI/180;
 
 
 			omino.add(vincoloBraccio);
@@ -469,6 +470,52 @@ albero=new THREE.Object3D();
 			foglie2.position.set(0,10,0);
 			albero.add(foglie2);
 
+//-----------------------------------------------------------------------------------VAGONE
+
+			vagone = new THREE.Object3D();
+
+			baseVagone_geometry = new THREE.BoxGeometry(12,2,8);
+			baseVagone_material = new THREE.MeshBasicMaterial({color:0x00ff00});
+			baseVagone = new THREE.Mesh(baseVagone_geometry, baseVagone_material);
+			baseVagone.position.set(0,3,0);
+			vagone.add(baseVagone);
+
+			ruotaVagone = [];
+			for (i=0; i<4; i++){
+				ruotaVagone[i] = new THREE.Mesh(ruota_geometry, ruota_material);
+				vagone.add(ruotaVagone[i]);
+			}
+			ruotaVagone[0].position.set(-3,1,2);
+			ruotaVagone[1].position.set(-3,1,-2);
+			ruotaVagone[2].position.set(3,1,2);
+			ruotaVagone[3].position.set(3,1,-2);
+
+			spondaCorta_geometry = new THREE.BoxGeometry(1,5,8);
+			sponda_material = new THREE.MeshBasicMaterial({color:0xa4305c});
+			spondaLateraleDx = new THREE.Mesh(spondaCorta_geometry,sponda_material);
+			spondaLateraleSx = new THREE.Mesh(spondaCorta_geometry,sponda_material);
+			spondaLateraleDx.position.set(5.5,6.5,0);
+			spondaLateraleSx.position.set(-5.5,6.5,0);
+			vagone.add(spondaLateraleDx);
+			vagone.add(spondaLateraleSx);
+
+			spondaLunga_geometry = new THREE.BoxGeometry(10,5,1);
+			spondaAnteriore = new THREE.Mesh(spondaLunga_geometry, sponda_material);
+			spondaPosteriore = new THREE.Mesh(spondaLunga_geometry, sponda_material);
+			spondaAnteriore.position.set(0,6.5,3.5);
+			spondaPosteriore.position.set(0,6.5,-3.5);
+			vagone.add(spondaAnteriore);
+			vagone.add(spondaPosteriore);
+
+			gancio_geometry = new THREE.BoxGeometry(8,1,1.5);
+			gancio = new THREE.Mesh(gancio_geometry,ruota_material);
+			gancio.position.set(10,3,0);
+			vagone.add(gancio);
+
+			vagone.position.set(0,0,33);
+			ferrovia.add(vagone);
+			
+
 
 albero.position.set(50,0,20);
 scene.add(albero);
@@ -523,6 +570,66 @@ scene.add(cactus);
 
 
 
+//-----------------------------------------------------------------------------------FINE VAGONE
+
+//-----------------------------------------------------------------------------------FINE ALBERO
+//-----------------------------------------------------------------------------------INIZIO NUVOLE
+
+			//variabili per le nuvole
+			var nuvola, nuvole;
+			var nuvola_geometry, nuvola_texture, nuvola_material, blocconuvola;
+
+			nuvola = new THREE.Object3D();
+			nuvola_geometry = new THREE.BoxGeometry(4,4,4);
+			nuvola_texture = THREE.ImageUtils.loadTexture('textures/nuvole.jpg');
+			nuvola_material = new THREE.MeshPhongMaterial( { map: nuvola_texture } );
+			blocconuvola = [];
+			for(i=0; i<12; i++) {
+				blocconuvola[i] = new THREE.Mesh(nuvola_geometry, nuvola_material);
+				nuvola.add(blocconuvola[i]);
+			}
+			blocconuvola[0].rotation.x = 45*Math.PI/180;
+			blocconuvola[0].position.set(-4,0,0);
+			blocconuvola[1].rotation.y = 45*Math.PI/180;
+			blocconuvola[1].position.set(0,4,0);
+			blocconuvola[2].rotation.z = 45*Math.PI/180;
+			blocconuvola[2].position.set(4,0,0);
+			blocconuvola[3].rotation.x = 45*Math.PI/180;
+			blocconuvola[3].position.set(0,0,-4);
+			blocconuvola[4].rotation.y = 45*Math.PI/180;
+			blocconuvola[4].position.set(0,-4,0);
+			blocconuvola[5].rotation.z = 45*Math.PI/180;
+			blocconuvola[5].position.set(0,0,4);
+
+			blocconuvola[6].rotation.x = 45*Math.PI/180;
+			blocconuvola[6].position.set(-10,0,0);
+			blocconuvola[7].rotation.y = 45*Math.PI/180;
+			blocconuvola[7].position.set(-6,4,0);
+			blocconuvola[8].rotation.z = 45*Math.PI/180;
+			blocconuvola[8].position.set(-2,0,0);
+			blocconuvola[9].rotation.x = 45*Math.PI/180;
+			blocconuvola[9].position.set(-6,0,-4);
+			blocconuvola[10].rotation.y = 45*Math.PI/180;
+			blocconuvola[10].position.set(-6,-4,0);
+			blocconuvola[11].rotation.z = 45*Math.PI/180;
+			blocconuvola[11].position.set(-6,0,4);
+
+			nuvole=[];
+			for(var i=0; i<4; i++) {
+				nuvole[i]=nuvola.clone();
+				scene.add(nuvole[i]);
+			}
+			nuvole[0].rotation.y = 30*Math.PI/180;
+			nuvole[0].position.set(30,42,20);
+			nuvole[1].rotation.y = -30*Math.PI/180;
+			nuvole[1].position.set(-30,40,-20);
+			nuvole[2].rotation.y = 50*Math.PI/180;
+			nuvole[2].position.set(30,44,-20);
+			nuvole[3].rotation.y = -10*Math.PI/180;
+			nuvole[3].position.set(-30,36,20);
+
+
+//-----------------------------------------------------------------------------------FINE NUVOLE
 
 			hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
 			hemiLight.color.setHSL( 0.6, 1, 0.6 );
@@ -579,9 +686,9 @@ scene.add(cactus);
 			Render();
 		}
 		
-function ominoSaluta(){
-	vincoloBraccio.rotation.z+=0.1;
-}
+		function ominoSaluta(){
+			vincoloBraccio.rotation.z+=0.01;
+		}
 
 		function Render() {
 			
@@ -604,6 +711,9 @@ function ominoSaluta(){
 		function cinematicaTreno() {
 			treno.rotation.y=(angolotreno+90)*Math.PI/180;
 			treno.position.set(41.5*Math.cos(angolotreno*Math.PI/180), 0, -32.5*Math.sin(angolotreno*Math.PI/180));
+			vagone.rotation.y=(angolotreno-25+90)*Math.PI/180;
+			vagone.position.set(41.5*Math.cos((angolotreno-25)*Math.PI/180), 0, -32.5*Math.sin((angolotreno-25)*Math.PI/180));
+
 			angolotreno=angolotreno+accelerazioneTreno;
 			if(accelerazioneTreno>0) {
 				accelerazioneTreno=accelerazioneTreno-0.01;
@@ -611,6 +721,7 @@ function ominoSaluta(){
 			if(accelerazioneTreno<0) {
 				accelerazioneTreno=accelerazioneTreno+0.01;
 			}
+			angolotreno=angolotreno+accelerazioneTreno;
 		}
 		
 		Start();
