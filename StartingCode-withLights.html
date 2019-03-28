@@ -54,7 +54,7 @@
 		var palamulino_geometry, palamulino_texture, palamulino_material, palemulino;
 		var periodo_rotazione_blocco=8; // in secondi, periodo di rotazione blocco+pale
 
-		//variabili per treno
+		//variabili per treno e vagone
 		var treno;
 		var locomotiva_geometry, locomotiva_material, locomotiva;
 		var ruota_geometry, ruota_material, ruota;
@@ -67,11 +67,18 @@
 		var nuvola, nuvole;
 		var nuvola_geometry, nuvola_texture, nuvola_material, blocconuvola;
 		
+		var vincolo_ruote;
+		var baseVagone, baseVagone_geometry;
+		var ruotaVagone;
+		var spondaCorta_geometry, spondaLunga_geometry, spondaAnteriore, spondaPosteriore, spondaLateraleDx, spondaLateraleSx;
+		var gancio, gancio_geometry;
+		var carico, caricoVagone, carico_geometry, carico_texture, carico_material;
+		var nuvola, nuvole, nuvola_geometry, nuvola_texture, nuvola_material, blocconuvola;
 
 		
 		function Start() {
 			scene = new THREE.Scene();
-			camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+			camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 			renderer = new THREE.WebGLRenderer( {antialias: true} );
 			renderer.setSize( window.innerWidth, window.innerHeight );
@@ -200,6 +207,7 @@
 			scene.add(mulino);
 			mulino.position.set(-10, 0, 0);
 
+
 //----------------------------------------------------------------------------------FINE MULINO
 
 
@@ -235,10 +243,11 @@
 
 			//ferrovia.position.set(20,0,20);
 
+
 //----------------------------------------------------------------FINE TRAVERSINE TRENO / FERROVIA
 
 //-----------------------------------------------------------------------------------CASA
-		casa= new THREE.Object3D();
+			casa= new THREE.Object3D();
 		
 			var casetta_geometry = new THREE.BoxGeometry(25,15,10);
 			var casetta_texture = THREE.ImageUtils.loadTexture('textures/legno_pali.jpg');
@@ -287,7 +296,6 @@
 
 			scene.add(casa);
 
-		
 
 //-----------------------------------------------------------------------------------FINE CASA
 
@@ -330,11 +338,11 @@
 			bandiera.add(vincoloAsta);
 			scene.add(bandiera);
 			
+
 //-----------------------------------------------------------------------------------FINE BANDIERA
 
 
 //-----------------------------------------------------------------------------------OMINO
-
 			omino = new THREE.Object3D();
 		
 			vincoloBraccio=new THREE.Object3D();
@@ -399,13 +407,11 @@
 			omino.add(vincoloBraccio);
 			scene.add(omino);
 			
-			
 
 //-----------------------------------------------------------------------------------FINE OMINO
 
 
 //-----------------------------------------------------------------------------------TRENO
-
 			treno = new THREE.Object3D();
 
 			locomotiva_geometry = new THREE.BoxGeometry(12,4,8);
@@ -460,11 +466,11 @@
 			//scene.add(treno);
 			ferrovia.add(treno);
 
+
 //-----------------------------------------------------------------------------------FINE TRENO
 
 
 //-----------------------------------------------------------------------------------VAGONE
-
 			vagone = new THREE.Object3D();
 
 			baseVagone_geometry = new THREE.BoxGeometry(12,2,8);
@@ -505,15 +511,12 @@
 
 			vagone.position.set(0,0,33);
 			ferrovia.add(vagone);
-			
+
 
 //-----------------------------------------------------------------------------------FINE VAGONE
 
 
 //--------------------------------------------------------------------------------MATERIALE VAGONE
-			
-			var carico, caricoVagone, carico_geometry, carico_texture, carico_material;
-
 			caricoVagone = new THREE.Object3D();
 			carico_geometry = new THREE.BoxGeometry(2,2,2);
 			//carico_texture = THREE.ImageUtils.loadTexture('bandiera.jpg');
@@ -540,10 +543,10 @@
 			vagone.add(caricoVagone);
 
 
+//--------------------------------------------------------------------------FINE MATERIALE VAGONE
 
 
 //-----------------------------------------------------------------------------------ALBERO
-
 			albero=new THREE.Object3D();
 
 			var tronco_geometry = new THREE.BoxGeometry(2,7,2);
@@ -605,11 +608,10 @@
 			foglieC3 = new THREE.Mesh(foglieC3_geometry, foglieC3_material);
 			foglieC3.position.set(2,1,2);
 			cespuglio.add(foglieC3);
-
+			
 			var cespuglio2=cespuglio.clone();
 			cespuglio2.position.set(6,1,-45);
 			scene.add(cespuglio2);
-
 
 			cespuglio.position.set(-55,1,25);
 			scene.add(cespuglio);
@@ -620,7 +622,6 @@
 
 
 //-----------------------------------------------------------------------------------CACTUS
-
 			cactus=new THREE.Object3D();
 
 			var troncoC_geometry = new THREE.BoxGeometry(2.5,14,2.5);
@@ -834,6 +835,7 @@
 			treno.position.set(41.5*Math.cos(angolotreno*Math.PI/180), 0, -32.5*Math.sin(angolotreno*Math.PI/180));
 			vagone.rotation.y=(angolotreno-25+90)*Math.PI/180;
 			vagone.position.set(41.5*Math.cos((angolotreno-25)*Math.PI/180), 0, -32.5*Math.sin((angolotreno-25)*Math.PI/180));
+			
 			angolotreno=angolotreno+accelerazioneTreno;
 			if(accelerazioneTreno>0) {
 				accelerazioneTreno=accelerazioneTreno-0.01;
