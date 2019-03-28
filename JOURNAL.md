@@ -3,9 +3,9 @@
 Progetto per il primo parziale del corso di Interactive 3D Graphics (2018/2019) con consegna entro 8/04/2019
 
 Team:
-Scafidi Roberto Antonino - 123125
-Ziero Samuele - 
-De Reggi Paolo - 123783
+Scafidi Roberto Antonino - 123125,
+Ziero Samuele - 107201,
+De Reggi Paolo - 123783.
 
 ## Idea generale e decisioni di design
 
