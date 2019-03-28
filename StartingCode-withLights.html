@@ -461,7 +461,56 @@ scene.add(albero);
 
 */
 
+<<<<<<< HEAD
+//-----------------------------------------------------------------------------------VAGONE
 
+			vagone = new THREE.Object3D();
+
+			baseVagone_geometry = new THREE.BoxGeometry(12,2,8);
+			baseVagone_material = new THREE.MeshBasicMaterial({color:0x00ff00});
+			baseVagone = new THREE.Mesh(baseVagone_geometry, baseVagone_material);
+			baseVagone.position.set(0,3,0);
+			vagone.add(baseVagone);
+
+			ruotaVagone = [];
+			for (i=0; i<4; i++){
+				ruotaVagone[i] = new THREE.Mesh(ruota_geometry, ruota_material);
+				vagone.add(ruotaVagone[i]);
+			}
+			ruotaVagone[0].position.set(-3,1,2);
+			ruotaVagone[1].position.set(-3,1,-2);
+			ruotaVagone[2].position.set(3,1,2);
+			ruotaVagone[3].position.set(3,1,-2);
+
+			spondaCorta_geometry = new THREE.BoxGeometry(1,5,8);
+			sponda_material = new THREE.MeshBasicMaterial({color:0xa4305c});
+			spondaLateraleDx = new THREE.Mesh(spondaCorta_geometry,sponda_material);
+			spondaLateraleSx = new THREE.Mesh(spondaCorta_geometry,sponda_material);
+			spondaLateraleDx.position.set(5.5,6.5,0);
+			spondaLateraleSx.position.set(-5.5,6.5,0);
+			vagone.add(spondaLateraleDx);
+			vagone.add(spondaLateraleSx);
+
+			spondaLunga_geometry = new THREE.BoxGeometry(10,5,1);
+			spondaAnteriore = new THREE.Mesh(spondaLunga_geometry, sponda_material);
+			spondaPosteriore = new THREE.Mesh(spondaLunga_geometry, sponda_material);
+			spondaAnteriore.position.set(0,6.5,3.5);
+			spondaPosteriore.position.set(0,6.5,-3.5);
+			vagone.add(spondaAnteriore);
+			vagone.add(spondaPosteriore);
+
+			gancio_geometry = new THREE.BoxGeometry(3,1,2);
+			gancio = new THREE.Mesh(gancio_geometry,ruota_material);
+			gancio.position.set(7.5,3,0);
+			vagone.add(gancio);
+
+			vagone.position.set(-14,0,-2);
+			vagone.rotation.y = -12 * Math.PI/180;
+			treno.add(vagone);
+			
+
+
+//-----------------------------------------------------------------------------------FINE VAGONE
 
 //-----------------------------------------------------------------------------------FINE ALBERO
 //-----------------------------------------------------------------------------------INIZIO NUVOLE
@@ -522,6 +571,8 @@ scene.add(albero);
 
 //-----------------------------------------------------------------------------------FINE NUVOLE
 
+=======
+>>>>>>> parent of 92f6977... Update StartingCode-withLights.html
 			hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
 			hemiLight.color.setHSL( 0.6, 1, 0.6 );
 			hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
@@ -602,6 +653,12 @@ scene.add(albero);
 		function cinematicaTreno() {
 			treno.rotation.y=(angolotreno+90)*Math.PI/180;
 			treno.position.set(41.5*Math.cos(angolotreno*Math.PI/180), 0, -32.5*Math.sin(angolotreno*Math.PI/180));
+<<<<<<< HEAD
+			
+			/*vagone.rotation.y=(angolotreno+65)*Math.PI/180;
+			vagone.position.set(41.5*Math.cos((angolotreno-25)*Math.PI/180), 0, -32.5*Math.sin((angolotreno-25)*Math.PI/180));*/
+
+
 			angolotreno=angolotreno+accelerazioneTreno;
 			if(accelerazioneTreno>0) {
 				accelerazioneTreno=accelerazioneTreno-0.01;
@@ -609,6 +666,10 @@ scene.add(albero);
 			if(accelerazioneTreno<0) {
 				accelerazioneTreno=accelerazioneTreno+0.01;
 			}
+
+=======
+			angolotreno=angolotreno+accelerazioneTreno;
+>>>>>>> parent of 92f6977... Update StartingCode-withLights.html
 		}
 		
 		Start();
