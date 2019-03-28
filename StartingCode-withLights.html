@@ -188,7 +188,7 @@
 			vincolo_base_mulino.rotation.y = -45*Math.PI/180;
 
 			scene.add(mulino);
-			//mulino.position.set(20, 0, 20);
+			mulino.position.set(-10, 0, 0);
 
 
 			//////////////////////////////////////////////////////////// TRAVERSINE TRENO
@@ -294,7 +294,7 @@
 			var puntaAsta_geometry = new THREE.BoxGeometry(1.5,1.5,1.5);
 			var puntaAsta_material = new THREE.MeshBasicMaterial( { color: 0xffd700 } );
 			puntaAsta = new THREE.Mesh(puntaAsta_geometry, puntaAsta_material);
-		   puntaAsta.position.set(0,15,0);
+			puntaAsta.position.set(0,15,0);
 			puntaAsta.rotation.y = -30*Math.PI/180;
 			bandiera.add(puntaAsta);
 
@@ -309,7 +309,7 @@
 
 			vincoloAsta.add(drappo);
 			vincoloAsta.position.set(0,0,0);
-			bandiera.position.set(45,0,-15);
+			bandiera.position.set(55,0,-8);
 			bandiera.rotation.y = -30*Math.PI/180;
 
 			bandiera.add(vincoloAsta);
@@ -351,9 +351,8 @@
 			var braccioL_geometry = new THREE.BoxGeometry(0.5,4,0.5);
 			var braccioL_material = new THREE.MeshBasicMaterial( { color: 0xFFE4E1 } );
 			braccioL = new THREE.Mesh(braccioL_geometry, braccioL_material);
-			braccioL.position.set(-1,4.5,0);
-			braccioL.rotation.z = -30*Math.PI/180;
-		    omino.add(braccioL);
+			//braccioL.position.set(-1,4.5,0);
+		    //omino.add(braccioL);
 
 			var braccioR_geometry = new THREE.BoxGeometry(0.5,4,0.5);
 			var braccioR_material = new THREE.MeshBasicMaterial( { color: 0xFFE4E1 } );
@@ -376,10 +375,12 @@
 			punta.position.set(0.5,8,0);
 			omino.add(punta);
 
+			braccioL.position.set(0,2,0);
 			vincoloBraccio.add(braccioL);
-			vincoloBraccio.position.set(0,4,0);
-			omino.position.set(49,0,-7);
-		    omino.rotation.y = -30*Math.PI/180;
+			vincoloBraccio.position.set(0,6,0);
+			
+			omino.position.set(48,0,-18);
+			omino.rotation.y = -30*Math.PI/180;
 
 
 			omino.add(vincoloBraccio);
@@ -519,9 +520,9 @@ scene.add(albero);
 			Render();
 		}
 		
-function ominoSaluta(){
-	vincoloBraccio.rotation.z+=0.1;
-}
+		function ominoSaluta(){
+			vincoloBraccio.rotation.z+=0.01;
+		}
 
 		function Render() {
 			
