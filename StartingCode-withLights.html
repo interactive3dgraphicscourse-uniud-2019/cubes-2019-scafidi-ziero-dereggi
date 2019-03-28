@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Starting Code for 1st Project 2017 - with lights and textures</title>
+		<title>Project cubes 2019 Scafidi-Ziero-DeReggi</title>
 		<style>
 		
 		body {
@@ -101,7 +101,8 @@
 			scene.add(placeholder1);
 			*/
 
-			//////////////////////////////////////////////////////////// MULINO
+
+//-------------------------------------------------------------------------------------MULINO
 			mulino = new THREE.Object3D();
 
 			palomulino_geometry = new THREE.BoxGeometry(3,20,3);
@@ -190,8 +191,10 @@
 			scene.add(mulino);
 			mulino.position.set(-10, 0, 0);
 
+//----------------------------------------------------------------------------------FINE MULINO
 
-			//////////////////////////////////////////////////////////// TRAVERSINE TRENO
+
+//----------------------------------------------------------------- TRAVERSINE TRENO / FERROVIA
 			ferrovia = new THREE.Object3D();
 			modello_traversinetreno = new THREE.Object3D();
 
@@ -223,7 +226,7 @@
 
 			//ferrovia.position.set(20,0,20);
 
-
+//----------------------------------------------------------------FINE TRAVERSINE TRENO / FERROVIA
 
 //-----------------------------------------------------------------------------------CASA
 		casa= new THREE.Object3D();
@@ -278,6 +281,8 @@
 		
 
 //-----------------------------------------------------------------------------------FINE CASA
+
+
 //-----------------------------------------------------------------------------------INIZIO BANDIERA
 			bandiera= new THREE.Object3D();
 			vincoloAsta= new THREE.Object3D();
@@ -316,6 +321,7 @@
 			scene.add(bandiera);
 			
 //-----------------------------------------------------------------------------------FINE BANDIERA
+
 
 //-----------------------------------------------------------------------------------OMINO
 
@@ -437,9 +443,7 @@
 			treno.add(camino);
 
 			zavorra_geometry = new THREE.BoxGeometry(2,2,8);
-			var zavorra_texture = THREE.ImageUtils.loadTexture('textures/trenoCamino.jpg');
-			var zavorra_material = new THREE.MeshPhongMaterial( { map: zavorra_texture });
-			zavorra = new THREE.Mesh(zavorra_geometry,zavorra_material);
+			zavorra = new THREE.Mesh(zavorra_geometry, camino_material);
 			zavorra.position.set(7,3,0);
 			treno.add(zavorra);
 
@@ -450,6 +454,55 @@
 			ferrovia.add(treno);
 
 //-----------------------------------------------------------------------------------FINE TRENO
+
+
+//-----------------------------------------------------------------------------------VAGONE
+
+			vagone = new THREE.Object3D();
+
+			baseVagone_geometry = new THREE.BoxGeometry(12,2,8);
+			baseVagone = new THREE.Mesh(baseVagone_geometry, locomotiva_material);
+			baseVagone.position.set(0,3,0);
+			vagone.add(baseVagone);
+
+			ruotaVagone = [];
+			for (i=0; i<4; i++){
+				ruotaVagone[i] = new THREE.Mesh(ruota_geometry, ruota_material);
+				vagone.add(ruotaVagone[i]);
+			}
+			ruotaVagone[0].position.set(-3,1,2);
+			ruotaVagone[1].position.set(-3,1,-2);
+			ruotaVagone[2].position.set(3,1,2);
+			ruotaVagone[3].position.set(3,1,-2);
+
+			spondaCorta_geometry = new THREE.BoxGeometry(1,5,8);
+			spondaLateraleDx = new THREE.Mesh(spondaCorta_geometry, cabina_material);
+			spondaLateraleSx = new THREE.Mesh(spondaCorta_geometry, cabina_material);
+			spondaLateraleDx.position.set(5.5,6.5,0);
+			spondaLateraleSx.position.set(-5.5,6.5,0);
+			vagone.add(spondaLateraleDx);
+			vagone.add(spondaLateraleSx);
+
+			spondaLunga_geometry = new THREE.BoxGeometry(10,5,1);
+			spondaAnteriore = new THREE.Mesh(spondaLunga_geometry, cabina_material);
+			spondaPosteriore = new THREE.Mesh(spondaLunga_geometry, cabina_material);
+			spondaAnteriore.position.set(0,6.5,3.5);
+			spondaPosteriore.position.set(0,6.5,-3.5);
+			vagone.add(spondaAnteriore);
+			vagone.add(spondaPosteriore);
+
+			gancio_geometry = new THREE.BoxGeometry(8,1,1.5);
+			gancio = new THREE.Mesh(gancio_geometry, ruota_material);
+			gancio.position.set(10,3,0);
+			vagone.add(gancio);
+
+			vagone.position.set(0,0,33);
+			ferrovia.add(vagone);
+			
+
+//-----------------------------------------------------------------------------------FINE VAGONE
+
+
 //-----------------------------------------------------------------------------------ALBERO
 
 albero=new THREE.Object3D();
@@ -531,55 +584,6 @@ scene.add(cespuglio);
 //-----------------------------------------------------------------------------------FINE CESPUGLIO
 
 
-//-----------------------------------------------------------------------------------VAGONE
-
-			vagone = new THREE.Object3D();
-
-			baseVagone_geometry = new THREE.BoxGeometry(12,2,8);
-			var baseVagone_texture = THREE.ImageUtils.loadTexture('textures/trenoBase.jpg');
-			var baseVagone_material = new THREE.MeshPhongMaterial( { map: baseVagone_texture });
-			baseVagone = new THREE.Mesh(baseVagone_geometry, baseVagone_material);
-			baseVagone.position.set(0,3,0);
-			vagone.add(baseVagone);
-
-			ruotaVagone = [];
-			for (i=0; i<4; i++){
-				ruotaVagone[i] = new THREE.Mesh(ruota_geometry, ruota_material);
-				vagone.add(ruotaVagone[i]);
-			}
-			ruotaVagone[0].position.set(-3,1,2);
-			ruotaVagone[1].position.set(-3,1,-2);
-			ruotaVagone[2].position.set(3,1,2);
-			ruotaVagone[3].position.set(3,1,-2);
-
-			spondaCorta_geometry = new THREE.BoxGeometry(1,5,8);
-			var sponda_texture = THREE.ImageUtils.loadTexture('textures/trenoMezzo.jpg');
-			var sponda_material = new THREE.MeshPhongMaterial( { map: sponda_texture });
-			spondaLateraleDx = new THREE.Mesh(spondaCorta_geometry,sponda_material);
-			spondaLateraleSx = new THREE.Mesh(spondaCorta_geometry,sponda_material);
-			spondaLateraleDx.position.set(5.5,6.5,0);
-			spondaLateraleSx.position.set(-5.5,6.5,0);
-			vagone.add(spondaLateraleDx);
-			vagone.add(spondaLateraleSx);
-
-			spondaLunga_geometry = new THREE.BoxGeometry(10,5,1);
-			spondaAnteriore = new THREE.Mesh(spondaLunga_geometry, sponda_material);
-			spondaPosteriore = new THREE.Mesh(spondaLunga_geometry, sponda_material);
-			spondaAnteriore.position.set(0,6.5,3.5);
-			spondaPosteriore.position.set(0,6.5,-3.5);
-			vagone.add(spondaAnteriore);
-			vagone.add(spondaPosteriore);
-
-			gancio_geometry = new THREE.BoxGeometry(8,1,1.5);
-			gancio = new THREE.Mesh(gancio_geometry,ruota_material);
-			gancio.position.set(10,3,0);
-			vagone.add(gancio);
-
-			vagone.position.set(0,0,33);
-			ferrovia.add(vagone);
-			
-
-//-----------------------------------------------------------------------------------FINE VAGONE
 
 //-----------------------------------------------------------------------------------CACTUS
 
