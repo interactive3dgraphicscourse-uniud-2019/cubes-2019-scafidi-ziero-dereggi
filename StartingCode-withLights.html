@@ -220,12 +220,12 @@
 			traversinetreno_material = new THREE.MeshPhongMaterial( { map: traversinetreno_texture } );
 			traversinatreno = new THREE.Mesh( traversinetreno_geometry, traversinetreno_material );
 
-			rotaie_geometry = new THREE.BoxGeometry(1,0.5,2.5);
+			rotaie_geometry = new THREE.BoxGeometry(1,0.5,2.75);
 			rotaie_material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
 			rotaia1 = new THREE.Mesh( rotaie_geometry, rotaie_material );
-			rotaia1.position.set(2,0,1);
+			rotaia1.position.set(2,1,1);
 			rotaia2 = new THREE.Mesh( rotaie_geometry, rotaie_material );
-			rotaia2.position.set(-2,0,1);
+			rotaia2.position.set(-2,1,1);
 
 			modello_traversinetreno.add(rotaia1);
 			modello_traversinetreno.add(rotaia2);
@@ -835,7 +835,7 @@
 			treno.position.set(41.5*Math.cos(angolotreno*Math.PI/180), 0, -32.5*Math.sin(angolotreno*Math.PI/180));
 			vagone.rotation.y=(angolotreno-25+90)*Math.PI/180;
 			vagone.position.set(41.5*Math.cos((angolotreno-25)*Math.PI/180), 0, -32.5*Math.sin((angolotreno-25)*Math.PI/180));
-			
+
 			angolotreno=angolotreno+accelerazioneTreno;
 			if(accelerazioneTreno>0) {
 				accelerazioneTreno=accelerazioneTreno-0.01;
