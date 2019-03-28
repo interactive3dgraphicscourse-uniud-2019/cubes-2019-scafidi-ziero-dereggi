@@ -498,14 +498,13 @@ scene.add(albero);
 			vagone.add(spondaAnteriore);
 			vagone.add(spondaPosteriore);
 
-			gancio_geometry = new THREE.BoxGeometry(3,1,2);
+			gancio_geometry = new THREE.BoxGeometry(8,1,1.5);
 			gancio = new THREE.Mesh(gancio_geometry,ruota_material);
-			gancio.position.set(7.5,3,0);
+			gancio.position.set(10,3,0);
 			vagone.add(gancio);
 
-			vagone.position.set(-14,0,-2);
-			vagone.rotation.y = -12 * Math.PI/180;
-			treno.add(vagone);
+			vagone.position.set(0,0,33);
+			ferrovia.add(vagone);
 			
 
 
@@ -650,9 +649,8 @@ scene.add(albero);
 		function cinematicaTreno() {
 			treno.rotation.y=(angolotreno+90)*Math.PI/180;
 			treno.position.set(41.5*Math.cos(angolotreno*Math.PI/180), 0, -32.5*Math.sin(angolotreno*Math.PI/180));
-			
-			/*vagone.rotation.y=(angolotreno+65)*Math.PI/180;
-			vagone.position.set(41.5*Math.cos((angolotreno-25)*Math.PI/180), 0, -32.5*Math.sin((angolotreno-25)*Math.PI/180));*/
+			vagone.rotation.y=(angolotreno-25+90)*Math.PI/180;
+			vagone.position.set(41.5*Math.cos((angolotreno-25)*Math.PI/180), 0, -32.5*Math.sin((angolotreno-25)*Math.PI/180));
 
 			angolotreno=angolotreno+accelerazioneTreno;
 			if(accelerazioneTreno>0) {
