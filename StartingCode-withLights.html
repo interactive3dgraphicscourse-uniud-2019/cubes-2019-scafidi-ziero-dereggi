@@ -444,25 +444,85 @@
 
 //-----------------------------------------------------------------------------------FINE TRENO
 //-----------------------------------------------------------------------------------ALBERO
-/*
+
 albero=new THREE.Object3D();
 
-			var tronco_geometry = new THREE.BoxGeometry(4,7,4);
-			var tronco_texture = THREE.ImageUtils.loadTexture('textures/orange.jpg');
+			var tronco_geometry = new THREE.BoxGeometry(2,7,2);
+			var tronco_texture = THREE.ImageUtils.loadTexture('textures/legnoAlbero.jpg');
 			var tronco_material = new THREE.MeshPhongMaterial( { map: tronco_texture } );
 			tronco = new THREE.Mesh(tronco_geometry, tronco_material);
-			tronco.position.set(0.5,8,0);
-			albero.add(punta);
+			tronco.position.set(0,4,0);
+			albero.add(tronco);
 
-albero.position.set(0,0,0);
+
+			var foglie1_geometry = new THREE.BoxGeometry(6,3,6);
+			var foglie1_texture = THREE.ImageUtils.loadTexture('textures/foglieAlbero.jpg');
+			var foglie1_material = new THREE.MeshPhongMaterial( { map: foglie1_texture } );
+			foglie1 = new THREE.Mesh(foglie1_geometry, foglie1_material);
+			foglie1.position.set(0,7,0);
+			albero.add(foglie1);
+
+			var foglie2_geometry = new THREE.BoxGeometry(4,3,4);
+			var foglie2_texture = THREE.ImageUtils.loadTexture('textures/foglieAlbero.jpg');
+			var foglie2_material = new THREE.MeshPhongMaterial( { map: foglie2_texture } );
+			foglie2 = new THREE.Mesh(foglie2_geometry, foglie2_material);
+			foglie2.position.set(0,10,0);
+			albero.add(foglie2);
+
+
+albero.position.set(50,0,20);
 scene.add(albero);
 
 
-*/
-
-
-
 //-----------------------------------------------------------------------------------FINE ALBERO
+//-----------------------------------------------------------------------------------CACTUS
+
+cactus=new THREE.Object3D();
+
+			var troncoC_geometry = new THREE.BoxGeometry(2.5,14,2.5);
+			var troncoC_texture = THREE.ImageUtils.loadTexture('textures/cactus.jpg');
+			var troncoC_material = new THREE.MeshPhongMaterial( { map: troncoC_texture } );
+			troncoC = new THREE.Mesh(troncoC_geometry, troncoC_material);
+			troncoC.position.set(0,0,0);
+			cactus.add(troncoC);
+
+			var parteDx_geometry = new THREE.BoxGeometry(4,2.5,2.5);
+			var parteDx_texture = THREE.ImageUtils.loadTexture('textures/cactus.jpg');
+			var parteDx_material = new THREE.MeshPhongMaterial( { map: parteDx_texture } );
+			parteDx = new THREE.Mesh(parteDx_geometry, parteDx_material);
+			parteDx.position.set(3.3,4,0);
+			cactus.add(parteDx);
+
+			var parteSx_geometry = new THREE.BoxGeometry(4,2.5,2.5);
+			var parteSx_texture = THREE.ImageUtils.loadTexture('textures/cactus.jpg');
+			var parteSx_material = new THREE.MeshPhongMaterial( { map: parteSx_texture } );
+			parteSx = new THREE.Mesh(parteSx_geometry, parteSx_material);
+			parteSx.position.set(-3.3,-2,0);
+			cactus.add(parteSx);
+			
+			var parteGiu_geometry = new THREE.BoxGeometry(2.5,2.5,2.5);
+			var parteGiu_texture = THREE.ImageUtils.loadTexture('textures/cactus.jpg');
+			var parteGiu_material = new THREE.MeshPhongMaterial( { map: parteGiu_texture } );
+			parteGiu = new THREE.Mesh(parteGiu_geometry, parteGiu_material);
+			parteGiu.position.set(-4,0.5,0);
+			cactus.add(parteGiu);
+			
+			var parteSu_geometry = new THREE.BoxGeometry(2,2.5,2.5);
+			var parteSu_texture = THREE.ImageUtils.loadTexture('textures/cactus.jpg');
+			var parteSu_material = new THREE.MeshPhongMaterial( { map: parteSu_texture } );
+			parteSu = new THREE.Mesh(parteSu_geometry, parteSu_material);
+			parteSu.position.set(4.3,6.5,0);
+			cactus.add(parteSu);
+			
+
+cactus.position.set(50,6,40);
+scene.add(cactus);
+
+
+//-----------------------------------------------------------------------------------FINE CACTUS
+
+
+
 
 			hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
 			hemiLight.color.setHSL( 0.6, 1, 0.6 );
