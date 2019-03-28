@@ -477,9 +477,12 @@ albero=new THREE.Object3D();
 			albero.add(foglie2);
 
 
-			
+var albero2=albero.clone();
+albero2.position.set(-50,-1,-35);
 
-albero.position.set(50,0,20);
+scene.add(albero2);
+
+albero.position.set(3,-1,45);
 scene.add(albero);
 
 
@@ -516,10 +519,13 @@ cespuglio=new THREE.Object3D();
 
 
 			
+var cespuglio2=cespuglio.clone();
+cespuglio2.position.set(6,1,-45);
+scene.add(cespuglio2);
 
-cespuglio.position.set(-50,1,20);
+
+cespuglio.position.set(-55,1,25);
 scene.add(cespuglio);
-
 
 
 //-----------------------------------------------------------------------------------FINE CESPUGLIO
@@ -614,6 +620,12 @@ cactus=new THREE.Object3D();
 			parteSu.position.set(4.3,6.5,0);
 			cactus.add(parteSu);
 			
+
+			
+		var cactus2=cactus.clone();
+		cactus2.position.set(7,6,2);
+scene.add(cactus2);
+
 
 cactus.position.set(50,6,40);
 scene.add(cactus);
