@@ -92,30 +92,7 @@
 			camera.position.set(0,50,55);
 			camera.lookAt( new THREE.Vector3(0,0,0));
 			
-			/*
-			var geometry = new THREE.BoxGeometry(1,1,1);
-			var texture = new THREE.TextureLoader().load('textures/legno_pali.jpg');
-			var material = new THREE.MeshBasicMaterial( { map: texture } );
-			var cube = new THREE.Mesh( geometry, material );
-			cube.castShadow = true;
-			cube.receiveShadow = true;
-			
-			scene.add( cube );
-
-			var cube2 = new THREE.Mesh(geometry, material);
-			cube2.position.set(3,4,5);
-			scene.add(cube2);
-*/
-			var placeholder_material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
-
-			//placeholder mulino
-			/*
-			var placeholder1_geometry = new THREE.BoxGeometry(10,25,10);
-			
-			var placeholder1 = new THREE.Mesh(placeholder1_geometry, placeholder_material);
-			placeholder1.position.set(0,12.5,0);
-			scene.add(placeholder1);
-			*/
+			//var placeholder_material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
 
 
 //-------------------------------------------------------------------------------------MULINO
@@ -360,9 +337,9 @@
 			omino.add(gambaR);
 
 			var torso_geometry = new THREE.BoxGeometry(2,3,2);
-			var torso_texture = new THREE.TextureLoader().load('textures/orange.jpg');
-			var torso_material = new THREE.MeshBasicMaterial( { map: torso_texture } );
-			torso = new THREE.Mesh(torso_geometry, torso_material);
+			var vestiti_texture = new THREE.TextureLoader().load('textures/orange.jpg');
+			var vestiti_material = new THREE.MeshBasicMaterial( { map: vestiti_texture } );
+			torso = new THREE.Mesh(torso_geometry, vestiti_material);
 			torso.position.set(0.5,5,0);
 			omino.add(torso);
 
@@ -382,16 +359,12 @@
 			omino.add(braccioR);
 
 			var cappello_geometry = new THREE.BoxGeometry(2.5,0.5,2.5);
-			var cappello_texture = new THREE.TextureLoader().load('textures/orange.jpg');
-			var cappello_material = new THREE.MeshBasicMaterial( { map: cappello_texture } );
-			cappello = new THREE.Mesh(cappello_geometry, cappello_material);
+			cappello = new THREE.Mesh(cappello_geometry, vestiti_material);
 			cappello.position.set(0.5,7.5,0);
 			omino.add(cappello);
 
 			var punta_geometry = new THREE.BoxGeometry(1,1,1);
-			var punta_texture = new THREE.TextureLoader().load('textures/orange.jpg');
-			var punta_material = new THREE.MeshBasicMaterial( { map: punta_texture } );
-			punta = new THREE.Mesh(punta_geometry, punta_material);
+			punta = new THREE.Mesh(punta_geometry, vestiti_material);
 			punta.position.set(0.5,8,0);
 			omino.add(punta);
 
@@ -558,16 +531,14 @@
 
 
 			var foglie1_geometry = new THREE.BoxGeometry(6,3,6);
-			var foglie1_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
-			var foglie1_material = new THREE.MeshBasicMaterial( { map: foglie1_texture } );
-			foglie1 = new THREE.Mesh(foglie1_geometry, foglie1_material);
+			var foglie_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
+			var foglie_material = new THREE.MeshBasicMaterial( { map: foglie_texture } );
+			foglie1 = new THREE.Mesh(foglie1_geometry, foglie_texture);
 			foglie1.position.set(0,7,0);
 			albero.add(foglie1);
 
 			var foglie2_geometry = new THREE.BoxGeometry(4,3,4);
-			var foglie2_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
-			var foglie2_material = new THREE.MeshBasicMaterial( { map: foglie2_texture } );
-			foglie2 = new THREE.Mesh(foglie2_geometry, foglie2_material);
+			foglie2 = new THREE.Mesh(foglie2_geometry, foglie_material);
 			foglie2.position.set(0,10,0);
 			albero.add(foglie2);
 
@@ -588,24 +559,18 @@
 			cespuglio=new THREE.Object3D();
 
 			var foglieC1_geometry = new THREE.BoxGeometry(6,3,6);
-			var foglieC1_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
-			var foglieC1_material = new THREE.MeshBasicMaterial( { map: foglieC1_texture } );
-			foglieC1 = new THREE.Mesh(foglieC1_geometry, foglieC1_material);
+			foglieC1 = new THREE.Mesh(foglieC1_geometry, foglie_material);
 			foglieC1.position.set(0,0,0);
 			cespuglio.add(foglieC1);
 
 
 			var foglieC2_geometry = new THREE.BoxGeometry(4,3,4);
-			var foglieC2_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
-			var foglieC2_material = new THREE.MeshBasicMaterial( { map: foglieC2_texture } );
-			foglieC2 = new THREE.Mesh(foglieC2_geometry, foglieC2_material);
+			foglieC2 = new THREE.Mesh(foglieC2_geometry, foglie_material);
 			foglieC2.position.set(0,3,0);
 			cespuglio.add(foglieC2);
 
 			var foglieC3_geometry = new THREE.BoxGeometry(6,5,6);
-			var foglieC3_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
-			var foglieC3_material = new THREE.MeshBasicMaterial( { map: foglieC3_texture } );
-			foglieC3 = new THREE.Mesh(foglieC3_geometry, foglieC3_material);
+			foglieC3 = new THREE.Mesh(foglieC3_geometry, foglie_material);
 			foglieC3.position.set(2,1,2);
 			cespuglio.add(foglieC3);
 			
@@ -625,37 +590,29 @@
 			cactus=new THREE.Object3D();
 
 			var troncoC_geometry = new THREE.BoxGeometry(2.5,14,2.5);
-			var troncoC_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
-			var troncoC_material = new THREE.MeshBasicMaterial( { map: troncoC_texture } );
-			troncoC = new THREE.Mesh(troncoC_geometry, troncoC_material);
+			var cactus_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
+			var cactus_material = new THREE.MeshBasicMaterial( { map: cactus_texture } );
+			troncoC = new THREE.Mesh(troncoC_geometry, cactus_material);
 			troncoC.position.set(0,0,0);
 			cactus.add(troncoC);
 
 			var parteDx_geometry = new THREE.BoxGeometry(4,2.5,2.5);
-			var parteDx_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
-			var parteDx_material = new THREE.MeshBasicMaterial( { map: parteDx_texture } );
-			parteDx = new THREE.Mesh(parteDx_geometry, parteDx_material);
+			parteDx = new THREE.Mesh(parteDx_geometry, cactus_material);
 			parteDx.position.set(3.3,4,0);
 			cactus.add(parteDx);
 
 			var parteSx_geometry = new THREE.BoxGeometry(4,2.5,2.5);
-			var parteSx_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
-			var parteSx_material = new THREE.MeshBasicMaterial( { map: parteSx_texture } );
-			parteSx = new THREE.Mesh(parteSx_geometry, parteSx_material);
+			parteSx = new THREE.Mesh(parteSx_geometry, cactus_material);
 			parteSx.position.set(-3.3,-2,0);
 			cactus.add(parteSx);
 			
 			var parteGiu_geometry = new THREE.BoxGeometry(2.5,2.5,2.5);
-			var parteGiu_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
-			var parteGiu_material = new THREE.MeshBasicMaterial( { map: parteGiu_texture } );
-			parteGiu = new THREE.Mesh(parteGiu_geometry, parteGiu_material);
+			parteGiu = new THREE.Mesh(parteGiu_geometry, cactus_material);
 			parteGiu.position.set(-4,0.5,0);
 			cactus.add(parteGiu);
 			
 			var parteSu_geometry = new THREE.BoxGeometry(2,2.5,2.5);
-			var parteSu_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
-			var parteSu_material = new THREE.MeshBasicMaterial( { map: parteSu_texture } );
-			parteSu = new THREE.Mesh(parteSu_geometry, parteSu_material);
+			parteSu = new THREE.Mesh(parteSu_geometry, cactus_material);
 			parteSu.position.set(4.3,6.5,0);
 			cactus.add(parteSu);
 			
