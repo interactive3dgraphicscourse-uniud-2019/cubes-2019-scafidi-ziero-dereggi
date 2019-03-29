@@ -523,16 +523,16 @@
 			albero=new THREE.Object3D();
 
 			var tronco_geometry = new THREE.BoxGeometry(2,7,2);
-			var tronco_texture = THREE.ImageUtils.loadTexture('textures/legnoAlbero.jpg');
-			var tronco_material = new THREE.MeshPhongMaterial( { map: tronco_texture } );
+			var tronco_texture = new THREE.TextureLoader().load('textures/legnoAlbero.jpg');
+			var tronco_material = new THREE.MeshBasicMaterial( { map: tronco_texture } );
 			tronco = new THREE.Mesh(tronco_geometry, tronco_material);
 			tronco.position.set(0,4,0);
 			albero.add(tronco);
 
 
 			var foglie1_geometry = new THREE.BoxGeometry(6,3,6);
-			var foglie_texture = THREE.ImageUtils.loadTexture('textures/foglieAlbero.jpg');
-			var foglie_material = new THREE.MeshPhongMaterial( { map: foglie_texture } );
+			var foglie_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
+			var foglie_material = new THREE.MeshBasicMaterial( { map: foglie_texture } );
 			foglie1 = new THREE.Mesh(foglie1_geometry, foglie_material);
 			foglie1.position.set(0,7,0);
 			albero.add(foglie1);
