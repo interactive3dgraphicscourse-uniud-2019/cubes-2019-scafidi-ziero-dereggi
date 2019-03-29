@@ -802,7 +802,7 @@
 				}
 			}
 			if(accelerazioneTreno<0) {
-				accelerazioneTreno=accelerazioneTreno+0.01;
+				accelerazioneTreno=accelerazioneTreno+0.02;
 			}
 			angolotreno=angolotreno+accelerazioneTreno;
 			//console.log(accelerazioneTreno);
@@ -822,7 +822,9 @@
 				if(accelerazioneTreno==0.1 || accelerazioneTreno==0.2) {
 					accelerazioneTreno=0;
 				} else {
-					accelerazioneTreno=accelerazioneTreno-0.2;
+					if(accelerazioneTreno>-1) {
+						accelerazioneTreno=accelerazioneTreno-0.2;
+					}
 				}
 			}
 		};
