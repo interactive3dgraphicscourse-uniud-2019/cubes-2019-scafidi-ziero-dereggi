@@ -35,7 +35,6 @@
 		var movimento_nuvole_now=0;
 		var movimento_nuvole_step=0.01;
 		var movimento_nuvole_lastUpdated=0;
-		var altezza = 3;
 
 		//variabili per traversine treno
 		var modello_traversinetreno, ferrovia;
@@ -91,7 +90,7 @@
 			renderer.shadowMap.enabled = true;
 			document.body.appendChild( renderer.domElement );
 			
-			camera.position.set(0,50,55);
+			camera.position.set(0,80,120);
 			camera.lookAt( new THREE.Vector3(0,0,0));
 			
 			//var placeholder_material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
@@ -443,7 +442,7 @@
 
 
 			fumo_geometry = new THREE.BoxGeometry(1,1,1);
-			fumo_material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+			fumo_material = new THREE.MeshBasicMaterial({color: 0x000000});
 			fumo = new THREE.Mesh(fumo_geometry,fumo_material);
 			camino.add(fumo);
 
@@ -686,6 +685,15 @@
 
 
 //-----------------------------------------------------------------------------------FINE NUVOLE
+//-----------------------------------------------------------------------------------SPLASH
+			var splash_geometry = new THREE.BoxGeometry(100,40,0.1);
+			var splash_texture = new THREE.TextureLoader().load('textures/splash.jpg');
+			var splash_material = new THREE.MeshBasicMaterial( { map: splash_texture } );
+			splash = new THREE.Mesh(splash_geometry, splash_material);
+			splash.rotation.x = -35*Math.PI/180;
+			splash.position.set(0,60,90);
+			scene.add(splash);
+//-----------------------------------------------------------------------------------FINE SPLASH
 
 			hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
 			hemiLight.color.setHSL( 0.6, 1, 0.6 );
@@ -808,13 +816,19 @@
 				if(accelerazioneTreno<0.01) {
 					accelerazioneTreno=0;
 				}
+				var altezzaFumo = Math.floor(Math.random()*3+3);
+				fumo.position.set(0,altezzaFumo,0);
 			}
 			if(accelerazioneTreno<0) {
 				accelerazioneTreno=accelerazioneTreno+0.02;
+				var altezzaFumo = Math.floor(Math.random()*3+3);
+				fumo.position.set(0,altezzaFumo,0);
+			}
+			if(accelerazioneTreno==0) {
+				fumo.position.set(0,0,0);
 			}
 			angolotreno=angolotreno+accelerazioneTreno;
 			//console.log(accelerazioneTreno);
-
 		}
 		
 		Start();
@@ -823,12 +837,12 @@
 		document.onkeydown = accelerazioniTreno;
 		function accelerazioniTreno(e){
 			var keyCode = e.keyCode;
-			if(keyCode == 87 && accelerazioneTreno<=1){
+			if(keyCode == 87 && accelerazioneTreno<=1) { //W
 				accelerazioneTreno=accelerazioneTreno+0.05;
-				altezza = Math.floor(Math.random()*3+3);
-				fumo.position.set(0,altezza,0);
+				//altezza = Math.floor(Math.random()*3+3);
+				//fumo.position.set(0,altezza,0);
 			}
-			if(keyCode == 83){
+			if(keyCode == 83) { //S
 				if(accelerazioneTreno==0.1 || accelerazioneTreno==0.2) {
 					accelerazioneTreno=0;
 				} else {
@@ -836,8 +850,6 @@
 						accelerazioneTreno=accelerazioneTreno-0.2;
 					}
 				}
-				altezza = Math.floor(Math.random()*3+3);
-				fumo.position.set(0,altezza,0);
 			}
 		};
 		</script>
