@@ -94,8 +94,8 @@
 			
 			/*
 			var geometry = new THREE.BoxGeometry(1,1,1);
-			var texture = THREE.ImageUtils.loadTexture('textures/legno_pali.jpg');
-			var material = new THREE.MeshPhongMaterial( { map: texture } );
+			var texture = new THREE.TextureLoader().load('textures/legno_pali.jpg');
+			var material = new THREE.MeshBasicMaterial( { map: texture } );
 			var cube = new THREE.Mesh( geometry, material );
 			cube.castShadow = true;
 			cube.receiveShadow = true;
@@ -122,8 +122,8 @@
 			mulino = new THREE.Object3D();
 
 			palomulino_geometry = new THREE.BoxGeometry(3,20,3);
-			palomulino_texture = THREE.ImageUtils.loadTexture('textures/legno_pali.jpg');
-			palomulino_material = new THREE.MeshPhongMaterial( { map: palomulino_texture } );
+			palomulino_texture = new THREE.TextureLoader().load('textures/legno_pali.jpg');
+			palomulino_material = new THREE.MeshBasicMaterial( { map: palomulino_texture } );
 			palimulino=[];
 			for(i=0; i<4; i++) {
 				palimulino[i] =  new THREE.Mesh(palomulino_geometry, palomulino_material);
@@ -155,15 +155,15 @@
 			mulino.add(basemulino);
 
 			bloccomulino_geometry = new THREE.BoxGeometry(3,3,3);
-			bloccomulino_texture = THREE.ImageUtils.loadTexture('textures/legno_bloccomulino.jpg');
-			bloccomulino_material = new THREE.MeshPhongMaterial( { map: bloccomulino_texture } );
+			bloccomulino_texture = new THREE.TextureLoader().load('textures/legno_bloccomulino.jpg');
+			bloccomulino_material = new THREE.MeshBasicMaterial( { map: bloccomulino_texture } );
 			bloccomulino = new THREE.Mesh(bloccomulino_geometry, bloccomulino_material);
 			bloccomulino.position.set(0, 23, 0);
 			mulino.add(bloccomulino);
 
 			bloccomulino2_geometry = new THREE.BoxGeometry(24,2,2);
-			bloccomulino2_texture = THREE.ImageUtils.loadTexture('textures/legno_bloccomulino2.jpg');
-			bloccomulino2_material = new THREE.MeshPhongMaterial( { map: bloccomulino2_texture } );
+			bloccomulino2_texture = new THREE.TextureLoader().load('textures/legno_bloccomulino2.jpg');
+			bloccomulino2_material = new THREE.MeshBasicMaterial( { map: bloccomulino2_texture } );
 			bloccomulino2 = new THREE.Mesh(bloccomulino2_geometry, bloccomulino2_material);
 			bloccomulino2.position.set(0, 25.5, 0);
 			bloccomulino2.rotation.y = 90*Math.PI/180;
@@ -188,8 +188,8 @@
 			scene.add(vincolo_pale_mulino);
 
 			palamulino_geometry = new THREE.BoxGeometry(1.3,15,1.3);
-			palamulino_texture = THREE.ImageUtils.loadTexture('textures/legno_pale.jpg');
-			palamulino_material = new THREE.MeshPhongMaterial( { map: palamulino_texture } );
+			palamulino_texture = new THREE.TextureLoader().load('textures/legno_pale.jpg');
+			palamulino_material = new THREE.MeshBasicMaterial( { map: palamulino_texture } );
 			palemulino=[];
 
 			var num_pale = 12;
@@ -216,8 +216,8 @@
 			modello_traversinetreno = new THREE.Object3D();
 
 			traversinetreno_geometry = new THREE.BoxGeometry(6,1,1);
-			traversinetreno_texture = THREE.ImageUtils.loadTexture('textures/legno_traversinetreno.jpg');
-			traversinetreno_material = new THREE.MeshPhongMaterial( { map: traversinetreno_texture } );
+			traversinetreno_texture = new THREE.TextureLoader().load('textures/legno_traversinetreno.jpg');
+			traversinetreno_material = new THREE.MeshBasicMaterial( { map: traversinetreno_texture } );
 			traversinatreno = new THREE.Mesh( traversinetreno_geometry, traversinetreno_material );
 
 			rotaie_geometry = new THREE.BoxGeometry(1,0.5,2.75);
@@ -250,8 +250,8 @@
 			casa= new THREE.Object3D();
 		
 			var casetta_geometry = new THREE.BoxGeometry(25,15,10);
-			var casetta_texture = THREE.ImageUtils.loadTexture('textures/legno_pali.jpg');
-			var casetta_material = new THREE.MeshPhongMaterial( { map: casetta_texture } );
+			var casetta_texture = new THREE.TextureLoader().load('textures/legno_pali.jpg');
+			var casetta_material = new THREE.MeshBasicMaterial( { map: casetta_texture } );
 			casetta = new THREE.Mesh(casetta_geometry, casetta_material);
 			casetta.position.set(40,7.5,-35);
 			casetta.rotation.y = -30*Math.PI/180;
@@ -259,8 +259,8 @@
 
 
 			var tetto1_geometry = new THREE.BoxGeometry(25,2,15);
-			var tetto1_texture = THREE.ImageUtils.loadTexture('textures/legno_pali.jpg');
-			var tetto1_material = new THREE.MeshPhongMaterial( { map: tetto1_texture } );
+			var tetto1_texture = new THREE.TextureLoader().load('textures/legno_pali.jpg');
+			var tetto1_material = new THREE.MeshBasicMaterial( { map: tetto1_texture } );
 			tetto1 = new THREE.Mesh(tetto1_geometry, tetto1_material);
 			tetto1.position.set(50,15,-30);
 			tetto1.rotation.y = -30*Math.PI/180;
@@ -269,8 +269,8 @@
 
 
 			var tetto2_geometry = new THREE.BoxGeometry(25,2,15);
-			var tetto2_texture = THREE.ImageUtils.loadTexture('textures/legno_pali.jpg');
-			var tetto2_material = new THREE.MeshPhongMaterial( { map: tetto2_texture } );
+			var tetto2_texture = new THREE.TextureLoader().load('textures/legno_pali.jpg');
+			var tetto2_material = new THREE.MeshBasicMaterial( { map: tetto2_texture } );
 			tetto2 = new THREE.Mesh(tetto2_geometry, tetto2_material);
 			tetto2.position.set(30,15,-41);
 			tetto2.rotation.y = -30*Math.PI/180;
@@ -278,8 +278,8 @@
 			casa.add(tetto2);
 	
 			var porta_geometry = new THREE.BoxGeometry(5,10,1);
-			var porta_texture = THREE.ImageUtils.loadTexture('textures/porta.jpg');
-			var porta_material = new THREE.MeshPhongMaterial( { map: porta_texture } );
+			var porta_texture = new THREE.TextureLoader().load('textures/porta.jpg');
+			var porta_material = new THREE.MeshBasicMaterial( { map: porta_texture } );
 			porta = new THREE.Mesh(porta_geometry, porta_material);
 			porta.position.set(35,5,-32);
 			porta.rotation.y = -30*Math.PI/180;
@@ -287,8 +287,8 @@
 
 
 			var finestra_geometry = new THREE.BoxGeometry(5,5,0.5);
-			var finestra_texture = THREE.ImageUtils.loadTexture('textures/finestra.jpg');
-			var finestra_material = new THREE.MeshPhongMaterial( { map: finestra_texture } );
+			var finestra_texture = new THREE.TextureLoader().load('textures/finestra.jpg');
+			var finestra_material = new THREE.MeshBasicMaterial( { map: finestra_texture } );
 			finestra = new THREE.Mesh(finestra_geometry, finestra_material);
 			finestra.position.set(43,10,-27);
 			finestra.rotation.y = -30*Math.PI/180;
@@ -305,8 +305,8 @@
 			vincoloAsta= new THREE.Object3D();
 
 			var asta_geometry = new THREE.BoxGeometry(1,15,1);
-			var asta_texture = THREE.ImageUtils.loadTexture('textures/legno_pale.jpg');
-			var asta_material = new THREE.MeshPhongMaterial( { map: asta_texture } );
+			var asta_texture = new THREE.TextureLoader().load('textures/legno_pale.jpg');
+			var asta_material = new THREE.MeshBasicMaterial( { map: asta_texture } );
 			asta = new THREE.Mesh(asta_geometry, asta_material);
 			asta.position.set(0,7.5,0);
 			asta.rotation.y = -30*Math.PI/180;
@@ -322,8 +322,8 @@
 
 
             var drappo_geometry = new THREE.BoxGeometry(10,5,0.5);
-			var drappo_texture = THREE.ImageUtils.loadTexture('textures/bandiera.jpg');
-			var drappo_material = new THREE.MeshPhongMaterial( { map: drappo_texture } );
+			var drappo_texture = new THREE.TextureLoader().load('textures/bandiera.jpg');
+			var drappo_material = new THREE.MeshBasicMaterial( { map: drappo_texture } );
 			drappo = new THREE.Mesh(drappo_geometry, drappo_material);
 			drappo.position.set(5,12,0);
 			bandiera.add(drappo);
@@ -360,8 +360,8 @@
 			omino.add(gambaR);
 
 			var torso_geometry = new THREE.BoxGeometry(2,3,2);
-			var torso_texture = THREE.ImageUtils.loadTexture('textures/orange.jpg');
-			var torso_material = new THREE.MeshPhongMaterial( { map: torso_texture } );
+			var torso_texture = new THREE.TextureLoader().load('textures/orange.jpg');
+			var torso_material = new THREE.MeshBasicMaterial( { map: torso_texture } );
 			torso = new THREE.Mesh(torso_geometry, torso_material);
 			torso.position.set(0.5,5,0);
 			omino.add(torso);
@@ -382,15 +382,15 @@
 			omino.add(braccioR);
 
 			var cappello_geometry = new THREE.BoxGeometry(2.5,0.5,2.5);
-			var cappello_texture = THREE.ImageUtils.loadTexture('textures/orange.jpg');
-			var cappello_material = new THREE.MeshPhongMaterial( { map: cappello_texture } );
+			var cappello_texture = new THREE.TextureLoader().load('textures/orange.jpg');
+			var cappello_material = new THREE.MeshBasicMaterial( { map: cappello_texture } );
 			cappello = new THREE.Mesh(cappello_geometry, cappello_material);
 			cappello.position.set(0.5,7.5,0);
 			omino.add(cappello);
 
 			var punta_geometry = new THREE.BoxGeometry(1,1,1);
-			var punta_texture = THREE.ImageUtils.loadTexture('textures/orange.jpg');
-			var punta_material = new THREE.MeshPhongMaterial( { map: punta_texture } );
+			var punta_texture = new THREE.TextureLoader().load('textures/orange.jpg');
+			var punta_material = new THREE.MeshBasicMaterial( { map: punta_texture } );
 			punta = new THREE.Mesh(punta_geometry, punta_material);
 			punta.position.set(0.5,8,0);
 			omino.add(punta);
@@ -415,15 +415,15 @@
 			treno = new THREE.Object3D();
 
 			locomotiva_geometry = new THREE.BoxGeometry(12,4,8);
-			var locomotiva_texture = THREE.ImageUtils.loadTexture('textures/trenoBase.jpg');
-			var locomotiva_material = new THREE.MeshPhongMaterial( { map: locomotiva_texture } );
+			var locomotiva_texture = new THREE.TextureLoader().load('textures/trenoBase.jpg');
+			var locomotiva_material = new THREE.MeshBasicMaterial( { map: locomotiva_texture } );
 			locomotiva = new THREE.Mesh(locomotiva_geometry, locomotiva_material);
 			locomotiva.position.set(0,4,0);
 			treno.add(locomotiva);
 
 			ruota_geometry = new THREE.BoxGeometry(2,2,2);
-			var ruota_texture = THREE.ImageUtils.loadTexture('textures/trenoRuote.jpg');
-			var ruota_material = new THREE.MeshPhongMaterial( { map: ruota_texture });
+			var ruota_texture = new THREE.TextureLoader().load('textures/trenoRuote.jpg');
+			var ruota_material = new THREE.MeshBasicMaterial( { map: ruota_texture });
 			ruota = [];
 			for (i=0; i<4; i++){
 				ruota[i] = new THREE.Mesh(ruota_geometry, ruota_material);
@@ -435,22 +435,22 @@
 			ruota[3].position.set(3,1,-2);
 
 			cabina_geometry = new THREE.BoxGeometry(6,4,8);
-			var cabina_texture = THREE.ImageUtils.loadTexture('textures/trenoMezzo.jpg');
-			var cabina_material = new THREE.MeshPhongMaterial( { map: cabina_texture });
+			var cabina_texture = new THREE.TextureLoader().load('textures/trenoMezzo.jpg');
+			var cabina_material = new THREE.MeshBasicMaterial( { map: cabina_texture });
 			cabina = new THREE.Mesh(cabina_geometry,cabina_material);
 			cabina.position.set(-3,8,0);
 			treno.add(cabina);
 
 			tettocabina_geometry = new THREE.BoxGeometry(8,1,10);
-			var tettocabina_texture = THREE.ImageUtils.loadTexture('textures/trenoTetto.jpg');
-			var tettocabina_material = new THREE.MeshPhongMaterial( { map: tettocabina_texture });
+			var tettocabina_texture = new THREE.TextureLoader().load('textures/trenoTetto.jpg');
+			var tettocabina_material = new THREE.MeshBasicMaterial( { map: tettocabina_texture });
 			tettocabina = new THREE.Mesh(tettocabina_geometry,tettocabina_material);
 			tettocabina.position.set(-3,10.5,0);
 			treno.add(tettocabina);
 
 			camino_geometry = new THREE.BoxGeometry(2,4,2);
-			var camino_texture = THREE.ImageUtils.loadTexture('textures/trenoCamino.jpg');
-			var camino_material = new THREE.MeshPhongMaterial( { map: camino_texture });
+			var camino_texture = new THREE.TextureLoader().load('textures/trenoCamino.jpg');
+			var camino_material = new THREE.MeshBasicMaterial( { map: camino_texture });
 			camino = new THREE.Mesh(camino_geometry,camino_material);
 			camino.position.set(3.5,8,0);
 			treno.add(camino);
@@ -519,8 +519,8 @@
 //--------------------------------------------------------------------------------MATERIALE VAGONE
 			caricoVagone = new THREE.Object3D();
 			carico_geometry = new THREE.BoxGeometry(2,2,2);
-			//carico_texture = THREE.ImageUtils.loadTexture('bandiera.jpg');
-			carico_material = new THREE.MeshPhongMaterial({color: 0xffff00});
+			//carico_texture = new THREE.TextureLoader().load('bandiera.jpg');
+			carico_material = new THREE.MeshBasicMaterial({color: 0xffff00});
 			carico = [];
 			var sposx = -4;
 			var sposz = -2;
@@ -550,23 +550,23 @@
 			albero=new THREE.Object3D();
 
 			var tronco_geometry = new THREE.BoxGeometry(2,7,2);
-			var tronco_texture = THREE.ImageUtils.loadTexture('textures/legnoAlbero.jpg');
-			var tronco_material = new THREE.MeshPhongMaterial( { map: tronco_texture } );
+			var tronco_texture = new THREE.TextureLoader().load('textures/legnoAlbero.jpg');
+			var tronco_material = new THREE.MeshBasicMaterial( { map: tronco_texture } );
 			tronco = new THREE.Mesh(tronco_geometry, tronco_material);
 			tronco.position.set(0,4,0);
 			albero.add(tronco);
 
 
 			var foglie1_geometry = new THREE.BoxGeometry(6,3,6);
-			var foglie1_texture = THREE.ImageUtils.loadTexture('textures/foglieAlbero.jpg');
-			var foglie1_material = new THREE.MeshPhongMaterial( { map: foglie1_texture } );
+			var foglie1_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
+			var foglie1_material = new THREE.MeshBasicMaterial( { map: foglie1_texture } );
 			foglie1 = new THREE.Mesh(foglie1_geometry, foglie1_material);
 			foglie1.position.set(0,7,0);
 			albero.add(foglie1);
 
 			var foglie2_geometry = new THREE.BoxGeometry(4,3,4);
-			var foglie2_texture = THREE.ImageUtils.loadTexture('textures/foglieAlbero.jpg');
-			var foglie2_material = new THREE.MeshPhongMaterial( { map: foglie2_texture } );
+			var foglie2_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
+			var foglie2_material = new THREE.MeshBasicMaterial( { map: foglie2_texture } );
 			foglie2 = new THREE.Mesh(foglie2_geometry, foglie2_material);
 			foglie2.position.set(0,10,0);
 			albero.add(foglie2);
@@ -588,23 +588,23 @@
 			cespuglio=new THREE.Object3D();
 
 			var foglieC1_geometry = new THREE.BoxGeometry(6,3,6);
-			var foglieC1_texture = THREE.ImageUtils.loadTexture('textures/foglieAlbero.jpg');
-			var foglieC1_material = new THREE.MeshPhongMaterial( { map: foglieC1_texture } );
+			var foglieC1_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
+			var foglieC1_material = new THREE.MeshBasicMaterial( { map: foglieC1_texture } );
 			foglieC1 = new THREE.Mesh(foglieC1_geometry, foglieC1_material);
 			foglieC1.position.set(0,0,0);
 			cespuglio.add(foglieC1);
 
 
 			var foglieC2_geometry = new THREE.BoxGeometry(4,3,4);
-			var foglieC2_texture = THREE.ImageUtils.loadTexture('textures/foglieAlbero.jpg');
-			var foglieC2_material = new THREE.MeshPhongMaterial( { map: foglieC2_texture } );
+			var foglieC2_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
+			var foglieC2_material = new THREE.MeshBasicMaterial( { map: foglieC2_texture } );
 			foglieC2 = new THREE.Mesh(foglieC2_geometry, foglieC2_material);
 			foglieC2.position.set(0,3,0);
 			cespuglio.add(foglieC2);
 
 			var foglieC3_geometry = new THREE.BoxGeometry(6,5,6);
-			var foglieC3_texture = THREE.ImageUtils.loadTexture('textures/foglieAlbero.jpg');
-			var foglieC3_material = new THREE.MeshPhongMaterial( { map: foglieC3_texture } );
+			var foglieC3_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
+			var foglieC3_material = new THREE.MeshBasicMaterial( { map: foglieC3_texture } );
 			foglieC3 = new THREE.Mesh(foglieC3_geometry, foglieC3_material);
 			foglieC3.position.set(2,1,2);
 			cespuglio.add(foglieC3);
@@ -625,36 +625,36 @@
 			cactus=new THREE.Object3D();
 
 			var troncoC_geometry = new THREE.BoxGeometry(2.5,14,2.5);
-			var troncoC_texture = THREE.ImageUtils.loadTexture('textures/cactus.jpg');
-			var troncoC_material = new THREE.MeshPhongMaterial( { map: troncoC_texture } );
+			var troncoC_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
+			var troncoC_material = new THREE.MeshBasicMaterial( { map: troncoC_texture } );
 			troncoC = new THREE.Mesh(troncoC_geometry, troncoC_material);
 			troncoC.position.set(0,0,0);
 			cactus.add(troncoC);
 
 			var parteDx_geometry = new THREE.BoxGeometry(4,2.5,2.5);
-			var parteDx_texture = THREE.ImageUtils.loadTexture('textures/cactus.jpg');
-			var parteDx_material = new THREE.MeshPhongMaterial( { map: parteDx_texture } );
+			var parteDx_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
+			var parteDx_material = new THREE.MeshBasicMaterial( { map: parteDx_texture } );
 			parteDx = new THREE.Mesh(parteDx_geometry, parteDx_material);
 			parteDx.position.set(3.3,4,0);
 			cactus.add(parteDx);
 
 			var parteSx_geometry = new THREE.BoxGeometry(4,2.5,2.5);
-			var parteSx_texture = THREE.ImageUtils.loadTexture('textures/cactus.jpg');
-			var parteSx_material = new THREE.MeshPhongMaterial( { map: parteSx_texture } );
+			var parteSx_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
+			var parteSx_material = new THREE.MeshBasicMaterial( { map: parteSx_texture } );
 			parteSx = new THREE.Mesh(parteSx_geometry, parteSx_material);
 			parteSx.position.set(-3.3,-2,0);
 			cactus.add(parteSx);
 			
 			var parteGiu_geometry = new THREE.BoxGeometry(2.5,2.5,2.5);
-			var parteGiu_texture = THREE.ImageUtils.loadTexture('textures/cactus.jpg');
-			var parteGiu_material = new THREE.MeshPhongMaterial( { map: parteGiu_texture } );
+			var parteGiu_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
+			var parteGiu_material = new THREE.MeshBasicMaterial( { map: parteGiu_texture } );
 			parteGiu = new THREE.Mesh(parteGiu_geometry, parteGiu_material);
 			parteGiu.position.set(-4,0.5,0);
 			cactus.add(parteGiu);
 			
 			var parteSu_geometry = new THREE.BoxGeometry(2,2.5,2.5);
-			var parteSu_texture = THREE.ImageUtils.loadTexture('textures/cactus.jpg');
-			var parteSu_material = new THREE.MeshPhongMaterial( { map: parteSu_texture } );
+			var parteSu_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
+			var parteSu_material = new THREE.MeshBasicMaterial( { map: parteSu_texture } );
 			parteSu = new THREE.Mesh(parteSu_geometry, parteSu_material);
 			parteSu.position.set(4.3,6.5,0);
 			cactus.add(parteSu);
@@ -672,8 +672,8 @@
 //-----------------------------------------------------------------------------------INIZIO NUVOLE
 			nuvola = new THREE.Object3D();
 			nuvola_geometry = new THREE.BoxGeometry(4,4,4);
-			nuvola_texture = THREE.ImageUtils.loadTexture('textures/nuvole.jpg');
-			nuvola_material = new THREE.MeshPhongMaterial( { map: nuvola_texture } );
+			nuvola_texture = new THREE.TextureLoader().load('textures/nuvole.jpg');
+			nuvola_material = new THREE.MeshBasicMaterial( { map: nuvola_texture } );
 			blocconuvola = [];
 			for(i=0; i<12; i++) {
 				blocconuvola[i] = new THREE.Mesh(nuvola_geometry, nuvola_material);
@@ -740,9 +740,9 @@
 
 			// GROUND
 			var groundGeo = new THREE.PlaneBufferGeometry( 130, 100 );
-			var text = THREE.ImageUtils.loadTexture('textures/deadGrass.jpg');
-			var groundMat = new THREE.MeshPhongMaterial( { map: text } );
-			//var groundMat = new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x050505 } );
+			var text = new THREE.TextureLoader().load('textures/deadGrass.jpg');
+			var groundMat = new THREE.MeshBasicMaterial( { map: text } );
+			//var groundMat = new THREE.MeshBasicMaterial( { color: 0xffffff, specular: 0x050505 } );
 			groundMat.color.setHSL( 0.095, 1, 0.75 );
 			var ground = new THREE.Mesh( groundGeo, groundMat );
 			ground.position.y = -0.5;
