@@ -19,6 +19,8 @@ Siamo partiti con lo sviluppo dell'idea di design attraverso il disegno grafico 
 
 ![Prima bozza](https://ibb.co/HrfBryC)
 
+![testo alt](cubes-2019-scafidi-ziero-dereggi\Screenshot.jpg)
+
 PASSI DI SVILUPPO
 - Abbiamo costruito dei placeholder nella scena, inserendo dei cubi neri all'interno del ground per definire gli spazi e renderci conto di come sarebbero stati posizionati i vari elementi nella scena.
 - Il passo successivo è stato quello di ricolorare gli elementi cosi da renderci conto in modo preciso cosa andava fatto. In questo modo abbiamo costituito gli elementi base: Mulino, casa, treno.
