@@ -35,6 +35,7 @@
 		var movimento_nuvole_now=0;
 		var movimento_nuvole_step=0.01;
 		var movimento_nuvole_lastUpdated=0;
+		var altezza = 3;
 
 		//variabili per traversine treno
 		var modello_traversinetreno, ferrovia;
@@ -62,6 +63,7 @@
 		var tettocabina_geometry, tettocabina_material, tettocabina;
 		var camino_geometry, camino_material, camino;
 		var zavorra_geometry, zavorra_material, zavorra;
+		var fumo, fumo_geometry, fumo_material;
 
 		//variabili per le nuvole
 		var nuvola, nuvole;
@@ -438,6 +440,12 @@
 
 			//scene.add(treno);
 			ferrovia.add(treno);
+
+
+			fumo_geometry = new THREE.BoxGeometry(1,1,1);
+			fumo_material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+			fumo = new THREE.Mesh(fumo_geometry,fumo_material);
+			camino.add(fumo);
 
 
 //-----------------------------------------------------------------------------------FINE TRENO
@@ -817,6 +825,8 @@
 			var keyCode = e.keyCode;
 			if(keyCode == 87 && accelerazioneTreno<=1){
 				accelerazioneTreno=accelerazioneTreno+0.05;
+				altezza = Math.floor(Math.random()*3+3);
+				fumo.position.set(0,altezza,0);
 			}
 			if(keyCode == 83){
 				if(accelerazioneTreno==0.1 || accelerazioneTreno==0.2) {
@@ -826,6 +836,8 @@
 						accelerazioneTreno=accelerazioneTreno-0.2;
 					}
 				}
+				altezza = Math.floor(Math.random()*3+3);
+				fumo.position.set(0,altezza,0);
 			}
 		};
 		</script>
