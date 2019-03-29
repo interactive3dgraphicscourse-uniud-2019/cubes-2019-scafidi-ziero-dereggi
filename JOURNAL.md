@@ -1,7 +1,7 @@
 # JOURNAL del progetto di Interactive 3d Graphics:
-Scafidi Roberto A. - Ziero Samuele - De Reggi Paolo
+#Scafidi Roberto Antonino - Ziero Samuele - De Reggi Paolo
 
-Progetto per il primo parziale del corso di Interactive 3D Graphics (2018/2019) con consegna entro 8/04/2019
+Progetto per il primo parziale del corso di Interactive 3D Graphics (2018/2019) con consegna entro 8/04/2019.
 
 Team:
 Scafidi Roberto Antonino - 123125,
@@ -17,7 +17,6 @@ L'idea generale del progetto è stata quella di sviluppare una scena interattiva
 PARTENZA:
 Siamo partiti con lo sviluppo dell'idea di design attraverso il disegno grafico a mano. Siamo riusciti a coincidere le varie idee per un fine comune, costruendo un mockup su carta per poi svilupparne uno attraverso mezzi elettronici.
 
-----inserire bozza---
 ![Prima bozza](https://ibb.co/HrfBryC)
 
 PASSI DI SVILUPPO
@@ -45,7 +44,7 @@ PASSI DI SVILUPPO
 
 
 
--Correzione bug e ottimizzazione codice.
+-Correzione bug finali, inserimento commenti e ottimizzazione codice.
 
 
 
@@ -55,6 +54,8 @@ PASSI DI SVILUPPO
 
 ## Problemi riscontrati e soluzioni
 
+Per la risoluzione dei problemi abbiamo adottato il metodo Divide et Impera, suddividendo i problemi in sottoproblemi di minore complessita, cosi da suddividerci i compiti e riuscire a raggiungere un risultato nel minor tepo possibile.
 
-	- design your scene on graphed paper, deriving, for each box, the necessary translation, rotation, and scaling values. Then, you can directly code the scene in three.js
-	
+I principali problemi sono stati quelli in merito alla creazione delle leggi orarie per i movimenti degli oggetti 3D, ma siamo riusciti ad ottenere il risultato che ci aspettavamo attraverso modifiche in produzione e test sulla visibilità.
+
+Abbiamo inoltre riscontrato una inefficienza nella produzione di texture, che ci ha portato al resizing di tutte le immagini utilizzate, cosi da permettere una visualizzazione più immediata della scena, e che non comporti una attesa di caricamento eccessiva.
