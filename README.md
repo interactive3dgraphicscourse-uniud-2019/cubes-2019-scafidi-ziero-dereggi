@@ -74,7 +74,12 @@ var accelerazione=Math.sin((360/periodo_rotazione_blocco)*elapsed*Math.PI/180);
 				movimento_nuvole_now+=Math.abs(movimento_nuvole_step);
 
 ## Screenshots del progetto
-Immagini nella loro totalità
+
+![splashscreen](Screenshot/splash.png)
+![generale](Screenshot/generale.png)
+![dettagli](Screenshot/dettagli.png)
+![saluto](Screenshot/saluto.png)
+![back](Screenshot/back.png)
 
 ## Processo produttivo e planning steps
 

@@ -14,44 +14,48 @@ L'idea generale del progetto è stata quella di sviluppare una scena interattiva
 
 ## Progressi del progetto
 
-PARTENZA:
+**PARTENZA:**
 Siamo partiti con lo sviluppo dell'idea di design attraverso il disegno grafico a mano. Siamo riusciti a coincidere le varie idee per un fine comune, costruendo un mockup su carta per poi svilupparne uno attraverso mezzi elettronici.
 
 ![Prima bozza](Screenshot/bozza.png)
 
-PASSI DI SVILUPPO
+**PASSI DI SVILUPPO**
 - Abbiamo costruito dei placeholder nella scena, inserendo dei cubi neri all'interno del ground per definire gli spazi e renderci conto di come sarebbero stati posizionati i vari elementi nella scena.
 - Il passo successivo è stato quello di ricolorare gli elementi cosi da renderci conto in modo preciso cosa andava fatto. In questo modo abbiamo costituito gli elementi base: Mulino, casa, treno.
 - Sostituzione dei primi placeholder con oggetti 3D. Il primo passo è stato inserire l'oggetto mulino con il suo blocco di rotazione. Dopo aver studiato i moti di rotazione che avremmo voluto ottenere, sono state implementate le prime cinematiche anche se i movimenti al momento non risultano fluidi abbastanza.
-![Primi step](https://i.ibb.co/xFQhw26/a.png)
+![Primi step](Screenshot/placeholder.png)
 - Creazione di una legge oraria per il mulino che viene predisposto di un tempo per cui si muove inizialmente accelerando verso destra per poi decellerare e continuare per il verso opposto. Viene dunque creata una rototraslazione in quanto anche le pale procedono la loro rotazione per seguire il vento.
 - Ottimizzazione della funzione cinematica cosi da consentire un movimento fluido e naturale.
 - Inizio di attribuzione delle texure agli elementi mulino e applicazione della texture per il ground. In questo modo è stato più semplice immaginare il proseguimento della creazione degli altri oggetti.
 - Costruzione della ferrovia e quindi della traiettoria che dovrà seguire il treno. E' stato pensato attraverso la creazione di elementi "traversina" che costituiscono il supporto per la rotaia.
 - Avendo quindi costruito la traiettoria per il treno è stata implementata la funzione per intercettare il pulsante da tastiera cosi da poter gestire l'aumento o la diminuzione della velocità del treno. 
-- Modifica dei valori della traiettoria della ferrovia (inizialmente circolare), per l'alternativa ellittica, considerata più adatta al paesaggio-
+- Modifica dei valori della traiettoria della ferrovia (inizialmente circolare), per l'alternativa ellittica, considerata più adatta al paesaggio.
 - Costruzione della casa, della bandiera e dell'omino. 
+![Casa omino e bandiera](Screenshot/casa.png)
 - Costruzione della locomotiva e inserimento della legge oraria che permette al treno di muoversi all'interno della ferrovia. 
--Aggiunta elementi nuvole attraverso la combinazione di cubi posti in alto
+- Aggiunta elementi nuvole attraverso la combinazione di cubi posti in alto.
+![Nuvole](Screenshot/nuvole.png)
 - Sistemazione animazione della bandiera e dell'omino con inserimento dei vincoli per il movimento ristretto a un campo d'azione.
 - Creazione del vagone e aggiunta blocchi di contenuto al suo interno.
 - Costruzione dei vincoli per il treno e il vagone, cosi da permettere un movimento (senza possibilità di deragliare) naturale.
 - Creazione cespugli, alberi e cactus e inserimento texture 
 - Sviluppo del movimento sincronizzato dell'omino al passaggio del treno. Applicazione movimento alle nuvole e restrizione legge oraria della bandiera
--Cambio di struttura delle rotaie cosi da da rendere realistica la scena inserendo le traversine sotto la rotaia stessa.
+- Cambio di struttura delle rotaie cosi da da rendere realistica la scena inserendo le traversine sotto la rotaia stessa.
 - Sistemazione delle texture e resizing della immagini in potenza di 2 cosi da ottimizzare la visualizzazione della scena.
-- Inserimento limiti sull'accelerazione del treno che inizialmente andava in crescita esponenziale-
-- Aggiunta fumo dal caminetto del treno e implementazione attivazione unicamente nel momento in cui il treno si muove
-- Aggiunta una splashscreen che permette all'utente di apprendere le nozioni
-
-
+- Inserimento limiti sull'accelerazione del treno che inizialmente andava in crescita esponenziale.
+- Aggiunta fumo dal caminetto del treno e implementazione attivazione unicamente nel momento in cui il treno si muove.
+![Nuvole](Screenshot/treno.png)
+- Aggiunta una splashscreen che permette all'utente di apprendere le nozioni base di come muoversi nella scena.
 - Correzione bug finali, inserimento commenti e ottimizzazione codice.
-
-
 
 
 ## Scelte di implementazione
 
+Abbiamo deciso di implementare una splash-screen per dare le indicazioni all'utente dei comandi utilizzabili, attraverso una schermata in stile "The Simpson" che si dissolve attraverso uno zoom-in cosi da creare un ambiente più immersivo.
+
+Abbiamo deciso di costruire il movimento del treno in modo che l'accelerazione sia limitata ad una soglia massima e dopo permettere dopo il rilascio del tasto, una decellerazione costante fino all'arresto del treno stesso.
+
+Abbiamo deciso di sviluppare l'animazione del omino in modo dale da attivarsi automaticamente solo nel momento in cui il treno passa in prossimità della sua figura.
 
 ## Problemi riscontrati e soluzioni
 
