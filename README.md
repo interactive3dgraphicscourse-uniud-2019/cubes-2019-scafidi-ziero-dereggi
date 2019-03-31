@@ -31,12 +31,14 @@ Abbiamo deciso di inserire degli Orbit Controls in modo tale da consentire all'u
 Le animazioni principali del progetto sono state sviluppate su singole funzioni, in particolare:
 
 - **Movimento del treno+fumo:** Viene legata la motrice al vagone e posizionate secondo le leggi:
-    treno.rotation.y=(angolotreno+90)*Math.PI/180;
-	treno.position.set(41.5*Math.cos(angolotreno*Math.PI/180), 0, -32.5*Math.sin angolotreno*Math.PI/180));
-	vagone.rotation.y=(angolotreno-25+90)*Math.PI/180;
-	vagone.position.set(41.5*Math.cos((angolotreno-25)*Math.PI/180), 0, -32.5*Math.sin((angolotreno-25)*Math.PI/180));
+```js
+   			 treno.rotation.y=(angolotreno+90)*Math.PI/180;
+			treno.position.set(41.5*Math.cos(angolotreno*Math.PI/180), 0, -32.5*Math.sin angolotreno*Math.PI/180));
+			vagone.rotation.y=(angolotreno-25+90)*Math.PI/180;
+			vagone.position.set(41.5*Math.cos((angolotreno-25)*Math.PI/180), 0, -32.5*Math.sin((angolotreno-25)*Math.PI/180));
+```
 E' stato inoltre ovviato al problema dell'approssimazione dei floating point attraverso il controllo che ad esempio viene fatto per l'accelerazione dell'oggetto nel binario (in questa porzione di sorgente si può inoltre notare la creazione dell'animazione del fumo):
-<code>
+```js
 		if(accelerazioneTreno>0) {
 				accelerazioneTreno=accelerazioneTreno-0.01;
 				// per ovviare ai problemi con i floating point
@@ -46,36 +48,36 @@ E' stato inoltre ovviato al problema dell'approssimazione dei floating point att
 				var altezzaFumo = Math.floor(Math.random()*3+3);
 				fumo.position.set(0,altezzaFumo,0);
 			}
-</code>
+```
 - **Movimento del mulino:** Viene effettuata una rotazione del blocco coda + pale sull'asse della struttura del mulino e inoltre vengono fatte ruotare le pale sull'asse orizzontale; nota interessante il delay applicato alla rotazione:
-<code>
+```js
 	var elapsed=(Date.now()-startedTime)/1000;
 			if(elapsed>periodo_rotazione_blocco) {
 				startedTime=Date.now();
 			}
-</code>
+```
 - **Movimento dell'omino:** L'animazione dell'omino è caratterizzata da un range che viene applicato al braccio per non effettuare un movimento innaturale. Viene inoltre effettuata l'animazione solo nel momento in cui l'angolo del treno si avvicina e raggiunge quello dell'omino stesso; qui una porzione di codice in cui si può notare l'applicazione delle leggi orarie per limitare l'azione del braccio.
-<code>
+```js
        if(angoloMod>0 && angoloMod<=30) {
 					vincoloBraccio.rotation.z=(140-(140/30)*angoloMod)*Math.PI/180;
 				}
 				if(angoloMod>30 && angoloMod<60) {
 					vincoloBraccio.rotation.z=(-(140/30)*(-angoloMod%30))*Math.PI/180;
 				}
-</code>
+```
 - **Movimento della bandiera:** La legge oraria della bandiera viene applicata come nel caso dell'omino, per un range ristretto di movimenti. Viene riportato un esempio di accelerazione-
-<code>
+```js
 var accelerazione=Math.sin((360/periodo_rotazione_blocco)*elapsed*Math.PI/180);
-</code>	
+```
 - **Movimento delle nuvole:** PEr quanto riguarda il movimento delle nuvole, l'animazione viene applicata a step di azione. Nell'esempio sottostante possiamo notare l'applicazione della legge a tutte le 4 porzioni di elemento.
-<code>
+```js
 				nuvole[0].position.y += movimento_nuvole_step;
 				nuvole[1].position.y += movimento_nuvole_step;
 				nuvole[2].position.y -= movimento_nuvole_step;
 				nuvole[3].position.y -= movimento_nuvole_step;
 
 				movimento_nuvole_now+=Math.abs(movimento_nuvole_step);
-</code>
+```
 
 ## Screenshots del progetto
 
