@@ -1,5 +1,5 @@
 # PER UN PUGNO DI BOXES
-#Scafidi Roberto Antonino - Ziero Samuele - De Reggi Paolo
+Scafidi Roberto Antonino - Ziero Samuele - De Reggi Paolo
 
 Progetto per il primo parziale del corso di Interactive 3D Graphics (2018/2019) con consegna entro 8/04/2019.
 
@@ -18,24 +18,27 @@ Durante la simulazione sarà possibile guardare l'ambiente circostante, caratter
 Abbiamo deciso di inserire degli Orbit Controls in modo tale da consentire all'utente, data la poca interattività col sistema, di analizzare attraverso le varie inquadrature fatte con il movimento del mouse e gli zoom, di analizzare la scena e guardare il paesaggio. A tal proposito abbiamo quindi preferito non abilitare anche i comandi "freccia Su" e "freccia Giu" per i movimenti del treno, cosi da poter contemporaneamente muovere e sposare il punto di vista della camera.
 
 ### Descrizione degli elementi
-**Treno:** E' costituito da 6 blocchi 3D per la motrice e 6 per il vagone. E' costituito da 2 set di ruote posizionate al di sotto dei blocchi e da 8 cubi all'interno del vagone.
-**Rotaia:** E' caratterizzata da 100 traversine posizionate in modo ellittico al centro della scena. Per il posizionamento è stata una formula matematica che permette l'equo distanziamento degli elementi nell'ambiente.
-**Mulino:** E' costituito da una base fissa e un blocco mobile rototraslatorio. E' posizionato al centro della scena ed è caratterizzato da 12 pale rotanti.
-**Casa:** E' un elemento fisso della scena; caratterizzato da 5 blocchi, che rappresentano rispettivamente la struttura principale, il tetto, la porta e la finestra.
-**Omino:** E' caratterizzato da 8 blocchi, costituendo un oggetto 3d il cui unimo movimento è quello del braccio destro.
-**Bandiera:** E' costituita da 3 elementi, ed è fissa sulla posizione dell'asta.
-**Arbusti:** Sono caratterizzati dall'oggetto cactus, cespuglio e albero. Nella scena vengono clonati e posizionati in modo sparso nell'ambiente
-**Nuvole:** Sono caratterizzate da 12 cubi posizionati ad incastro e vengono clonate 4 volte per poi venir sospese in alto nella scena.
+- **Treno:** E' costituito da 6 blocchi 3D per la motrice e 6 per il vagone. E' costituito da 2 set di ruote posizionate al di sotto dei blocchi e da 8 cubi all'interno del vagone.
+- **Rotaia:** E' caratterizzata da 100 traversine posizionate in modo ellittico al centro della scena. Per il posizionamento è stata una formula matematica che permette l'equo distanziamento degli elementi nell'ambiente.
+- **Mulino:** E' costituito da una base fissa e un blocco mobile rototraslatorio. E' posizionato al centro della scena ed è caratterizzato da 12 pale rotanti.
+- **Casa:** E' un elemento fisso della scena; caratterizzato da 5 blocchi, che rappresentano rispettivamente la struttura principale, il tetto, la porta e la finestra.
+- **Omino:** E' caratterizzato da 8 blocchi, costituendo un oggetto 3d il cui unimo movimento è quello del braccio destro.
+- **Bandiera:** E' costituita da 3 elementi, ed è fissa sulla posizione dell'asta.
+- **Arbusti:** Sono caratterizzati dall'oggetto cactus, cespuglio e albero. Nella scena vengono clonati e posizionati in modo sparso nell'ambiente
+- **Nuvole:** Sono caratterizzate da 12 cubi posizionati ad incastro e vengono clonate 4 volte per poi venir sospese in alto nella scena.
 
 ### Animazioni
 Le animazioni principali del progetto sono state sviluppate su singole funzioni, in particolare:
 
-**Movimento del treno+fumo:** Viene legata la motrice al vagone e posizionate secondo le leggi:
-			treno.rotation.y=(angolotreno+90)*Math.PI/180;
-			treno.position.set(41.5*Math.cos(angolotreno*Math.PI/180), 0, -32.5*Math.sin(angolotreno*Math.PI/180));
+- **Movimento del treno+fumo:** Viene legata la motrice al vagone e posizionate secondo le leggi:
+   <code>
+   			 treno.rotation.y=(angolotreno+90)*Math.PI/180;
+			treno.position.set(41.5*Math.cos(angolotreno*Math.PI/180), 0, -32.5*Math.sin angolotreno*Math.PI/180));
 			vagone.rotation.y=(angolotreno-25+90)*Math.PI/180;
 			vagone.position.set(41.5*Math.cos((angolotreno-25)*Math.PI/180), 0, -32.5*Math.sin((angolotreno-25)*Math.PI/180));
+	</code>
 E' stato inoltre ovviato al problema dell'approssimazione dei floating point attraverso il controllo che ad esempio viene fatto per l'accelerazione dell'oggetto nel binario (in questa porzione di sorgente si può inoltre notare la creazione dell'animazione del fumo):
+<code>
 		if(accelerazioneTreno>0) {
 				accelerazioneTreno=accelerazioneTreno-0.01;
 				// per ovviare ai problemi con i floating point
@@ -45,34 +48,36 @@ E' stato inoltre ovviato al problema dell'approssimazione dei floating point att
 				var altezzaFumo = Math.floor(Math.random()*3+3);
 				fumo.position.set(0,altezzaFumo,0);
 			}
-
-**Movimento del mulino:** Viene effettuata una rotazione del blocco coda + pale sull'asse della struttura del mulino e inoltre vengono fatte ruotare le pale sull'asse orizzontale; nota interessante il delay applicato alla rotazione:
+</code>
+- **Movimento del mulino:** Viene effettuata una rotazione del blocco coda + pale sull'asse della struttura del mulino e inoltre vengono fatte ruotare le pale sull'asse orizzontale; nota interessante il delay applicato alla rotazione:
+<code>
 	var elapsed=(Date.now()-startedTime)/1000;
 			if(elapsed>periodo_rotazione_blocco) {
 				startedTime=Date.now();
 			}
-
-**Movimento dell'omino:** L'animazione dell'omino è caratterizzata da un range che viene applicato al braccio per non effettuare un movimento innaturale. Viene inoltre effettuata l'animazione solo nel momento in cui l'angolo del treno si avvicina e raggiunge quello dell'omino stesso; qui una porzione di codice in cui si può notare l'applicazione delle leggi orarie per limitare l'azione del braccio.
+</code>
+- **Movimento dell'omino:** L'animazione dell'omino è caratterizzata da un range che viene applicato al braccio per non effettuare un movimento innaturale. Viene inoltre effettuata l'animazione solo nel momento in cui l'angolo del treno si avvicina e raggiunge quello dell'omino stesso; qui una porzione di codice in cui si può notare l'applicazione delle leggi orarie per limitare l'azione del braccio.
+<code>
        if(angoloMod>0 && angoloMod<=30) {
 					vincoloBraccio.rotation.z=(140-(140/30)*angoloMod)*Math.PI/180;
 				}
 				if(angoloMod>30 && angoloMod<60) {
 					vincoloBraccio.rotation.z=(-(140/30)*(-angoloMod%30))*Math.PI/180;
 				}
-
-**Movimento della bandiera:** La legge oraria della bandiera viene applicata come nel caso dell'omino, per un range ristretto di movimenti. Viene riportato un esempio di accelerazione-
-
+</code>
+- **Movimento della bandiera:** La legge oraria della bandiera viene applicata come nel caso dell'omino, per un range ristretto di movimenti. Viene riportato un esempio di accelerazione-
+<code>
 var accelerazione=Math.sin((360/periodo_rotazione_blocco)*elapsed*Math.PI/180);
-			
-**Movimento delle nuvole:** PEr quanto riguarda il movimento delle nuvole, l'animazione viene applicata a step di azione. Nell'esempio sottostante possiamo notare l'applicazione della legge a tutte le 4 porzioni di elemento.
-
+</code>	
+- **Movimento delle nuvole:** PEr quanto riguarda il movimento delle nuvole, l'animazione viene applicata a step di azione. Nell'esempio sottostante possiamo notare l'applicazione della legge a tutte le 4 porzioni di elemento.
+<code>
 				nuvole[0].position.y += movimento_nuvole_step;
 				nuvole[1].position.y += movimento_nuvole_step;
 				nuvole[2].position.y -= movimento_nuvole_step;
 				nuvole[3].position.y -= movimento_nuvole_step;
 
 				movimento_nuvole_now+=Math.abs(movimento_nuvole_step);
-
+</code>
 ## Screenshots del progetto
 
 ![splashscreen](Screenshot/splash.png)
