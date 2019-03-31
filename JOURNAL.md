@@ -1,5 +1,5 @@
-# JOURNAL del progetto di Interactive 3d Graphics:
-#Scafidi Roberto Antonino - Ziero Samuele - De Reggi Paolo
+# JOURNAL del progetto di Interactive 3D Graphics:
+Scafidi Roberto Antonino - Ziero Samuele - De Reggi Paolo
 
 Progetto per il primo parziale del corso di Interactive 3D Graphics (2018/2019) con consegna entro 8/04/2019.
 
@@ -17,9 +17,7 @@ L'idea generale del progetto è stata quella di sviluppare una scena interattiva
 PARTENZA:
 Siamo partiti con lo sviluppo dell'idea di design attraverso il disegno grafico a mano. Siamo riusciti a coincidere le varie idee per un fine comune, costruendo un mockup su carta per poi svilupparne uno attraverso mezzi elettronici.
 
-![Prima bozza](https://ibb.co/HrfBryC)
-
-![testo alt](cubes-2019-scafidi-ziero-dereggi\Screenshot.jpg)
+![Prima bozza](https://ibb.co/XysVMXn.jpg)
 
 PASSI DI SVILUPPO
 - Abbiamo costruito dei placeholder nella scena, inserendo dei cubi neri all'interno del ground per definire gli spazi e renderci conto di come sarebbero stati posizionati i vari elementi nella scena.
@@ -36,18 +34,18 @@ PASSI DI SVILUPPO
 - Costruzione della locomotiva e inserimento della legge oraria che permette al treno di muoversi all'interno della ferrovia. 
 -Aggiunta elementi nuvole attraverso la combinazione di cubi posti in alto
 - Sistemazione animazione della bandiera e dell'omino con inserimento dei vincoli per il movimento ristretto a un campo d'azione.
--Creazione del vagone e aggiunta blocchi di contenuto al suo interno.
--Costruzione dei vincoli per il treno e il vagone, cosi da permettere un movimento (senza possibilità di deragliare) naturale.
+- Creazione del vagone e aggiunta blocchi di contenuto al suo interno.
+- Costruzione dei vincoli per il treno e il vagone, cosi da permettere un movimento (senza possibilità di deragliare) naturale.
 - Creazione cespugli, alberi e cactus e inserimento texture 
 - Sviluppo del movimento sincronizzato dell'omino al passaggio del treno. Applicazione movimento alle nuvole e restrizione legge oraria della bandiera
 -Cambio di struttura delle rotaie cosi da da rendere realistica la scena inserendo le traversine sotto la rotaia stessa.
 - Sistemazione delle texture e resizing della immagini in potenza di 2 cosi da ottimizzare la visualizzazione della scena.
 - Inserimento limiti sull'accelerazione del treno che inizialmente andava in crescita esponenziale-
 - Aggiunta fumo dal caminetto del treno e implementazione attivazione unicamente nel momento in cui il treno si muove
--Aggiunta una splashscreen che permette all'utente di apprendere le nozioni
+- Aggiunta una splashscreen che permette all'utente di apprendere le nozioni
 
 
--Correzione bug finali, inserimento commenti e ottimizzazione codice.
+- Correzione bug finali, inserimento commenti e ottimizzazione codice.
 
 
 
