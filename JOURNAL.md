@@ -43,7 +43,8 @@ PASSI DI SVILUPPO
 -Cambio di struttura delle rotaie cosi da da rendere realistica la scena inserendo le traversine sotto la rotaia stessa.
 - Sistemazione delle texture e resizing della immagini in potenza di 2 cosi da ottimizzare la visualizzazione della scena.
 - Inserimento limiti sull'accelerazione del treno che inizialmente andava in crescita esponenziale-
-
+- Aggiunta fumo dal caminetto del treno e implementazione attivazione unicamente nel momento in cui il treno si muove
+-Aggiunta una splashscreen che permette all'utente di apprendere le nozioni
 
 
 -Correzione bug finali, inserimento commenti e ottimizzazione codice.
