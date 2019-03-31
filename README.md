@@ -32,16 +32,15 @@ Le animazioni principali del progetto sono state sviluppate su singole funzioni,
 
 - **Movimento del treno+fumo:** Viene legata la motrice al vagone e posizionate secondo le leggi:
 ```js
-   			 treno.rotation.y=(angolotreno+90)*Math.PI/180;
-			treno.position.set(41.5*Math.cos(angolotreno*Math.PI/180), 0, -32.5*Math.sin angolotreno*Math.PI/180));
-			vagone.rotation.y=(angolotreno-25+90)*Math.PI/180;
-			vagone.position.set(41.5*Math.cos((angolotreno-25)*Math.PI/180), 0, -32.5*Math.sin((angolotreno-25)*Math.PI/180));
+treno.rotation.y=(angolotreno+90)*Math.PI/180;
+treno.position.set(41.5*Math.cos(angolotreno*Math.PI/180), 0, -32.5*Math.sin angolotreno*Math.PI/180));
+vagone.rotation.y=(angolotreno-25+90)*Math.PI/180;
+vagone.position.set(41.5*Math.cos((angolotreno-25)*Math.PI/180), 0, -32.5*Math.sin(angolotreno-25)*Math.PI/180));
 ```
 E' stato inoltre ovviato al problema dell'approssimazione dei floating point attraverso il controllo che ad esempio viene fatto per l'accelerazione dell'oggetto nel binario (in questa porzione di sorgente si può inoltre notare la creazione dell'animazione del fumo):
 ```js
 		if(accelerazioneTreno>0) {
 				accelerazioneTreno=accelerazioneTreno-0.01;
-				// per ovviare ai problemi con i floating point
 				if(accelerazioneTreno<0.01) {
 					accelerazioneTreno=0;
 				}
