@@ -47,7 +47,8 @@ Siamo partiti con lo sviluppo dell'idea di design attraverso il disegno grafico 
 - Aggiunta fumo dal caminetto del treno e implementazione attivazione unicamente nel momento in cui il treno si muove.
 ![Nuvole](Screenshot/treno.png)
 - Aggiunta una splashscreen che permette all'utente di apprendere le nozioni base di come muoversi nella scena.
-- Aggiunta heigthmap alla scena che consente di visualizzare un ground differente alla scena
+- Aggiunta heigthmap alla scena che consente di visualizzare un ground differente alla scena.
+- Ottimizzazione heigthmap per evitare la riduzione dei fps.
 - Correzione bug finali, inserimento commenti e ottimizzazione codice.
 
 
@@ -67,4 +68,4 @@ I principali problemi sono stati quelli in merito alla creazione delle leggi ora
 
 Abbiamo inoltre riscontrato una inefficienza nella produzione di texture, che ci ha portato al resizing di tutte le immagini utilizzate, cosi da permettere una visualizzazione più immediata della scena, e che non comporti una attesa di caricamento eccessiva.
 
-Abbiamo riscontrato un grosso problema per quanto riguarda l'implementazione della heigthmap; Abbiamo notato che per l'inserimento della stessa, anche al piccolo aumentare del numero di cubi che andavano a inserirsi nel ground, si denotava un abbassamento considerevole del frame rate per secondo. La soluzione è stata dunque quella di aumentare la dimensione dei cubi e quindi di ridurre la scala dei livelli che si andavano a formare in base alla gradazioni di grigio.
+Abbiamo riscontrato un grosso problema per quanto riguarda l'implementazione della heigthmap; Abbiamo notato che per l'inserimento della stessa, anche al piccolo aumentare del numero di cubi che andavano a inserirsi nel ground, si denotava un abbassamento considerevole del frame rate per secondo. La soluzione è stata dunque quella di studiare la creazione di cubi al variare della gradazione di grigio e quindi costruire una heigthmap leggera ed efficiente.
