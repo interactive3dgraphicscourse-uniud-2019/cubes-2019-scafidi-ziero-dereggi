@@ -94,6 +94,7 @@ Per lo sviluppo del progetto abbiamo seguito un metodo Divide et Impera in cui l
 - Sostituizione man mano degli elementi fittizi con le versioni finali;
 - Organizzazione generale degli elementi;
 - Ottimizzazione delle leggi e calcolo efficienza del codice;
+- Creazione della heatmap e fase di testing;
 - Pulizia codice e organizzazione degli elementi;
 - Creazione relazione del progetto.
 
