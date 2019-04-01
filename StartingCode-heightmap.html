@@ -100,14 +100,17 @@
 				// load img source
 				//img.src = "textures/heightmap-test.png";
 				console.log("ciao");
-				console.log(data[0]);
 				console.log(data[12999]);
-			}
-    // plane
-    var geometry = new THREE.PlaneBufferGeometry(130,100,1,1);
+
+
+				    // plane
+    var geometry = new THREE.PlaneGeometry(130,100,1,1);
     var texture = new THREE.TextureLoader().load( 'textures/deadGrass.jpg' );
     var material = new THREE.MeshBasicMaterial( { map: texture } );
     plane = new THREE.Mesh( geometry, material );
+
+    			plane.position.y = -0.5;
+			plane.rotation.x = -Math.PI/2;
      
     //set height of vertices
     for ( var i = 0; i<plane.geometry.vertices.length; i++ ) {
@@ -115,6 +118,8 @@
     }
  
     scene.add(plane);
+			}
+
 			
 		}
 		
