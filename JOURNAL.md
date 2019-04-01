@@ -21,7 +21,7 @@ Siamo partiti con lo sviluppo dell'idea di design attraverso il disegno grafico 
 
 **PASSI DI SVILUPPO**
 - Abbiamo costruito dei placeholder nella scena, inserendo dei cubi neri all'interno del ground per definire gli spazi e renderci conto di come sarebbero stati posizionati i vari elementi nella scena.
-- Il passo successivo è stato quello di ricolorare gli elementi cosi da renderci conto in modo preciso cosa andava fatto. In questo modo abbiamo costituito gli elementi base: Mulino, casa, treno.
+- Il passo successivo è stato quello di ricolorare gli elementi cosi da renderci conto in modo preciso cosa andava fatto. In questo modo abbiamo costituito gli elementi base: mulino, casa, treno.
 - Sostituzione dei primi placeholder con oggetti 3D. Il primo passo è stato inserire l'oggetto mulino con il suo blocco di rotazione. Dopo aver studiato i moti di rotazione che avremmo voluto ottenere, sono state implementate le prime cinematiche anche se i movimenti al momento non risultano fluidi abbastanza.
 ![Primi step](Screenshot/placeholder.png)
 - Creazione di una legge oraria per il mulino che viene predisposto di un tempo per cui si muove inizialmente accelerando verso destra per poi decellerare e continuare per il verso opposto. Viene dunque creata una rototraslazione in quanto anche le pale procedono la loro rotazione per seguire il vento.
@@ -53,13 +53,13 @@ Siamo partiti con lo sviluppo dell'idea di design attraverso il disegno grafico 
 
 Abbiamo deciso di implementare una splash-screen per dare le indicazioni all'utente dei comandi utilizzabili, attraverso una schermata in stile "The Simpson" che si dissolve attraverso uno zoom-in cosi da creare un ambiente più immersivo.
 
-Abbiamo deciso di costruire il movimento del treno in modo che l'accelerazione sia limitata ad una soglia massima e dopo permettere dopo il rilascio del tasto, una decellerazione costante fino all'arresto del treno stesso.
+Abbiamo deciso di costruire il movimento del treno in modo che l'accelerazione sia limitata ad una soglia massima, e permettere, dopo il rilascio del tasto, una decellerazione costante fino all'arresto del treno stesso.
 
-Abbiamo deciso di sviluppare l'animazione del omino in modo dale da attivarsi automaticamente solo nel momento in cui il treno passa in prossimità della sua figura.
+Abbiamo deciso di sviluppare l'animazione del omino in modo tale da attivarsi automaticamente solo nel momento in cui il treno passa in prossimità della sua figura.
 
 ## Problemi riscontrati e soluzioni
 
-Per la risoluzione dei problemi abbiamo adottato il metodo Divide et Impera, suddividendo i problemi in sottoproblemi di minore complessita, cosi da suddividerci i compiti e riuscire a raggiungere un risultato nel minor tepo possibile.
+Per la risoluzione dei problemi abbiamo adottato il metodo Divide et Impera, suddividendo i problemi in sottoproblemi di minore complessita, cosi da suddividerci i compiti e riuscire a raggiungere un risultato nel minor tempo possibile.
 
 I principali problemi sono stati quelli in merito alla creazione delle leggi orarie per i movimenti degli oggetti 3D, ma siamo riusciti ad ottenere il risultato che ci aspettavamo attraverso modifiche in produzione e test sulla visibilità.
 

@@ -9,18 +9,18 @@ Ziero Samuele - 107201,
 De Reggi Paolo - 123783.
 
 ## Descrizione generale del progetto
-Il progetto consiste in una applicazione web caratterizzata da un mini-gioco di simulazione di una trenino su rotaia. L'idea è quella di realizzare un ambiente in stile Far west, caratterizzato da pochi elementi interattivi e ulteriori elementi automatici cosi da fornire all'utente una esperienza di "visita" di un ambiente. A tal proposito abbiamo infatti costruito numerosi elementi automatici cosi da simulare una sorta di parco a tema dove si possono vedere elementi caratteristici per l'appunto del tema stesso e interagire, anche se in minima parte, con gli oggetti.
+Il progetto consiste in una applicazione web caratterizzata da un mini-gioco di simulazione di un trenino su rotaia. L'idea è quella di realizzare un ambiente in stile Far West, caratterizzato da pochi elementi interattivi e ulteriori elementi automatici cosi da fornire all'utente una esperienza di "visita" di un ambiente. A tal proposito abbiamo infatti costruito numerosi elementi automatici cosi da simulare una sorta di parco a tema dove si possono vedere elementi caratteristici per l'appunto del tema stesso e interagire, anche se in minima parte, con gli oggetti.
 
-In questa app, l'esperienza parte con una splashscreen contenente le istruzioni, cosi da informare l'utente che potrà controllare il treno e il suo vagone attraverso movimenti di accelerazione e decellerazione e guardare gli effetti che questo ha nel paesaggio. L'utente avrà a disposizione i comandi "W" e "S", rispettivamente per accelerare e decellerare il treno.
+In questa app, l'esperienza parte con una splashscreen contenente le istruzioni, cosi da informare l'utente che potrà controllare il treno e il suo vagone attraverso movimenti di accelerazione e decellerazione, e potrà guardare gli effetti che questo ha nel paesaggio. L'utente avrà a disposizione i comandi "W" e "S", rispettivamente per accelerare e decelerare il treno.
 
-Durante la simulazione sarà possibile guardare l'ambiente circostante, caratterizzato dalla presenza di elementi animali quali nuvole, mulino, bandiera ecc. In particolare, alcuni di essi si muoveranno in base all'azione del treno, gestita dall'utente (come il saluto da parte dell'omino quando il treno passa nelle sue vicinanze o il fumo dalla ciminiera quando il treno è in azione). 
+Durante la simulazione sarà possibile guardare l'ambiente circostante, caratterizzato dalla presenza di elementi quali nuvole, mulino, bandiera, etc. In particolare, alcuni di essi si muoveranno in base all'azione del treno, gestita dall'utente (come il saluto da parte dell'omino quando il treno passa nelle sue vicinanze o il fumo dalla ciminiera quando il treno è in azione). 
 
-Abbiamo deciso di inserire degli Orbit Controls in modo tale da consentire all'utente, data la poca interattività col sistema, di analizzare attraverso le varie inquadrature fatte con il movimento del mouse e gli zoom, di analizzare la scena e guardare il paesaggio. A tal proposito abbiamo quindi preferito non abilitare anche i comandi "freccia Su" e "freccia Giu" per i movimenti del treno, cosi da poter contemporaneamente muovere e sposare il punto di vista della camera.
+Abbiamo deciso di inserire degli Orbit Controls in modo tale da consentire all'utente, data la poca interattività col sistema, di analizzare la scena e guardare il paesaggio attraverso le varie inquadrature fatte tramite il movimento del mouse e gli zoom. A tal proposito abbiamo preferito non abilitare anche i comandi "freccia Su" e "freccia Giu" per i movimenti del treno, cosi da poter contemporaneamente muovere e spostare il punto di vista della camera.
 
 ### Descrizione degli elementi
 - **Treno:** E' costituito da 6 blocchi 3D per la motrice e 6 per il vagone. E' costituito da 2 set di ruote posizionate al di sotto dei blocchi e da 8 cubi all'interno del vagone.
-- **Rotaia:** E' caratterizzata da 100 traversine posizionate in modo ellittico al centro della scena. Per il posizionamento è stata una formula matematica che permette l'equo distanziamento degli elementi nell'ambiente.
-- **Mulino:** E' costituito da una base fissa e un blocco mobile rototraslatorio. E' posizionato al centro della scena ed è caratterizzato da 12 pale rotanti.
+- **Rotaia:** E' caratterizzata da 100 traversine posizionate in modo ellittico al centro della scena. Per il posizionamento è stata usata una formula matematica che permette l'equo distanziamento degli elementi nell'ambiente.
+- **Mulino:** E' costituito da una base fissa e da un blocco mobile rototraslatorio. E' posizionato al centro della scena ed è caratterizzato da 12 pale rotanti.
 - **Casa:** E' un elemento fisso della scena; caratterizzato da 5 blocchi, che rappresentano rispettivamente la struttura principale, il tetto, la porta e la finestra.
 - **Omino:** E' caratterizzato da 8 blocchi, costituendo un oggetto 3d il cui unimo movimento è quello del braccio destro.
 - **Bandiera:** E' costituita da 3 elementi, ed è fissa sulla posizione dell'asta.
@@ -44,7 +44,7 @@ E' stato inoltre ovviato al problema dell'approssimazione dei floating point att
 				if(accelerazioneTreno<0.01) {
 					accelerazioneTreno=0;
 				}
-				var altezzaFumo = Math.floor(Math.random()*3+3);
+				altezzaFumo = Math.floor(Math.random()*3+3);
 				fumo.position.set(0,altezzaFumo,0);
 			}
 ```
