@@ -28,6 +28,7 @@ Siamo partiti con lo sviluppo dell'idea di design attraverso il disegno grafico 
 - Ottimizzazione della funzione cinematica cosi da consentire un movimento fluido e naturale.
 - Inizio di attribuzione delle texure agli elementi mulino e applicazione della texture per il ground. In questo modo è stato più semplice immaginare il proseguimento della creazione degli altri oggetti.
 - Costruzione della ferrovia e quindi della traiettoria che dovrà seguire il treno. E' stato pensato attraverso la creazione di elementi "traversina" che costituiscono il supporto per la rotaia.
+![Treno beta](Screenshot/trenino_beta.png)
 - Avendo quindi costruito la traiettoria per il treno è stata implementata la funzione per intercettare il pulsante da tastiera cosi da poter gestire l'aumento o la diminuzione della velocità del treno. 
 - Modifica dei valori della traiettoria della ferrovia (inizialmente circolare), per l'alternativa ellittica, considerata più adatta al paesaggio.
 - Costruzione della casa, della bandiera e dell'omino. 
@@ -46,6 +47,7 @@ Siamo partiti con lo sviluppo dell'idea di design attraverso il disegno grafico 
 - Aggiunta fumo dal caminetto del treno e implementazione attivazione unicamente nel momento in cui il treno si muove.
 ![Nuvole](Screenshot/treno.png)
 - Aggiunta una splashscreen che permette all'utente di apprendere le nozioni base di come muoversi nella scena.
+- Aggiunta heigthmap alla scena che consente di visualizzare un ground differente alla scena
 - Correzione bug finali, inserimento commenti e ottimizzazione codice.
 
 
@@ -64,3 +66,5 @@ Per la risoluzione dei problemi abbiamo adottato il metodo Divide et Impera, sud
 I principali problemi sono stati quelli in merito alla creazione delle leggi orarie per i movimenti degli oggetti 3D, ma siamo riusciti ad ottenere il risultato che ci aspettavamo attraverso modifiche in produzione e test sulla visibilità.
 
 Abbiamo inoltre riscontrato una inefficienza nella produzione di texture, che ci ha portato al resizing di tutte le immagini utilizzate, cosi da permettere una visualizzazione più immediata della scena, e che non comporti una attesa di caricamento eccessiva.
+
+Abbiamo riscontrato un grosso problema per quanto riguarda l'implementazione della heigthmap; Abbiamo notato che per l'inserimento della stessa, anche al piccolo aumentare del numero di cubi che andavano a inserirsi nel ground, si denotava un abbassamento considerevole del frame rate per secondo. La soluzione è stata dunque quella di aumentare la dimensione dei cubi e quindi di ridurre la scala dei livelli che si andavano a formare in base alla gradazioni di grigio.
