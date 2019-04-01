@@ -27,10 +27,13 @@
 		
 		var scene, camera, renderer, controls, stats;
 
-		var startedTime = 0;
+		var startedTime_vento = 0;
 		var accelerazioneTreno = 0.1;
 		var angolotreno=-50;
 		var lastUpdated_angle=0;
+		var refreshTime=10; //millisecondi
+		var movimento_treno_lastUpdate=0;
+
 		var movimento_nuvole=3;
 		var movimento_nuvole_now=0;
 		var movimento_nuvole_step=0.01;
@@ -74,7 +77,6 @@
 		var spondaCorta_geometry, spondaLunga_geometry, spondaAnteriore, spondaPosteriore, spondaLateraleDx, spondaLateraleSx;
 		var gancio, gancio_geometry;
 		var carico, caricoVagone, carico_geometry, carico_texture, carico_material;
-		var nuvola, nuvole, nuvola_geometry, nuvola_texture, nuvola_material, blocconuvola;
 
 		
 		function Start() {
@@ -734,7 +736,7 @@
 			controls = new THREE.OrbitControls( camera );
 			controls.addEventListener( 'change', Render );
 			
-			startedTime=Date.now();
+			startedTime_vento=Date.now();
 
 			
 		}
@@ -757,7 +759,7 @@
 		}
 
 		function movimentoNuvole(){
-			if(Date.now()!=movimento_nuvole_lastUpdated) {
+			if(Date.now()>=(movimento_nuvole_lastUpdated+refreshTime)) {
 				nuvole[0].position.y += movimento_nuvole_step;
 				nuvole[1].position.y += movimento_nuvole_step;
 				nuvole[2].position.y -= movimento_nuvole_step;
@@ -786,49 +788,53 @@
 		}
 
 		function ruotaBandiera(){
-			var elapsed=(Date.now()-startedTime)/1000;
+			var elapsed=(Date.now()-startedTime_vento)/1000;
 			if(elapsed>periodo_rotazione_blocco) {
-				startedTime=Date.now();
+				startedTime_vento=Date.now();
 			}
 			var accelerazione=Math.sin((360/periodo_rotazione_blocco)*elapsed*Math.PI/180);
 			vincoloAsta.rotation.y += accelerazione*1*Math.PI/180;
 		}
 
 		function cinematicaMulino() {
-			var elapsed=(Date.now()-startedTime)/1000;
+			var elapsed=(Date.now()-startedTime_vento)/1000;
 			if(elapsed>periodo_rotazione_blocco) {
-				startedTime=Date.now();
+				startedTime_vento=Date.now();
 			}
 			var accelerazione=Math.sin((360/periodo_rotazione_blocco)*elapsed*Math.PI/180);
 			vincolo_base_mulino.rotation.y += accelerazione*1*Math.PI/180;
 			vincolo_pale_mulino.rotation.z += accelerazione*5*Math.PI/180;
 		}
-		function cinematicaTreno() {
-			treno.rotation.y=(angolotreno+90)*Math.PI/180;
-			treno.position.set(41.5*Math.cos(angolotreno*Math.PI/180), 0, -32.5*Math.sin(angolotreno*Math.PI/180));
-			vagone.rotation.y=(angolotreno-25+90)*Math.PI/180;
-			vagone.position.set(41.5*Math.cos((angolotreno-25)*Math.PI/180), 0, -32.5*Math.sin((angolotreno-25)*Math.PI/180));
 
-			angolotreno=angolotreno+accelerazioneTreno;
-			if(accelerazioneTreno>0) {
-				accelerazioneTreno=accelerazioneTreno-0.01;
-				// per ovviare ai problemi con i floating point
-				if(accelerazioneTreno<0.01) {
-					accelerazioneTreno=0;
+		function cinematicaTreno() {
+			if(Date.now()>=(movimento_treno_lastUpdate+refreshTime)) { 
+				treno.rotation.y=(angolotreno+90)*Math.PI/180;
+				treno.position.set(41.5*Math.cos(angolotreno*Math.PI/180), 0, -32.5*Math.sin(angolotreno*Math.PI/180));
+				vagone.rotation.y=(angolotreno-25+90)*Math.PI/180;
+				vagone.position.set(41.5*Math.cos((angolotreno-25)*Math.PI/180), 0, -32.5*Math.sin((angolotreno-25)*Math.PI/180));
+
+				angolotreno=angolotreno+accelerazioneTreno;
+				if(accelerazioneTreno>0) {
+					accelerazioneTreno=accelerazioneTreno-0.01;
+					// per ovviare ai problemi con i floating point
+					if(accelerazioneTreno<0.01) {
+						accelerazioneTreno=0;
+					}
+					var altezzaFumo = Math.floor(Math.random()*3+3);
+					fumo.position.set(0,altezzaFumo,0);
 				}
-				var altezzaFumo = Math.floor(Math.random()*3+3);
-				fumo.position.set(0,altezzaFumo,0);
+				if(accelerazioneTreno<0) {
+					accelerazioneTreno=accelerazioneTreno+0.02;
+					var altezzaFumo = Math.floor(Math.random()*3+3);
+					fumo.position.set(0,altezzaFumo,0);
+				}
+				if(accelerazioneTreno==0) {
+					fumo.position.set(0,0,0);
+				}
+				angolotreno=angolotreno+accelerazioneTreno;
+				//console.log(accelerazioneTreno);
+				movimento_treno_lastUpdate=Date.now();
 			}
-			if(accelerazioneTreno<0) {
-				accelerazioneTreno=accelerazioneTreno+0.02;
-				var altezzaFumo = Math.floor(Math.random()*3+3);
-				fumo.position.set(0,altezzaFumo,0);
-			}
-			if(accelerazioneTreno==0) {
-				fumo.position.set(0,0,0);
-			}
-			angolotreno=angolotreno+accelerazioneTreno;
-			//console.log(accelerazioneTreno);
 		}
 		
 		Start();
