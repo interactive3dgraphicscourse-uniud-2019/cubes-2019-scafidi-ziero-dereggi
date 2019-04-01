@@ -168,10 +168,15 @@
 			}
 
 			function setPositionModelli_afterHeightmap() {
-				mulino.position.set(-10, 0, 0);
-				casa.position.set(0,0,0);
-				bandiera.position.set(55,0,-8);
-				omino.position.set(48,0,-18);
+				mulino.position.set(-10, getYcoord(data,-10,0), 0);
+				casa.position.set(0,getYcoord(data,0,0),0);
+				bandiera.position.set(55,getYcoord(data,55,-8),-8);
+				omino.position.set(48,getYcoord(data,48,-18),-18);
+				//alberi ecc..
+			}
+
+			function getYcoord(altezzeMappa, x, z) {
+				return altezzeMappa[x%130][z/130-50];
 			}
 //-------------------------------------------------------------------------------------MULINO
 			mulino = new THREE.Object3D();
@@ -931,10 +936,6 @@
 		    }
      
 		    return data;
-		}
-
-		function getYcoord(altezzeMappa, x, z) {
-			return altezzeMappa;
 		}
 		
 		Start();
