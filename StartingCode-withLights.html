@@ -150,45 +150,39 @@
 				var cubettoAltezze_geometry = new THREE.BoxGeometry(3,3,3);
 				var cubettoAltezze_texture = new THREE.TextureLoader().load('textures/colline.jpg');
 				var cubettoAltezze_material = new THREE.MeshBasicMaterial( { map: cubettoAltezze_texture } );
-
-
-			//var cubettoAltezze_material = new THREE.MeshBasicMaterial( { color: 0x463400 } );
-		
-
-
 				var cubettiAltezze=[];
-				console.log("sono qua");
 
 				for(i=0; i<data.length; i++) {
-					console.log("sono qua3");
 					cubettiAltezze[i]=[];
 					for(j=0; j<data[i]/3; j++) {
 						cubettiAltezze[i][j] = new THREE.Mesh(cubettoAltezze_geometry, cubettoAltezze_material);
 						cubettiAltezze[i][j].position.set(i%130-65, j*3, i/130-50);
 						scene.add(cubettiAltezze[i][j]);
-						console.log("sono qua2");
 					}
 				}
 				setPositionModelli_afterHeightmap();
 			}
 
 			function setPositionModelli_afterHeightmap() {
-				mulino.position.set(-10, getYcoord(data,-10,0), 0);
-				casa.position.set(0,getYcoord(data,0,0),0);
-				bandiera.position.set(55,getYcoord(data,55,-8),-8);
-				omino.position.set(48,getYcoord(data,48,-18),-18);
-				treno.position.set(0,getYcoord(data,0,33),33);
-				vagone.position.set(0,getYcoord(data,0,33),33);
-				albero.position.set(3,getYcoord(data,3,45),45);
-				albero2.position.set(-50,getYcoord(data,-50,-35),-35);
-				cespuglio.position.set(-55,getYcoord(data,-55,25),25);
-				cespuglio2.position.set(6,getYcoord(data,6,-45),-45);
-				cactus.position.set(50,getYcoord(data,50,40),40);
-				cactus2.position.set(7,getYcoord(data,7,2),2);
+				mulino.position.set(-10, getYcoord(-10,0), 0);
+				casa.position.set(0,getYcoord(0,0),0);
+				bandiera.position.set(55,getYcoord(55,-8),-8);
+				omino.position.set(48,getYcoord(48,-18),-18);
+				treno.position.set(0,getYcoord(0,33),33);
+				vagone.position.set(0,getYcoord(0,33),33);
+				albero.position.set(3,getYcoord(3,45),45);
+				albero2.position.set(-50,getYcoord(-50,-35),-35);
+				cespuglio.position.set(-55,getYcoord(-55,25),25);
+				cespuglio2.position.set(6,getYcoord(6,-45),-45);
+				cactus.position.set(50,getYcoord(50,40),40);
+				cactus2.position.set(7,getYcoord(7,2),2);
 			}
 
-			function getYcoord(altezzeMappa, x, z) {
-				return altezzeMappa[x%130][z/130-50];
+			function getYcoord(x, z) {
+				x=x+65;
+				z=z+50;
+				var coord=data[(130*(z-1)+x)];
+				return coord;
 			}
 //-------------------------------------------------------------------------------------MULINO
 			mulino = new THREE.Object3D();
@@ -683,27 +677,27 @@
 			cactus_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
 			cactus_material = new THREE.MeshBasicMaterial( { map: cactus_texture } );
 			troncoC = new THREE.Mesh(troncoC_geometry, cactus_material);
-			troncoC.position.set(0,0,0);
+			troncoC.position.set(0,6,0);
 			cactus.add(troncoC);
 
 			parteDx_geometry = new THREE.BoxGeometry(4,2.5,2.5);
 			parteDx = new THREE.Mesh(parteDx_geometry, cactus_material);
-			parteDx.position.set(3.3,4,0);
+			parteDx.position.set(3.3,10,0);
 			cactus.add(parteDx);
 
 			parteSx_geometry = new THREE.BoxGeometry(4,2.5,2.5);
 			parteSx = new THREE.Mesh(parteSx_geometry, cactus_material);
-			parteSx.position.set(-3.3,-2,0);
+			parteSx.position.set(-3.3,4,0);
 			cactus.add(parteSx);
 			
 			parteGiu_geometry = new THREE.BoxGeometry(2.5,2.5,2.5);
 			parteGiu = new THREE.Mesh(parteGiu_geometry, cactus_material);
-			parteGiu.position.set(-4,0.5,0);
+			parteGiu.position.set(-4,6.5,0);
 			cactus.add(parteGiu);
 			
 			parteSu_geometry = new THREE.BoxGeometry(2,2.5,2.5);
 			parteSu = new THREE.Mesh(parteSu_geometry, cactus_material);
-			parteSu.position.set(4.3,6.5,0);
+			parteSu.position.set(4.3,12.5,0);
 			cactus.add(parteSu);
 			
 			cactus2=cactus.clone();
