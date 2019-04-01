@@ -148,8 +148,13 @@
 				data = getHeightData(img,0.05);
 
 				var cubettoAltezze_geometry = new THREE.BoxGeometry(3,3,3);
-				var cubettoAltezze_texture = new THREE.TextureLoader().load('textures/colline.jpg');
-				var cubettoAltezze_material = new THREE.MeshBasicMaterial( { map: cubettoAltezze_texture } );
+			//	var cubettoAltezze_texture = new THREE.TextureLoader().load('textures/colline.jpg');
+			//	var cubettoAltezze_material = new THREE.MeshBasicMaterial( { map: cubettoAltezze_texture } );
+
+
+			var cubettoAltezze_material = new THREE.MeshBasicMaterial( { color: 0x463400 } );
+		
+
 
 				var cubettiAltezze=[];
 				console.log("sono qua");
