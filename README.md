@@ -17,6 +17,8 @@ Durante la simulazione sarà possibile guardare l'ambiente circostante, caratter
 
 Abbiamo deciso di inserire degli Orbit Controls in modo tale da consentire all'utente, data la poca interattività col sistema, di analizzare la scena e guardare il paesaggio attraverso le varie inquadrature fatte tramite il movimento del mouse e gli zoom. A tal proposito abbiamo preferito non abilitare anche i comandi "freccia Su" e "freccia Giu" per i movimenti del treno, cosi da poter contemporaneamente muovere e spostare il punto di vista della camera.
 
+Il progetto è stato inoltre caratterizzato dalla aggiunta di un terrain, attraverso la costruzione di blocchi che andavano a crearsi nel ground base della scena, simulando la presenza di colline nel terreno.
+
 ### Descrizione degli elementi
 - **Treno:** E' costituito da 6 blocchi 3D per la motrice e 6 per il vagone. E' costituito da 2 set di ruote posizionate al di sotto dei blocchi e da 8 cubi all'interno del vagone.
 - **Rotaia:** E' caratterizzata da 100 traversine posizionate in modo ellittico al centro della scena. Per il posizionamento è stata usata una formula matematica che permette l'equo distanziamento degli elementi nell'ambiente.
