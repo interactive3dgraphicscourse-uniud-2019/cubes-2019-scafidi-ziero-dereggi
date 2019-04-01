@@ -145,10 +145,10 @@
 			var data = [];
 
 			img.onload = function () {
-				data = getHeightData(img,0.1);
+				data = getHeightData(img,0.05);
 
-				var cubettoAltezze_geometry = new THREE.BoxGeometry(1,1,1);
-				var cubettoAltezze_texture = new THREE.TextureLoader().load('textures/deadGrass.jpg');
+				var cubettoAltezze_geometry = new THREE.BoxGeometry(3,3,3);
+				var cubettoAltezze_texture = new THREE.TextureLoader().load('textures/colline.jpg');
 				var cubettoAltezze_material = new THREE.MeshBasicMaterial( { map: cubettoAltezze_texture } );
 
 				var cubettiAltezze=[];
@@ -157,9 +157,9 @@
 				for(i=0; i<data.length; i++) {
 					console.log("sono qua3");
 					cubettiAltezze[i]=[];
-					for(j=0; j<data[i]; j++) {
+					for(j=0; j<data[i]/3; j++) {
 						cubettiAltezze[i][j] = new THREE.Mesh(cubettoAltezze_geometry, cubettoAltezze_material);
-						cubettiAltezze[i][j].position.set(i%130-65, j, i/130-50);
+						cubettiAltezze[i][j].position.set(i%130-65, j*3, i/130-50);
 						scene.add(cubettiAltezze[i][j]);
 						console.log("sono qua2");
 					}
