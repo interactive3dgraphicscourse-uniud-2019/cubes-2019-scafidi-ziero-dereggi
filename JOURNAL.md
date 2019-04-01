@@ -48,6 +48,7 @@ Siamo partiti con lo sviluppo dell'idea di design attraverso il disegno grafico 
 ![Nuvole](Screenshot/treno.png)
 - Aggiunta una splashscreen che permette all'utente di apprendere le nozioni base di come muoversi nella scena.
 - Aggiunta heigthmap alla scena che consente di visualizzare un ground differente alla scena.
+- Aggiunta una funzione per gestire dinamicamente le altezze degli oggetti sul piano al variare della heightmap.
 - Ottimizzazione heigthmap per evitare la riduzione dei fps.
 - Correzione bug finali, inserimento commenti e ottimizzazione codice.
 
