@@ -49,6 +49,7 @@ Siamo partiti con lo sviluppo dell'idea di design attraverso il disegno grafico 
 - Aggiunta una splashscreen che permette all'utente di apprendere le nozioni base di come muoversi nella scena.
 - Aggiunta heigthmap alla scena che consente di visualizzare un ground differente alla scena.
 - Ottimizzazione heigthmap per evitare la riduzione dei fps.
+- Creazione di una funzione per alzare dinamicamente gli oggetti posizionati al di sopra del terrain.
 - Correzione bug finali, inserimento commenti e ottimizzazione codice.
 
 
