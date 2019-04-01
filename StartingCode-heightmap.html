@@ -83,38 +83,22 @@
 			document.body.appendChild( stats.domElement );
 			
 			// uncomment if you need to draw coordinate axes when building the scene
-			Coordinates.drawAllAxes();
+			//Coordinates.drawAllAxes();
 			
 			controls = new THREE.OrbitControls( camera );
 			controls.addEventListener( 'change', Render );
 			
 			// terrain
 			var img = new Image();
-			img.src = "textures/heightmap-test.png";
-			var data = [];
 			img.onload = function () {
   
 				//get height data from img
-				data = getHeightData(img,0.1);
+				var data = getHeightData(img,0.1);
   
 				// load img source
-				//img.src = "textures/heightmap-test.png";
-				console.log("ciao");
-				console.log(data[0]);
-				console.log(data[12999]);
+				img.src = "textures/heightmap2.png";
 			}
-    // plane
-    var geometry = new THREE.PlaneBufferGeometry(130,100,1,1);
-    var texture = new THREE.TextureLoader().load( 'textures/deadGrass.jpg' );
-    var material = new THREE.MeshBasicMaterial( { map: texture } );
-    plane = new THREE.Mesh( geometry, material );
-     
-    //set height of vertices
-    for ( var i = 0; i<plane.geometry.vertices.length; i++ ) {
-         plane.geometry.vertices[i].z = data[i];
-    }
- 
-    scene.add(plane);
+			
 			
 		}
 		

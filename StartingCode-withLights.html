@@ -27,8 +27,7 @@
 		
 		var scene, camera, renderer, controls, stats;
 
-		var vento_startedTime = 0;
-		var vento_lastUpdated = 0;
+		var startedTime_vento = 0;
 		var accelerazioneTreno = 0.1;
 		var angolotreno=-50;
 		var lastUpdated_angle=0;
@@ -737,7 +736,7 @@
 			controls = new THREE.OrbitControls( camera );
 			controls.addEventListener( 'change', Render );
 			
-			vento_startedTime=Date.now();
+			startedTime_vento=Date.now();
 
 			
 		}
@@ -789,18 +788,18 @@
 		}
 
 		function ruotaBandiera(){
-			var elapsed=(Date.now()-vento_startedTime)/1000;
+			var elapsed=(Date.now()-startedTime_vento)/1000;
 			if(elapsed>periodo_rotazione_blocco) {
-				vento_startedTime=Date.now();
+				startedTime_vento=Date.now();
 			}
 			var accelerazione=Math.sin((360/periodo_rotazione_blocco)*elapsed*Math.PI/180);
 			vincoloAsta.rotation.y += accelerazione*1*Math.PI/180;
 		}
 
 		function cinematicaMulino() {
-			var elapsed=(Date.now()-vento_startedTime)/1000;
+			var elapsed=(Date.now()-startedTime_vento)/1000;
 			if(elapsed>periodo_rotazione_blocco) {
-				vento_startedTime=Date.now();
+				startedTime_vento=Date.now();
 			}
 			var accelerazione=Math.sin((360/periodo_rotazione_blocco)*elapsed*Math.PI/180);
 			vincolo_base_mulino.rotation.y += accelerazione*1*Math.PI/180;
