@@ -60,24 +60,65 @@
 
 		//variabili per treno e vagone
 		var treno;
-		var locomotiva_geometry, locomotiva_material, locomotiva;
-		var ruota_geometry, ruota_material, ruota;
-		var cabina_geometry, cabina_material, cabina;
-		var tettocabina_geometry, tettocabina_material, tettocabina;
-		var camino_geometry, camino_material, camino;
-		var zavorra_geometry, zavorra_material, zavorra;
-		var fumo, fumo_geometry, fumo_material;
+		var locomotiva_geometry, locomotiva_texture, locomotiva_material, locomotiva;
+		var ruota_geometry, ruota_texture, ruota_material, ruota;
+		var cabina_geometry, cabina_texture, cabina_material, cabina;
+		var tettocabina_geometry, tettocabina_texture, tettocabina_material, tettocabina;
+		var camino_geometry, camino_texture, camino_material, camino;
+		var zavorra_geometry, zavorra;
+		var fumo_geometry, fumo_material, fumo;
+
+		var vagone;
+		var baseVagone_geometry, baseVagone;
+		var ruotaVagone;
+		var spondaCorta_geometry, spondaLunga_geometry, spondaAnteriore, spondaPosteriore, spondaLateraleDx, spondaLateraleSx;
+		var gancio_geometry, gancio;
+		var caricoVagone, carico_geometry, carico_material, carico;
 
 		//variabili per le nuvole
 		var nuvola, nuvole;
 		var nuvola_geometry, nuvola_texture, nuvola_material, blocconuvola;
-		
-		var vincolo_ruote;
-		var baseVagone, baseVagone_geometry;
-		var ruotaVagone;
-		var spondaCorta_geometry, spondaLunga_geometry, spondaAnteriore, spondaPosteriore, spondaLateraleDx, spondaLateraleSx;
-		var gancio, gancio_geometry;
-		var carico, caricoVagone, carico_geometry, carico_texture, carico_material;
+
+		//variabili per la casa
+		var casa;
+		var casetta_geometry, casetta_texture, casetta_material, casetta;
+		var tetto_geometry, tetto1, tetto2;
+		var porta_geometry, porta_texture, porta_material, porta;
+		var finestra_geometry, finestra_texture, finestra_material, finestra;
+
+		//variabili bandiera
+		var bandiera, vincoloAsta;
+		var asta_geometry, asta_texture, asta_material, asta;
+		var puntaAsta_geometry, puntaAsta_material, puntaAsta;
+		var drappo_geometry, drappo_texture, drappo_material, drappo;
+
+		//variabili omino
+		var omino, vincoloBraccio
+		var gamba_geometry, gamba_material, gambaL, gambaR;
+		var torso_geometry, vestiti_texture, vestiti_material, torso;
+		var testa_geometry, testa;
+		var braccio_geometry, braccioL, braccioR;
+		var cappello_geometry, cappello;
+		var punta_geometry, punta;
+
+		//variabili albero
+		var albero, albero2;
+		var tronco_geometry, tronco_texture, tronco_material, tronco;
+		var foglie1_geometry, foglie2_geometry, foglie_texture, foglie_material, foglie1, foglie2;
+
+		//variabili cespuglio
+		var cespuglio, cespuglio2;
+		var foglieC1_geometry, foglieC2_geometry, foglieC3_geometry, foglieC1, foglieC2, foglieC3
+
+		//variabili cactus
+		var cactus, cactus2;
+		var troncoC_geometry, cactus_texture, cactus_material, troncoC;
+		var parteDx_geometry, parteDx, parteSx_geometry, parteSx, parteGiu_geometry, parteGiu, parteSu_geometry, parteSu;
+
+		//variabli splash
+		var splash_geometry, splash_texture, splash_material, splash;
+
+
 
 		
 		function Start() {
@@ -230,46 +271,41 @@
 //-----------------------------------------------------------------------------------CASA
 			casa= new THREE.Object3D();
 		
-			var casetta_geometry = new THREE.BoxGeometry(25,15,10);
-			var casetta_texture = new THREE.TextureLoader().load('textures/legno_pali.jpg');
-			var casetta_material = new THREE.MeshBasicMaterial( { map: casetta_texture } );
+			casetta_geometry = new THREE.BoxGeometry(25,15,10);
+			casetta_texture = new THREE.TextureLoader().load('textures/legno_pali.jpg');
+			casetta_material = new THREE.MeshBasicMaterial( { map: casetta_texture } );
 			casetta = new THREE.Mesh(casetta_geometry, casetta_material);
 			casetta.position.set(40,7.5,-35);
 			casetta.rotation.y = -30*Math.PI/180;
 			casa.add(casetta);
 
 
-			var tetto1_geometry = new THREE.BoxGeometry(25,2,15);
-			var tetto1_texture = new THREE.TextureLoader().load('textures/legno_pali.jpg');
-			var tetto1_material = new THREE.MeshBasicMaterial( { map: tetto1_texture } );
-			tetto1 = new THREE.Mesh(tetto1_geometry, tetto1_material);
+			tetto_geometry = new THREE.BoxGeometry(25,2,15);
+			tetto1 = new THREE.Mesh(tetto_geometry, casetta_material);
 			tetto1.position.set(50,15,-30);
 			tetto1.rotation.y = -30*Math.PI/180;
 			tetto1.rotation.z = -30*Math.PI/180;
 			casa.add(tetto1);
 
 
-			var tetto2_geometry = new THREE.BoxGeometry(25,2,15);
-			var tetto2_texture = new THREE.TextureLoader().load('textures/legno_pali.jpg');
-			var tetto2_material = new THREE.MeshBasicMaterial( { map: tetto2_texture } );
-			tetto2 = new THREE.Mesh(tetto2_geometry, tetto2_material);
+			tetto2 = new THREE.Mesh(tetto_geometry, casetta_material);
 			tetto2.position.set(30,15,-41);
 			tetto2.rotation.y = -30*Math.PI/180;
 			tetto2.rotation.z = 30*Math.PI/180;
 			casa.add(tetto2);
 	
-			var porta_geometry = new THREE.BoxGeometry(5,10,1);
-			var porta_texture = new THREE.TextureLoader().load('textures/porta.jpg');
-			var porta_material = new THREE.MeshBasicMaterial( { map: porta_texture } );
+			porta_geometry = new THREE.BoxGeometry(5,10,1);
+			porta_texture = new THREE.TextureLoader().load('textures/porta.jpg');
+			porta_material = new THREE.MeshBasicMaterial( { map: porta_texture } );
 			porta = new THREE.Mesh(porta_geometry, porta_material);
 			porta.position.set(35,5,-32);
 			porta.rotation.y = -30*Math.PI/180;
 			casa.add(porta);
 
 
-			var finestra_geometry = new THREE.BoxGeometry(5,5,0.5);
-			var finestra_texture = new THREE.TextureLoader().load('textures/finestra.jpg');
-			var finestra_material = new THREE.MeshBasicMaterial( { map: finestra_texture } );
+			finestra_geometry = new THREE.BoxGeometry(5,5,0.5);
+			finestra_texture = new THREE.TextureLoader().load('textures/finestra.jpg');
+			finestra_material = new THREE.MeshBasicMaterial( { map: finestra_texture } );
 			finestra = new THREE.Mesh(finestra_geometry, finestra_material);
 			finestra.position.set(43,10,-27);
 			finestra.rotation.y = -30*Math.PI/180;
@@ -285,26 +321,26 @@
 			bandiera= new THREE.Object3D();
 			vincoloAsta= new THREE.Object3D();
 
-			var asta_geometry = new THREE.BoxGeometry(1,15,1);
-			var asta_texture = new THREE.TextureLoader().load('textures/legno_pale.jpg');
-			var asta_material = new THREE.MeshBasicMaterial( { map: asta_texture } );
+			asta_geometry = new THREE.BoxGeometry(1,15,1);
+			asta_texture = new THREE.TextureLoader().load('textures/legno_pale.jpg');
+			asta_material = new THREE.MeshBasicMaterial( { map: asta_texture } );
 			asta = new THREE.Mesh(asta_geometry, asta_material);
 			asta.position.set(0,7.5,0);
 			asta.rotation.y = -30*Math.PI/180;
 			bandiera.add(asta);
 
 
-			var puntaAsta_geometry = new THREE.BoxGeometry(1.5,1.5,1.5);
-			var puntaAsta_material = new THREE.MeshBasicMaterial( { color: 0xffd700 } );
+			puntaAsta_geometry = new THREE.BoxGeometry(1.5,1.5,1.5);
+			puntaAsta_material = new THREE.MeshBasicMaterial( { color: 0xffd700 } );
 			puntaAsta = new THREE.Mesh(puntaAsta_geometry, puntaAsta_material);
 			puntaAsta.position.set(0,15,0);
 			puntaAsta.rotation.y = -30*Math.PI/180;
 			bandiera.add(puntaAsta);
 
 
-            var drappo_geometry = new THREE.BoxGeometry(10,5,0.5);
-			var drappo_texture = new THREE.TextureLoader().load('textures/bandiera.jpg');
-			var drappo_material = new THREE.MeshBasicMaterial( { map: drappo_texture } );
+            drappo_geometry = new THREE.BoxGeometry(10,5,0.5);
+			drappo_texture = new THREE.TextureLoader().load('textures/bandiera.jpg');
+			drappo_material = new THREE.MeshBasicMaterial( { map: drappo_texture } );
 			drappo = new THREE.Mesh(drappo_geometry, drappo_material);
 			drappo.position.set(5,12,0);
 			bandiera.add(drappo);
@@ -323,51 +359,46 @@
 //-----------------------------------------------------------------------------------FINE BANDIERA
 
 
-//-----------------------------------------------------------------------------------OMINO
+//---------------------------------------------------------------------------------OMINO
 			omino = new THREE.Object3D();
-		
 			vincoloBraccio=new THREE.Object3D();
 
-			var gambaL_geometry = new THREE.BoxGeometry(0.5,3,0.5);
-			var gambaL_material = new THREE.MeshBasicMaterial( { color: 0xFFE4E1 } );
-			gambaL = new THREE.Mesh(gambaL_geometry, gambaL_material);
+			gamba_geometry = new THREE.BoxGeometry(0.5,3,0.5);
+			corpo_material = new THREE.MeshBasicMaterial( { color: 0xFFE4E1 } );
+			gambaL = new THREE.Mesh(gamba_geometry, corpo_material);
 			gambaL.position.set(0,2,0);
 			omino.add(gambaL);
 
-			var gambaR_geometry = new THREE.BoxGeometry(0.5,3,0.5);
-			var gambaR_material = new THREE.MeshBasicMaterial( { color: 0xFFE4E1 } );
-			gambaR = new THREE.Mesh(gambaR_geometry, gambaR_material);
+			gambaR = new THREE.Mesh(gamba_geometry, corpo_material);
 			gambaR.position.set(1,2,0);
 			omino.add(gambaR);
 
-			var torso_geometry = new THREE.BoxGeometry(2,3,2);
-			var vestiti_texture = new THREE.TextureLoader().load('textures/orange.jpg');
-			var vestiti_material = new THREE.MeshBasicMaterial( { map: vestiti_texture } );
+			torso_geometry = new THREE.BoxGeometry(2,3,2);
+			vestiti_texture = new THREE.TextureLoader().load('textures/orange.jpg');
+			vestiti_material = new THREE.MeshBasicMaterial( { map: vestiti_texture } );
 			torso = new THREE.Mesh(torso_geometry, vestiti_material);
 			torso.position.set(0.5,5,0);
 			omino.add(torso);
 
-			var testa_geometry = new THREE.BoxGeometry(1,1,1);
-			var testa_material = new THREE.MeshBasicMaterial( { color: 0xFFE4E1 } );
-			testa = new THREE.Mesh(testa_geometry, testa_material);
+			testa_geometry = new THREE.BoxGeometry(1,1,1);
+			testa = new THREE.Mesh(testa_geometry, corpo_material);
 			testa.position.set(0.5,7,0);
 			omino.add(testa);
 
-			var braccio_geometry = new THREE.BoxGeometry(0.5,4,0.5);
-			var braccio_material = new THREE.MeshBasicMaterial( { color: 0xFFE4E1 } );
-			braccioL = new THREE.Mesh(braccio_geometry, braccio_material);
+			braccio_geometry = new THREE.BoxGeometry(0.5,4,0.5);
+			braccioL = new THREE.Mesh(braccio_geometry, corpo_material);
 
-			braccioR = new THREE.Mesh(braccio_geometry, braccio_material);
+			braccioR = new THREE.Mesh(braccio_geometry, corpo_material);
 			braccioR.position.set(2,4.5,0);
 			braccioR.rotation.z = 30*Math.PI/180;
 			omino.add(braccioR);
 
-			var cappello_geometry = new THREE.BoxGeometry(2.5,0.5,2.5);
+			cappello_geometry = new THREE.BoxGeometry(2.5,0.5,2.5);
 			cappello = new THREE.Mesh(cappello_geometry, vestiti_material);
 			cappello.position.set(0.5,7.5,0);
 			omino.add(cappello);
 
-			var punta_geometry = new THREE.BoxGeometry(1,1,1);
+			punta_geometry = new THREE.BoxGeometry(1,1,1);
 			punta = new THREE.Mesh(punta_geometry, vestiti_material);
 			punta.position.set(0.5,8,0);
 			omino.add(punta);
@@ -502,7 +533,6 @@
 //--------------------------------------------------------------------------------MATERIALE VAGONE
 			caricoVagone = new THREE.Object3D();
 			carico_geometry = new THREE.BoxGeometry(2,2,2);
-			//carico_texture = new THREE.TextureLoader().load('bandiera.jpg');
 			carico_material = new THREE.MeshBasicMaterial({color: 0xffff00});
 			carico = [];
 			var sposx = -4;
@@ -532,22 +562,22 @@
 //-----------------------------------------------------------------------------------ALBERO
 			albero=new THREE.Object3D();
 
-			var tronco_geometry = new THREE.BoxGeometry(2,7,2);
-			var tronco_texture = new THREE.TextureLoader().load('textures/legnoAlbero.jpg');
-			var tronco_material = new THREE.MeshBasicMaterial( { map: tronco_texture } );
+			tronco_geometry = new THREE.BoxGeometry(2,7,2);
+			tronco_texture = new THREE.TextureLoader().load('textures/legnoAlbero.jpg');
+			tronco_material = new THREE.MeshBasicMaterial( { map: tronco_texture } );
 			tronco = new THREE.Mesh(tronco_geometry, tronco_material);
 			tronco.position.set(0,4,0);
 			albero.add(tronco);
 
 
-			var foglie1_geometry = new THREE.BoxGeometry(6,3,6);
-			var foglie_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
-			var foglie_material = new THREE.MeshBasicMaterial( { map: foglie_texture } );
+			foglie1_geometry = new THREE.BoxGeometry(6,3,6);
+			foglie_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
+			foglie_material = new THREE.MeshBasicMaterial( { map: foglie_texture } );
 			foglie1 = new THREE.Mesh(foglie1_geometry, foglie_material);
 			foglie1.position.set(0,7,0);
 			albero.add(foglie1);
 
-			var foglie2_geometry = new THREE.BoxGeometry(4,3,4);
+			foglie2_geometry = new THREE.BoxGeometry(4,3,4);
 			foglie2 = new THREE.Mesh(foglie2_geometry, foglie_material);
 			foglie2.position.set(0,10,0);
 			albero.add(foglie2);
@@ -568,18 +598,18 @@
 
 			cespuglio=new THREE.Object3D();
 
-			var foglieC1_geometry = new THREE.BoxGeometry(6,3,6);
+			foglieC1_geometry = new THREE.BoxGeometry(6,3,6);
 			foglieC1 = new THREE.Mesh(foglieC1_geometry, foglie_material);
 			foglieC1.position.set(0,0,0);
 			cespuglio.add(foglieC1);
 
 
-			var foglieC2_geometry = new THREE.BoxGeometry(4,3,4);
+			foglieC2_geometry = new THREE.BoxGeometry(4,3,4);
 			foglieC2 = new THREE.Mesh(foglieC2_geometry, foglie_material);
 			foglieC2.position.set(0,3,0);
 			cespuglio.add(foglieC2);
 
-			var foglieC3_geometry = new THREE.BoxGeometry(6,5,6);
+			foglieC3_geometry = new THREE.BoxGeometry(6,5,6);
 			foglieC3 = new THREE.Mesh(foglieC3_geometry, foglie_material);
 			foglieC3.position.set(2,1,2);
 			cespuglio.add(foglieC3);
@@ -599,34 +629,34 @@
 //-----------------------------------------------------------------------------------CACTUS
 			cactus=new THREE.Object3D();
 
-			var troncoC_geometry = new THREE.BoxGeometry(2.5,14,2.5);
-			var cactus_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
-			var cactus_material = new THREE.MeshBasicMaterial( { map: cactus_texture } );
+			troncoC_geometry = new THREE.BoxGeometry(2.5,14,2.5);
+			cactus_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
+			cactus_material = new THREE.MeshBasicMaterial( { map: cactus_texture } );
 			troncoC = new THREE.Mesh(troncoC_geometry, cactus_material);
 			troncoC.position.set(0,0,0);
 			cactus.add(troncoC);
 
-			var parteDx_geometry = new THREE.BoxGeometry(4,2.5,2.5);
+			parteDx_geometry = new THREE.BoxGeometry(4,2.5,2.5);
 			parteDx = new THREE.Mesh(parteDx_geometry, cactus_material);
 			parteDx.position.set(3.3,4,0);
 			cactus.add(parteDx);
 
-			var parteSx_geometry = new THREE.BoxGeometry(4,2.5,2.5);
+			parteSx_geometry = new THREE.BoxGeometry(4,2.5,2.5);
 			parteSx = new THREE.Mesh(parteSx_geometry, cactus_material);
 			parteSx.position.set(-3.3,-2,0);
 			cactus.add(parteSx);
 			
-			var parteGiu_geometry = new THREE.BoxGeometry(2.5,2.5,2.5);
+			parteGiu_geometry = new THREE.BoxGeometry(2.5,2.5,2.5);
 			parteGiu = new THREE.Mesh(parteGiu_geometry, cactus_material);
 			parteGiu.position.set(-4,0.5,0);
 			cactus.add(parteGiu);
 			
-			var parteSu_geometry = new THREE.BoxGeometry(2,2.5,2.5);
+			parteSu_geometry = new THREE.BoxGeometry(2,2.5,2.5);
 			parteSu = new THREE.Mesh(parteSu_geometry, cactus_material);
 			parteSu.position.set(4.3,6.5,0);
 			cactus.add(parteSu);
 			
-			var cactus2=cactus.clone();
+			cactus2=cactus.clone();
 			cactus2.position.set(7,6,2);
 			scene.add(cactus2);
 
