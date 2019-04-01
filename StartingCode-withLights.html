@@ -172,7 +172,14 @@
 				casa.position.set(0,getYcoord(data,0,0),0);
 				bandiera.position.set(55,getYcoord(data,55,-8),-8);
 				omino.position.set(48,getYcoord(data,48,-18),-18);
-				//alberi ecc..
+				treno.position.set(0,getYcoord(data,0,33),33);
+				vagone.position.set(0,getYcoord(data,0,33),33);
+				albero.position.set(3,getYcoord(data,3,45),45);
+				albero2.position.set(-50,getYcoord(data,-50,-35),-35);
+				cespuglio.position.set(-55,getYcoord(data,-55,25),25);
+				cespuglio2.position.set(6,getYcoord(data,6,-45),-45);
+				cactus.position.set(50,getYcoord(data,50,40),40);
+				cactus2.position.set(7,getYcoord(data,7,2),2);
 			}
 
 			function getYcoord(altezzeMappa, x, z) {
@@ -461,15 +468,15 @@
 			treno = new THREE.Object3D();
 
 			locomotiva_geometry = new THREE.BoxGeometry(12,4,8);
-			var locomotiva_texture = new THREE.TextureLoader().load('textures/trenoBase.jpg');
-			var locomotiva_material = new THREE.MeshBasicMaterial( { map: locomotiva_texture } );
+			locomotiva_texture = new THREE.TextureLoader().load('textures/trenoBase.jpg');
+			locomotiva_material = new THREE.MeshBasicMaterial( { map: locomotiva_texture } );
 			locomotiva = new THREE.Mesh(locomotiva_geometry, locomotiva_material);
 			locomotiva.position.set(0,4,0);
 			treno.add(locomotiva);
 
 			ruota_geometry = new THREE.BoxGeometry(2,2,2);
-			var ruota_texture = new THREE.TextureLoader().load('textures/trenoRuote.jpg');
-			var ruota_material = new THREE.MeshBasicMaterial( { map: ruota_texture });
+			ruota_texture = new THREE.TextureLoader().load('textures/trenoRuote.jpg');
+			ruota_material = new THREE.MeshBasicMaterial( { map: ruota_texture });
 			ruota = [];
 			for (i=0; i<4; i++){
 				ruota[i] = new THREE.Mesh(ruota_geometry, ruota_material);
@@ -481,22 +488,22 @@
 			ruota[3].position.set(3,1,-2);
 
 			cabina_geometry = new THREE.BoxGeometry(6,4,8);
-			var cabina_texture = new THREE.TextureLoader().load('textures/trenoMezzo.jpg');
-			var cabina_material = new THREE.MeshBasicMaterial( { map: cabina_texture });
+			cabina_texture = new THREE.TextureLoader().load('textures/trenoMezzo.jpg');
+			cabina_material = new THREE.MeshBasicMaterial( { map: cabina_texture });
 			cabina = new THREE.Mesh(cabina_geometry,cabina_material);
 			cabina.position.set(-3,8,0);
 			treno.add(cabina);
 
 			tettocabina_geometry = new THREE.BoxGeometry(8,1,10);
-			var tettocabina_texture = new THREE.TextureLoader().load('textures/trenoTetto.jpg');
-			var tettocabina_material = new THREE.MeshBasicMaterial( { map: tettocabina_texture });
+			tettocabina_texture = new THREE.TextureLoader().load('textures/trenoTetto.jpg');
+			tettocabina_material = new THREE.MeshBasicMaterial( { map: tettocabina_texture });
 			tettocabina = new THREE.Mesh(tettocabina_geometry,tettocabina_material);
 			tettocabina.position.set(-3,10.5,0);
 			treno.add(tettocabina);
 
 			camino_geometry = new THREE.BoxGeometry(2,4,2);
-			var camino_texture = new THREE.TextureLoader().load('textures/trenoCamino.jpg');
-			var camino_material = new THREE.MeshBasicMaterial( { map: camino_texture });
+			camino_texture = new THREE.TextureLoader().load('textures/trenoCamino.jpg');
+			camino_material = new THREE.MeshBasicMaterial( { map: camino_texture });
 			camino = new THREE.Mesh(camino_geometry,camino_material);
 			camino.position.set(3.5,8,0);
 			treno.add(camino);
@@ -621,7 +628,7 @@
 			albero.add(foglie2);
 
 
-			var albero2=albero.clone();
+			albero2=albero.clone();
 			albero2.position.set(-50,-1,-35);
 
 			scene.add(albero2);
@@ -652,7 +659,7 @@
 			foglieC3.position.set(2,1,2);
 			cespuglio.add(foglieC3);
 			
-			var cespuglio2=cespuglio.clone();
+			cespuglio2=cespuglio.clone();
 			cespuglio2.position.set(6,1,-45);
 			scene.add(cespuglio2);
 
@@ -757,9 +764,9 @@
 
 //-----------------------------------------------------------------------------------FINE NUVOLE
 //-----------------------------------------------------------------------------------SPLASH
-			var splash_geometry = new THREE.BoxGeometry(100,40,0.1);
-			var splash_texture = new THREE.TextureLoader().load('textures/splash.jpg');
-			var splash_material = new THREE.MeshBasicMaterial( { map: splash_texture } );
+			splash_geometry = new THREE.BoxGeometry(100,40,0.1);
+			splash_texture = new THREE.TextureLoader().load('textures/splash.jpg');
+			splash_material = new THREE.MeshBasicMaterial( { map: splash_texture } );
 			splash = new THREE.Mesh(splash_geometry, splash_material);
 			splash.rotation.x = -35*Math.PI/180;
 			splash.position.set(0,60,90);
