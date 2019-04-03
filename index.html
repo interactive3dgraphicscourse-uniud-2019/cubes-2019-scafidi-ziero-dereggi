@@ -339,7 +339,7 @@
 			porta_texture = new THREE.TextureLoader().load('textures/porta.jpg');
 			porta_material = new THREE.MeshBasicMaterial( { map: porta_texture } );
 			porta = new THREE.Mesh(porta_geometry, porta_material);
-			porta.position.set(-5,5,6);
+			porta.position.set(-5,5,5);
 			casa.add(porta);
 
 
@@ -347,7 +347,7 @@
 			finestra_texture = new THREE.TextureLoader().load('textures/finestra.jpg');
 			finestra_material = new THREE.MeshBasicMaterial( { map: finestra_texture } );
 			finestra = new THREE.Mesh(finestra_geometry, finestra_material);
-			finestra.position.set(5,8,6);
+			finestra.position.set(5,8,5);
 			casa.add(finestra);
 
 			casa.rotation.y = -30*Math.PI/180;
