@@ -668,12 +668,23 @@
 //-----------------------------------------------------------------------------------CACTUS
 			cactus=new THREE.Object3D();
 
-			troncoC_geometry = new THREE.BoxGeometry(2.5,14,2.5);
+			troncoC_geometry = new THREE.BoxGeometry(2.5,3.5,2.5);
 			cactus_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
 			cactus_material = new THREE.MeshBasicMaterial( { map: cactus_texture } );
 			troncoC = new THREE.Mesh(troncoC_geometry, cactus_material);
-			troncoC.position.set(0,6,0);
+			troncoC.position.set(0,3,0);
+
+			troncoGiu = new THREE.Mesh(troncoC_geometry, cactus_material);
+			troncoGiu.position.set(0,6.5,0);
+			troncoGiu2 = new THREE.Mesh(troncoC_geometry, cactus_material);
+			troncoGiu2.position.set(0,10,0);
+			troncoGiu3 = new THREE.Mesh(troncoC_geometry, cactus_material);
+			troncoGiu3.position.set(0,13.5,0);
+
 			cactus.add(troncoC);
+			cactus.add(troncoGiu);
+			cactus.add(troncoGiu2);
+			cactus.add(troncoGiu3);
 
 			parteDx_geometry = new THREE.BoxGeometry(4,2.5,2.5);
 			parteDx = new THREE.Mesh(parteDx_geometry, cactus_material);
