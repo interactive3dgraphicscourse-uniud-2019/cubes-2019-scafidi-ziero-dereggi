@@ -165,7 +165,7 @@
 
 			function setPositionModelli_afterHeightmap() {
 				mulino.position.set(-10, getYcoord(-10,0), 0);
-				casa.position.set(0,getYcoord(0,0),0);
+				casa.position.set(42,getYcoord(42,-35),-35);
 				bandiera.position.set(55,getYcoord(55,-8),-8);
 				omino.position.set(48,getYcoord(48,-18),-18);
 				treno.position.set(0,getYcoord(0,33),33);
@@ -271,7 +271,7 @@
 			vincolo_base_mulino.rotation.y = -45*Math.PI/180;
 
 			scene.add(mulino);
-			mulino.position.set(-10, 0, 0);
+			//mulino.position.set(-10, 0, 0);
 
 
 //----------------------------------------------------------------------------------FINE MULINO
@@ -307,34 +307,31 @@
 			}
 			scene.add(ferrovia);
 
-			//ferrovia.position.set(20,0,20);
+			//ferrovia.position.set(0,0,0);
 
 
 //----------------------------------------------------------------FINE TRAVERSINE TRENO / FERROVIA
 
 //-----------------------------------------------------------------------------------CASA
-			casa= new THREE.Object3D();
+			casa = new THREE.Object3D();
 		
 			casetta_geometry = new THREE.BoxGeometry(25,15,10);
 			casetta_texture = new THREE.TextureLoader().load('textures/legno_pali.jpg');
 			casetta_material = new THREE.MeshBasicMaterial( { map: casetta_texture } );
 			casetta = new THREE.Mesh(casetta_geometry, casetta_material);
-			casetta.position.set(40,7.5,-35);
-			casetta.rotation.y = -30*Math.PI/180;
+			casetta.position.set(0,7.5,0);
 			casa.add(casetta);
 
 
 			tetto_geometry = new THREE.BoxGeometry(25,2,15);
 			tetto1 = new THREE.Mesh(tetto_geometry, casetta_material);
-			tetto1.position.set(50,15,-30);
-			tetto1.rotation.y = -30*Math.PI/180;
+			tetto1.position.set(11,15,0);
 			tetto1.rotation.z = -30*Math.PI/180;
 			casa.add(tetto1);
 
 
 			tetto2 = new THREE.Mesh(tetto_geometry, casetta_material);
-			tetto2.position.set(30,15,-41);
-			tetto2.rotation.y = -30*Math.PI/180;
+			tetto2.position.set(-11,15,0);
 			tetto2.rotation.z = 30*Math.PI/180;
 			casa.add(tetto2);
 	
@@ -342,8 +339,7 @@
 			porta_texture = new THREE.TextureLoader().load('textures/porta.jpg');
 			porta_material = new THREE.MeshBasicMaterial( { map: porta_texture } );
 			porta = new THREE.Mesh(porta_geometry, porta_material);
-			porta.position.set(35,5,-32);
-			porta.rotation.y = -30*Math.PI/180;
+			porta.position.set(-5,5,6);
 			casa.add(porta);
 
 
@@ -351,9 +347,11 @@
 			finestra_texture = new THREE.TextureLoader().load('textures/finestra.jpg');
 			finestra_material = new THREE.MeshBasicMaterial( { map: finestra_texture } );
 			finestra = new THREE.Mesh(finestra_geometry, finestra_material);
-			finestra.position.set(43,10,-27);
-			finestra.rotation.y = -30*Math.PI/180;
+			finestra.position.set(5,8,6);
 			casa.add(finestra);
+
+			casa.rotation.y = -30*Math.PI/180;
+			//casa.position.set(42,0,-35);
 
 			scene.add(casa);
 
@@ -455,7 +453,6 @@
 			omino.position.set(48,0,-18);
 			omino.rotation.y = -30*Math.PI/180;
 
-
 			omino.add(vincoloBraccio);
 			scene.add(omino);
 			
@@ -513,9 +510,7 @@
 			treno.add(zavorra);
 
 			treno.position.set(0,0,33);
-			//treno.rotation.y=180*Math.PI/180;
 
-			//scene.add(treno);
 			ferrovia.add(treno);
 
 
@@ -952,8 +947,6 @@
 			var keyCode = e.keyCode;
 			if(keyCode == 87 && accelerazioneTreno<=1) { //W
 				accelerazioneTreno=accelerazioneTreno+0.05;
-				//altezza = Math.floor(Math.random()*3+3);
-				//fumo.position.set(0,altezza,0);
 			}
 			if(keyCode == 83) { //S
 				if(accelerazioneTreno==0.1 || accelerazioneTreno==0.2) {
