@@ -1,12 +1,11 @@
 # PER UN PUGNO DI BOXES
-Scafidi Roberto Antonino - Ziero Samuele - De Reggi Paolo
 
 Progetto per il primo parziale del corso di Interactive 3D Graphics (2018/2019) con consegna entro 8/04/2019.
 
 Team:
-Scafidi Roberto Antonino - 123125,
-Ziero Samuele - 107201,
-De Reggi Paolo - 123783.
+- Scafidi Roberto Antonino - 123125,
+- Ziero Samuele - 107201,
+- De Reggi Paolo - 123783.
 
 ## Descrizione generale del progetto
 Il progetto consiste in una applicazione web caratterizzata da un mini-gioco di simulazione di un trenino su rotaia. L'idea è quella di realizzare un ambiente in stile Far West (da cui la citazione del titolo "Per un pugno di boxes" in riferimento al quasi omonimo film), caratterizzato da pochi elementi interattivi e ulteriori elementi automatici cosi da fornire all'utente una esperienza di "visita" di un ambiente. A tal proposito abbiamo infatti costruito numerosi elementi automatici cosi da simulare una sorta di parco a tema dove si possono vedere elementi caratteristici per l'appunto del tema stesso e interagire, anche se in minima parte, con gli oggetti.
