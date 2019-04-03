@@ -605,7 +605,7 @@
 			tronco_texture = new THREE.TextureLoader().load('textures/legnoAlbero.jpg');
 			tronco_material = new THREE.MeshBasicMaterial( { map: tronco_texture } );
 			tronco = new THREE.Mesh(tronco_geometry, tronco_material);
-			tronco.position.set(0,4,0);
+			tronco.position.set(0,3,0);
 			albero.add(tronco);
 
 
@@ -613,12 +613,12 @@
 			foglie_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
 			foglie_material = new THREE.MeshBasicMaterial( { map: foglie_texture } );
 			foglie1 = new THREE.Mesh(foglie1_geometry, foglie_material);
-			foglie1.position.set(0,7,0);
+			foglie1.position.set(0,6,0);
 			albero.add(foglie1);
 
 			foglie2_geometry = new THREE.BoxGeometry(4,3,4);
 			foglie2 = new THREE.Mesh(foglie2_geometry, foglie_material);
-			foglie2.position.set(0,10,0);
+			foglie2.position.set(0,9,0);
 			albero.add(foglie2);
 
 
@@ -672,14 +672,14 @@
 			cactus_texture = new THREE.TextureLoader().load('textures/cactus.jpg');
 			cactus_material = new THREE.MeshBasicMaterial( { map: cactus_texture } );
 			troncoC = new THREE.Mesh(troncoC_geometry, cactus_material);
-			troncoC.position.set(0,3,0);
+			troncoC.position.set(0,1,0);
 
 			troncoGiu = new THREE.Mesh(troncoC_geometry, cactus_material);
-			troncoGiu.position.set(0,6.5,0);
+			troncoGiu.position.set(0,4.5,0);
 			troncoGiu2 = new THREE.Mesh(troncoC_geometry, cactus_material);
-			troncoGiu2.position.set(0,10,0);
+			troncoGiu2.position.set(0,8,0);
 			troncoGiu3 = new THREE.Mesh(troncoC_geometry, cactus_material);
-			troncoGiu3.position.set(0,13.5,0);
+			troncoGiu3.position.set(0,11.5,0);
 
 			cactus.add(troncoC);
 			cactus.add(troncoGiu);
