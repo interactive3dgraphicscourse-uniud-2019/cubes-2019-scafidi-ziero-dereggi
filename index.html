@@ -27,6 +27,7 @@
 		
 		var scene, camera, renderer, controls, stats;
 
+		//Variabili per le varie animazioni
 		var vento_startedTime = 0;
 		var vento_lastUpdated = 0;
 		var accelerazioneTreno = 0.1;
@@ -34,18 +35,17 @@
 		var lastUpdated_angle=0;
 		var refreshTime=10; //millisecondi
 		var movimento_treno_lastUpdate=0;
-
 		var movimento_nuvole=3;
 		var movimento_nuvole_now=0;
 		var movimento_nuvole_step=0.01;
 		var movimento_nuvole_lastUpdated=0;
 
-		//variabili per traversine treno
+		//Variabili per le traversine del treno
 		var modello_traversinetreno, ferrovia;
 		var traversinetreno_geometry, traversinetreno_material, traversinatreno_texture, traversinatreno, traversinetreno;
 		var rotaie_geometry, rotaie_material, rotaia1, rotaia2;;
 
-		// variabili per mulino
+		//Variabili per il mulino
 		var mulino;
 		var palomulino_geometry, palomulino_texture, palomulino_material, palimulino;
 		var traversinamulino_geometry, traversinemulino;
@@ -58,7 +58,7 @@
 		var palamulino_geometry, palamulino_texture, palamulino_material, palemulino;
 		var periodo_rotazione_blocco=8; // in secondi, periodo di rotazione blocco+pale
 
-		//variabili per treno e vagone
+		//Variabili per il treno e il vagone
 		var treno;
 		var locomotiva_geometry, locomotiva_texture, locomotiva_material, locomotiva;
 		var ruota_geometry, ruota_texture, ruota_material, ruota;
@@ -75,24 +75,24 @@
 		var gancio_geometry, gancio;
 		var caricoVagone, carico_geometry, carico_material, carico;
 
-		//variabili per le nuvole
+		//Variabili per le nuvole
 		var nuvola, nuvole;
 		var nuvola_geometry, nuvola_texture, nuvola_material, blocconuvola;
 
-		//variabili per la casa
+		//Variabili per la casa
 		var casa;
 		var casetta_geometry, casetta_texture, casetta_material, casetta;
 		var tetto_geometry, tetto1, tetto2;
 		var porta_geometry, porta_texture, porta_material, porta;
 		var finestra_geometry, finestra_texture, finestra_material, finestra;
 
-		//variabili bandiera
+		//Variabili per la bandiera
 		var bandiera, vincoloAsta;
 		var asta_geometry, asta_texture, asta_material, asta;
 		var puntaAsta_geometry, puntaAsta_material, puntaAsta;
 		var drappo_geometry, drappo_texture, drappo_material, drappo;
 
-		//variabili omino
+		//Variabili per l'omino
 		var omino, vincoloBraccio
 		var gamba_geometry, gamba_material, gambaL, gambaR;
 		var torso_geometry, vestiti_texture, vestiti_material, torso;
@@ -101,26 +101,24 @@
 		var cappello_geometry, cappello;
 		var punta_geometry, punta;
 
-		//variabili albero
+		//Variabili per gli alberi
 		var albero, albero2;
 		var tronco_geometry, tronco_texture, tronco_material, tronco;
 		var foglie1_geometry, foglie2_geometry, foglie_texture, foglie_material, foglie1, foglie2;
 
-		//variabili cespuglio
+		//Variabili per i cespugli
 		var cespuglio, cespuglio2;
 		var foglieC1_geometry, foglieC2_geometry, foglieC3_geometry, foglieC1, foglieC2, foglieC3
 
-		//variabili cactus
+		//Variabili per i cactus
 		var cactus, cactus2;
 		var troncoC_geometry, cactus_texture, cactus_material, troncoC;
 		var parteDx_geometry, parteDx, parteSx_geometry, parteSx, parteGiu_geometry, parteGiu, parteSu_geometry, parteSu;
 
-		//variabli splash
+		//Variabli per lo splash
 		var splash_geometry, splash_texture, splash_material, splash;
 
 
-
-		
 		function Start() {
 			scene = new THREE.Scene();
 			camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -139,6 +137,7 @@
 			
 			//var placeholder_material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
 
+
 //-------------------------------------------------------------------------------------HEIGHTMAP
 			var img = new Image();
 			img.src = "textures/heightmap.png";
@@ -147,11 +146,13 @@
 			img.onload = function () {
 				data = getHeightData(img,0.05);
 
+				//Creazione della geometria e del materiale di un cubo 1x3x1 e dichiarazione di un'array cubettiAltezze dove verrranno inseriti i cubi creati
 				var cubettoAltezze_geometry = new THREE.BoxGeometry(1,3,1);
 				var cubettoAltezze_texture = new THREE.TextureLoader().load('textures/colline.jpg');
 				var cubettoAltezze_material = new THREE.MeshBasicMaterial( { map: cubettoAltezze_texture } );
 				var cubettiAltezze=[];
 
+				//Ciclo che permette di scandire tutti i pixel dell'immagine sorgente e che aggiunge dei cubi alla scena (con la geometria e materiale di cui sopra) in base al colore che quel punto assume nell'immagine sorgente
 				for(i=0; i<data.length; i++) {
 					cubettiAltezze[i]=[];
 					for(j=0; j<data[i]/3; j++) {
@@ -163,6 +164,7 @@
 				setPositionModelli_afterHeightmap();
 			}
 
+			//La seguente funzione va a collocare i vari modelli presenti nella scena nella giusta posizione dopo che è stata effettuata la HeightMap
 			function setPositionModelli_afterHeightmap() {
 				mulino.position.set(-10, getYcoord(-10,0), 0);
 				casa.position.set(42,getYcoord(42,-35),-35);
@@ -178,13 +180,18 @@
 				cactus2.position.set(7,getYcoord(7,2),2);
 			}
 
+			//La seguente funzione calcola il valore della coordinata Y, valore che servirà nello spostamento eventuale sull'asse Y in seguito alla HeightMap
 			function getYcoord(x, z) {
 				x=x+65;
 				z=z+50;
 				var coord=data[(130*(z-1)+x)];
 				return coord;
 			}
-//-------------------------------------------------------------------------------------MULINO
+
+
+//ORA VERRANNO CREATI E INSERITI NELLA SCENA I VARI MODELLI
+
+//--------------------------------------------------------------------------------------- MULINO
 			mulino = new THREE.Object3D();
 
 			palomulino_geometry = new THREE.BoxGeometry(3,20,3);
@@ -239,7 +246,6 @@
 			vincolo_base_mulino.add(bloccomulino2);
 			mulino.add(vincolo_base_mulino);
 
-
 			codamulino_geometry = new THREE.BoxGeometry(4,6,4);
 			codamulino = new THREE.Mesh(codamulino_geometry, bloccomulino_material);
 			codamulino.position.set(0, 27, -10.5);
@@ -273,8 +279,7 @@
 			scene.add(mulino);
 			//mulino.position.set(-10, 0, 0);
 
-
-//----------------------------------------------------------------------------------FINE MULINO
+//--------------------------------------------------------------------------------- FINE MULINO
 
 
 //----------------------------------------------------------------- TRAVERSINE TRENO / FERROVIA
@@ -309,10 +314,10 @@
 
 			//ferrovia.position.set(0,0,0);
 
+//--------------------------------------------------------------- FINE TRAVERSINE TRENO / FERROVIA
 
-//----------------------------------------------------------------FINE TRAVERSINE TRENO / FERROVIA
 
-//-----------------------------------------------------------------------------------CASA
+//------------------------------------------------------------------------------------------- CASA
 			casa = new THREE.Object3D();
 		
 			casetta_geometry = new THREE.BoxGeometry(25,15,10);
@@ -322,13 +327,11 @@
 			casetta.position.set(0,7.5,0);
 			casa.add(casetta);
 
-
 			tetto_geometry = new THREE.BoxGeometry(25,2,15);
 			tetto1 = new THREE.Mesh(tetto_geometry, casetta_material);
 			tetto1.position.set(11,15,0);
 			tetto1.rotation.z = -30*Math.PI/180;
 			casa.add(tetto1);
-
 
 			tetto2 = new THREE.Mesh(tetto_geometry, casetta_material);
 			tetto2.position.set(-11,15,0);
@@ -342,7 +345,6 @@
 			porta.position.set(-5,5,5);
 			casa.add(porta);
 
-
 			finestra_geometry = new THREE.BoxGeometry(5,5,0.5);
 			finestra_texture = new THREE.TextureLoader().load('textures/finestra.jpg');
 			finestra_material = new THREE.MeshBasicMaterial( { map: finestra_texture } );
@@ -355,11 +357,10 @@
 
 			scene.add(casa);
 
+//------------------------------------------------------------------------------------ FINE CASA
 
-//-----------------------------------------------------------------------------------FINE CASA
 
-
-//-----------------------------------------------------------------------------------INIZIO BANDIERA
+//------------------------------------------------------------------------------ INIZIO BANDIERA
 			bandiera= new THREE.Object3D();
 			vincoloAsta= new THREE.Object3D();
 
@@ -371,7 +372,6 @@
 			asta.rotation.y = -30*Math.PI/180;
 			bandiera.add(asta);
 
-
 			puntaAsta_geometry = new THREE.BoxGeometry(1.5,1.5,1.5);
 			puntaAsta_material = new THREE.MeshBasicMaterial( { color: 0xffd700 } );
 			puntaAsta = new THREE.Mesh(puntaAsta_geometry, puntaAsta_material);
@@ -379,14 +379,12 @@
 			puntaAsta.rotation.y = -30*Math.PI/180;
 			bandiera.add(puntaAsta);
 
-
             drappo_geometry = new THREE.BoxGeometry(10,5,0.5);
 			drappo_texture = new THREE.TextureLoader().load('textures/bandiera.jpg');
 			drappo_material = new THREE.MeshBasicMaterial( { map: drappo_texture } );
 			drappo = new THREE.Mesh(drappo_geometry, drappo_material);
 			drappo.position.set(5,12,0);
 			bandiera.add(drappo);
-
 
 			vincoloAsta.add(drappo);
 			vincoloAsta.position.set(0,0,0);
@@ -397,11 +395,10 @@
 			bandiera.add(vincoloAsta);
 			scene.add(bandiera);
 			
+//--------------------------------------------------------------------------------- FINE BANDIERA
 
-//-----------------------------------------------------------------------------------FINE BANDIERA
 
-
-//---------------------------------------------------------------------------------OMINO
+//----------------------------------------------------------------------------------------- OMINO
 			omino = new THREE.Object3D();
 			vincoloBraccio=new THREE.Object3D();
 
@@ -456,11 +453,10 @@
 			omino.add(vincoloBraccio);
 			scene.add(omino);
 			
+//---------------------------------------------------------------------------------- FINE OMINO
 
-//-----------------------------------------------------------------------------------FINE OMINO
 
-
-//-----------------------------------------------------------------------------------TRENO
+//--------------------------------------------------------------------------------------- TRENO
 			treno = new THREE.Object3D();
 
 			locomotiva_geometry = new THREE.BoxGeometry(12,4,8);
@@ -513,17 +509,15 @@
 
 			ferrovia.add(treno);
 
-
 			fumo_geometry = new THREE.BoxGeometry(1,1,1);
 			fumo_material = new THREE.MeshBasicMaterial({color: 0x000000});
 			fumo = new THREE.Mesh(fumo_geometry,fumo_material);
 			camino.add(fumo);
 
+//---------------------------------------------------------------------------------- FINE TRENO
 
-//-----------------------------------------------------------------------------------FINE TRENO
 
-
-//-----------------------------------------------------------------------------------VAGONE
+//-------------------------------------------------------------------------------------- VAGONE
 			vagone = new THREE.Object3D();
 
 			baseVagone_geometry = new THREE.BoxGeometry(12,2,8);
@@ -565,11 +559,10 @@
 			vagone.position.set(0,0,33);
 			ferrovia.add(vagone);
 
+//---------------------------------------------------------------------------------- FINE VAGONE
 
-//-----------------------------------------------------------------------------------FINE VAGONE
 
-
-//--------------------------------------------------------------------------------MATERIALE VAGONE
+//----------------------------------------------------------------------------- MATERIALE VAGONE
 			caricoVagone = new THREE.Object3D();
 			carico_geometry = new THREE.BoxGeometry(2,2,2);
 			carico_material = new THREE.MeshBasicMaterial({color: 0xffff00});
@@ -594,11 +587,10 @@
 			}
 			vagone.add(caricoVagone);
 
+//------------------------------------------------------------------------- FINE MATERIALE VAGONE
 
-//--------------------------------------------------------------------------FINE MATERIALE VAGONE
 
-
-//-----------------------------------------------------------------------------------ALBERO
+//---------------------------------------------------------------------------------------- ALBERO
 			albero=new THREE.Object3D();
 
 			tronco_geometry = new THREE.BoxGeometry(2,7,2);
@@ -607,7 +599,6 @@
 			tronco = new THREE.Mesh(tronco_geometry, tronco_material);
 			tronco.position.set(0,3,0);
 			albero.add(tronco);
-
 
 			foglie1_geometry = new THREE.BoxGeometry(6,3,6);
 			foglie_texture = new THREE.TextureLoader().load('textures/foglieAlbero.jpg');
@@ -621,7 +612,6 @@
 			foglie2.position.set(0,9,0);
 			albero.add(foglie2);
 
-
 			albero2=albero.clone();
 			albero2.position.set(-50,-1,-35);
 
@@ -630,18 +620,16 @@
 			albero.position.set(3,-1,45);
 			scene.add(albero);
 
-//-----------------------------------------------------------------------------------FINE ALBERO
+//---------------------------------------------------------------------------------- FINE ALBERO
 
 
-//-----------------------------------------------------------------------------------CESPUGLIO
-
+//------------------------------------------------------------------------------------ CESPUGLIO
 			cespuglio=new THREE.Object3D();
 
 			foglieC1_geometry = new THREE.BoxGeometry(6,3,6);
 			foglieC1 = new THREE.Mesh(foglieC1_geometry, foglie_material);
 			foglieC1.position.set(0,0,0);
 			cespuglio.add(foglieC1);
-
 
 			foglieC2_geometry = new THREE.BoxGeometry(4,3,4);
 			foglieC2 = new THREE.Mesh(foglieC2_geometry, foglie_material);
@@ -660,12 +648,10 @@
 			cespuglio.position.set(-55,1,25);
 			scene.add(cespuglio);
 
-
-//-----------------------------------------------------------------------------------FINE CESPUGLIO
-
+//--------------------------------------------------------------------------------- FINE CESPUGLIO
 
 
-//-----------------------------------------------------------------------------------CACTUS
+//----------------------------------------------------------------------------------------- CACTUS
 			cactus=new THREE.Object3D();
 
 			troncoC_geometry = new THREE.BoxGeometry(2.5,3.5,2.5);
@@ -713,10 +699,10 @@
 			cactus.position.set(50,6,40);
 			scene.add(cactus);
 
+//---------------------------------------------------------------------------------- FINE CACTUS
 
-//-----------------------------------------------------------------------------------FINE CACTUS
 
-//-----------------------------------------------------------------------------------INIZIO NUVOLE
+//-------------------------------------------------------------------------------- INIZIO NUVOLE
 			nuvola = new THREE.Object3D();
 			nuvola_geometry = new THREE.BoxGeometry(4,4,4);
 			nuvola_texture = new THREE.TextureLoader().load('textures/nuvole.jpg');
@@ -766,9 +752,10 @@
 			nuvole[3].rotation.y = -10*Math.PI/180;
 			nuvole[3].position.set(-30,36,20);
 
+//---------------------------------------------------------------------------------- FINE NUVOLE
 
-//-----------------------------------------------------------------------------------FINE NUVOLE
-//-----------------------------------------------------------------------------------SPLASH
+
+//--------------------------------------------------------------------------------------- SPLASH
 			splash_geometry = new THREE.BoxGeometry(100,40,0.1);
 			splash_texture = new THREE.TextureLoader().load('textures/splash.jpg');
 			splash_material = new THREE.MeshBasicMaterial( { map: splash_texture } );
@@ -776,7 +763,8 @@
 			splash.rotation.x = -35*Math.PI/180;
 			splash.position.set(0,60,90);
 			scene.add(splash);
-//-----------------------------------------------------------------------------------FINE SPLASH
+
+//---------------------------------------------------------------------------------- FINE SPLASH
 
 			hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
 			hemiLight.color.setHSL( 0.6, 1, 0.6 );
@@ -818,8 +806,6 @@
 			controls.addEventListener( 'change', Render );
 			
 			vento_startedTime=Date.now();
-
-			
 		}
 		
 		function Update() {
@@ -839,6 +825,7 @@
 			renderer.render(scene, camera);
 		}
 
+		//Funzione che controlla il movimento delle nuvole e che aggiorna la loro posizione con un'andamento dall'alto verso il basso e viceversa
 		function movimentoNuvole(){
 			if(Date.now()>=(movimento_nuvole_lastUpdated+refreshTime)) {
 				nuvole[0].position.y += movimento_nuvole_step;
@@ -855,6 +842,7 @@
 			}
 		}
 
+		//Funzione che fa alzare e successivamente abbassare il braccio all'omino nel momento in cui il treno passa davanti ad esso. Si va quindi a ruotare il braccio sull'asse Z di un determinato angolo 
 		function ominoSaluta(){
 			if(lastUpdated_angle!=angolotreno) {
 				var angoloMod = angolotreno%360;
@@ -868,6 +856,7 @@
 			}
 		}
 
+		//Funzione che permette alla bandiera di sventolare, cioè di ruotare sull'asse Y
 		function ruotaBandiera(){
 			var elapsed=(Date.now()-vento_startedTime)/1000;
 			if(elapsed>periodo_rotazione_blocco) {
@@ -877,6 +866,7 @@
 			vincoloAsta.rotation.y += accelerazione*1*Math.PI/180;
 		}
 
+		//Funzione che controlla la cinematica del mulino facendo girare sia la base che le pale del mulino con una determinata accelerazione
 		function cinematicaMulino() {
 			var elapsed=(Date.now()-vento_startedTime)/1000;
 			if(elapsed>periodo_rotazione_blocco) {
@@ -887,6 +877,7 @@
 			vincolo_pale_mulino.rotation.z += accelerazione*5*Math.PI/180;
 		}
 
+		//Funzione che controlla la cinematica del treno e del vagone ad esso collegato. Il treno nel suo percorso segue un percorso ellittico, seguito dal vagone. Si va anche a controllare l'accelerazione del treno diminuendola man mano fino a far fermare il treno
 		function cinematicaTreno() {
 			if(Date.now()>=(movimento_treno_lastUpdate+refreshTime)) { 
 				treno.rotation.y=(angolotreno+90)*Math.PI/180;
@@ -954,6 +945,8 @@
 		Update();
 
 		document.onkeydown = accelerazioniTreno;
+
+		//Funzione che permette di comandare il treno tramite i tasti W e S e che impone delle limitazioni alla massima accelerazione
 		function accelerazioniTreno(e){
 			var keyCode = e.keyCode;
 			if(keyCode == 87 && accelerazioneTreno<=1) { //W
