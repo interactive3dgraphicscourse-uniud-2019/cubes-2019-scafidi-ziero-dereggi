@@ -1,0 +1,84 @@
+COMPITO 1
+
+Domanda 1: Descrivere lo stadio Rasterizer
+
+RASTERIZER: Conversione dei vertici bidimensionali in screenSpace in Pixel sullo schermo
+RASTERIZATION: Vertici in screenSpace, converte linee e triangoli in frammenti
+PIXEL SHADER: computa il colore del pixel usando anche texture RGBa
+MERGING: Serie di test per eliminare i frammenti in base alla coordinata z e poi il blending calcola il colore partendo dalle immagini nel frame buffer.
+
+############################################################
+
+Domanda 2: Posizione del centro del cilindro
+
+############################################################
+
+Domanda 3: Z-test e version per eliminare sup. nascoste:
+
+Lavora sui frammenti alla fine dello stadio rasterizer. Quando arriva un frammento con coordinate (i,j) legge il valore nel zBuffer in posizi (i,j) e lo confronta con il frammento corrente zValue. Se il confronto non è soddisfatto frammento scartato altrimenti viene tenuto e potrebbe essere scritto in zBuffer.
+ELIMI.SUP.NASC: Viene usato l’operatore <= per il confronto e zBUFFER inizializzato al valore 1.0 all’inizio del rendering; chi vince il confronto scrive la sua z in (i,j) 
+
+
+############################################################
+
+Domanda 4: Camera
+
+?slide n°6,20 del pdf 6-camera?
+
+############################################################
+
+Domanda 5: Vertex e Fragment Shader
+
+VERTEXshader: Processa ogni vertice della pipeline uno alla volta. Prende in input gli attributi del vertice(posiz,normale,colore) e dei dati costanti chiamati uniforms. In output manda la posizi del vertice+dati chiamati varying che vengono interpolati dal rasterizer e passati al fragment shader
+
+uniform vec3 material color;
+varying vec3 vColor;
+void main(){
+	gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);
+ 	vColor=materialColor;
+}
+FRAGMENTshader: Processa un frammento alla volta. Input il frammento Data (colore, z,…), i dati varying del vertex+ uniformData. Output minimo il colore del frammento. Prende l’interpolata del colore e lo copia su glFragShader che poi appare in schermo.
+Varying vec3 vColor;
+ void main(){ 
+	gl_FragColor=vec4(vColor,1.0);
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+COMPITO2
+
+Domanda 1: Descrviere lo stadio Geometry
+
+Lavora i vertici uno alla volta trasformandoli in coordinate per permettere operazioni e lavori con la camera.
+VERTEX PROCESSING: trasformazione dei vertici in workspace. Posiziona tutto in cameraSpace (rototraslazione) cosi da avere la relazione camera-oggetti sempre la stessa. Infine fa la proiezione.
+CLIPPING: Taglia fuori quello che non si deve rappresentare. Mesh della scena hanno coordinate [-w,w] dove w è diverso per ogni vertice.
+SCREEN MAPPING:Mappare le coordinate nell’immagine con coordinate 0,-1 dove 0 è la parte più vicina alla camera e -1 lontano.
+
+
+############################################################
+
+Domanda 2: Blender
+
+Bending: Calcola un nuovo colore combinando il colore del frammento e il colore già immagazzinato nel colorBuffer nella locazione del frammento. L’operaz. Di blending è definita da :
+SOURCE (framm corrent) s=(Rs,Gs,Bs,As)
+DESTINATION(color buffer) d=(Rd,Gd,Bd,Ad)
+SOURCE BLENDING FACTOR b=(br,bg,bb,ba)
+DESTINATION BLENDING FACTOR c=(Cr,Cg,Cb,Cs)
+OPERATIOn op.
+Il risultato è (br*Rs op cr*Rd*…ba*As op Ca*Ad) e dipende da qualche oggetto renderizzato prima.
+
+
+############################################################
+
+Domanda 3: Alpha Test
+alpha test può scartare frammenti il cui alpha value non soddisfa la relazione con un alpha value generico. ad esempio scarta tutti i frammenti che hanno alpha value più piccolo di 0.5
+
+
+############################################################
+
+Domanda 4: Camera
+
+
+############################################################
+
+Domanda 5: Vertex e Fragment Shader
