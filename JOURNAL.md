@@ -15,7 +15,7 @@ L'idea generale del progetto è stata quella di sviluppare una scena interattiva
 ## Progressi del progetto
 
 **PARTENZA:**
-Siamo partiti con lo sviluppo dell'idea di design attraverso il disegno grafico a mano. Siamo riusciti a coincidere le varie idee per un fine comune, costruendo un mockup su carta per poi svilupparne uno attraverso mezzi elettronici.
+Siamo partiti con lo sviluppo dell'idea di design attraverso il disegno grafico a mano. Siamo riusciti a coincidere le varie idee per un fine comune, costruendo un mockup su carta per poi svilupparne uno attraverso mezzi elettronici.  
 ![Prima bozza](Screenshot/bozza.png)
 **PASSI DI SVILUPPO**
 - Abbiamo costruito dei placeholder nella scena, inserendo dei cubi neri all'interno del ground per definire gli spazi e renderci conto di come sarebbero stati posizionati i vari elementi nella scena.
