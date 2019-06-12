@@ -42,7 +42,7 @@ Siamo partiti con lo sviluppo dell'idea di design attraverso il disegno grafico 
 - Cambio di struttura delle rotaie cosi da da rendere realistica la scena inserendo le traversine sotto la rotaia stessa.
 - Sistemazione delle texture e resizing della immagini in potenza di 2 cosi da ottimizzare la visualizzazione della scena.
 - Inserimento limiti sull'accelerazione del treno che inizialmente andava in crescita esponenziale.
-- Aggiunta fumo dal caminetto del treno e implementazione attivazione unicamente nel momento in cui il treno si muove.
+- Aggiunta fumo dal caminetto del treno e implementazione attivazione unicamente nel momento in cui il treno si muove.  
 ![Nuvole](Screenshot/treno.png)
 - Aggiunta una splashscreen che permette all'utente di apprendere le nozioni base di come muoversi nella scena.
 - Aggiunta heigthmap alla scena che consente di visualizzare un ground differente alla scena.
